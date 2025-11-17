@@ -1,6 +1,7 @@
 import { Users } from "./Users"
 
 export class TicketSoporte{
+    idSoporte:number=0
     tipoSoporte:string=""
     asuntoSoporte:string=""
     descripcionSoporte:string=""

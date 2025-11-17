@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 import { Home } from './components/home/home';
 import { Users } from './components/users/users';
 import { Usuarioregistrar } from './components/users/usuarioregistrar/usuarioregistrar';
+import { TicketSoporte } from './models/TicketSoporte';
+import { Ticketreportelistar } from './components/ticket-reporte/ticketreportelistar/ticketreportelistar';
+import { Ticketreporteregistrar } from './components/ticket-reporte/ticketreporteregistrar/ticketreporteregistrar';
+import { TicketReporte } from './components/ticket-reporte/ticket-reporte';
 
 export const routes: Routes = [
     {
@@ -16,5 +20,13 @@ export const routes: Routes = [
             { path: 'news', component: Usuarioregistrar },
             { path: 'edits/:id', component: Usuarioregistrar },
         ]
-    }
+    },
+    {
+    path: 'soporte',
+    component: TicketReporte, 
+    children: [
+      { path: 'news', component: Ticketreportelistar },
+      { path: 'edits/:id', component: Ticketreportelistar },
+    ],
+  },
 ];

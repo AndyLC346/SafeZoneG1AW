@@ -15,6 +15,7 @@ export class TicketSoporteService implements OnInit{
   private listaCambio=new Subject<TicketSoporte[]>();
 
   constructor(private http:HttpClient){}
+  
   ngOnInit(): void {}
   list() {
     return this.http.get<TicketSoporte[]>(this.url);

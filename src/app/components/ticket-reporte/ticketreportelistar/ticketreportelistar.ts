@@ -5,10 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { TicketSoporte } from '../../../models/TicketSoporte';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ticketreportelistar',
-  imports: [MatTableModule,MatButtonModule,MatIconModule,RouterLink],
+  imports: [MatTableModule,MatButtonModule,MatIconModule,RouterLink,CommonModule],
   templateUrl: './ticketreportelistar.html',
   styleUrl: './ticketreportelistar.css',
 })
@@ -16,7 +17,7 @@ export class Ticketreportelistar implements OnInit{
 
   dataSource:MatTableDataSource<TicketSoporte>=new MatTableDataSource();
 
-  displayedColumns:string[]=['c1','c2','c3','c4','c5','c6','c7']
+  displayedColumns:string[]=['c1','c2','c3','c4','c5','cF','c6','c7']
   
   constructor(private tS:TicketSoporteService){}
 
@@ -28,9 +29,8 @@ export class Ticketreportelistar implements OnInit{
       this.dataSource = new MatTableDataSource(data);
     });
   }
-
-  eliminar(id:number){
-    this.tS.delete(id).subscribe((data)=>{
+  eliminar(id: number) {
+    this.tS.delete(id).subscribe((data) => {
       this.tS.list().subscribe(data=>{
         this.tS.setList(data)
       })
