@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>Registro de Nueva Cuenta</h2>
+
+  <form [formGroup]="form" (submit)="aceptar()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Servicio (Ej. Netflix, Spotify)</mat-label>
+      <input matInput placeholder="Servicio de Cuenta" formControlName="servicioCuenta">
+      <mat-error *ngIf="obtenerControl('servicioCuenta')?.hasError('required')">
+        El servicio de la cuenta es **obligatorio**.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre de Cuenta</mat-label>
+      <input matInput placeholder="Nombre o Nickname" formControlName="nombreCuenta">
+      <mat-error *ngIf="obtenerControl('nombreCuenta')?.hasError('required')">
+        El nombre de la cuenta es **obligatorio**.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Usuario Propietario</mat-label>
+      <mat-select formControlName="idUsuario">
+        <mat-option value="1">Usuario 1 (ID: 1)</mat-option>
+        <mat-option value="2">Usuario 2 (ID: 2)</mat-option>
+        <mat-option value="3">Usuario 3 (ID: 3)</mat-option>
+      </mat-select>
+      <mat-error *ngIf="obtenerControl('idUsuario')?.hasError('required')">
+        Seleccionar un usuario es **obligatorio**.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="buttons-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
+        Registrar Cuenta
+      </button>
+      <button mat-raised-button color="warn" type="button" routerLink="/cuentas">
+        Cancelar
+      </button>
+    </div>
+
+  </form>
+</div>
