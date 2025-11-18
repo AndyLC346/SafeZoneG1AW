@@ -15,23 +15,23 @@ import { RouterLink } from '@angular/router';
 export class Usuariolistar implements OnInit {
   dataSource: MatTableDataSource<Users> = new MatTableDataSource();
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
+    displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
 
-  constructor(private aS: UsersService) {}
+    constructor(private aS: UsersService) {}
 
-  ngOnInit(): void {
-    this.aS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
-    this.aS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
-  }
-  eliminar(id: number) {
-    this.aS.delete(id).subscribe((data) => {
-      this.aS.list().subscribe(data=>{
-        this.aS.setList(data)
-      })
-    });
-  }
+    ngOnInit(): void {
+      this.aS.list().subscribe((data) => {
+        this.dataSource = new MatTableDataSource(data);
+      });
+      this.aS.getList().subscribe((data) => {
+        this.dataSource = new MatTableDataSource(data);
+      });
+    }
+    eliminar(id: number) {
+      this.aS.delete(id).subscribe((data) => {
+        this.aS.list().subscribe(data=>{
+          this.aS.setList(data)
+        })
+      });
+    }
 }
