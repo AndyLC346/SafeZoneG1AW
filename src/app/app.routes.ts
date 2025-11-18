@@ -22,11 +22,11 @@ export const routes: Routes = [
         ]
     },
     {
-    path: 'soporte',
-    component: TicketReporte, 
-    children: [
-      { path: 'news', component: Ticketreportelistar },
-      { path: 'edits/:id', component: Ticketreportelistar },
-    ],
-  },
+        path: 'registrar',
+        component: TicketReporte, 
+        children: [
+            { path: 'news', component: Ticketreporteregistrar },
+            { path: 'edits/:id', component: Ticketreporteregistrar },
+        ],
+    },
 ];
