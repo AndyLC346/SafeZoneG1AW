@@ -1,0 +1,57 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+header {
+    display: flex;
+    height: 80x;
+    background-color: #1A237E;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    margin-right: 40px;
+}
+
+nav a {
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    margin: 40px auto;
+    width: 70%;
+}
+
+.texto_box {
+    color: white;
+    margin-top: 100px;
+}
+
+.logo2 {
+    max-width: 390px;
+    float: right;
+    margin-left: 20px;
+    margin-top: -70px;
+}
