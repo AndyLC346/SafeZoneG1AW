@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Alertalistar } from './alertalistar/alertalistar';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { Alertalistar } from './alertalistar/alertalistar';
