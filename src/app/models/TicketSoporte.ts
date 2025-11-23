@@ -7,5 +7,5 @@ export class TicketSoporte{
     descripcionSoporte:string=""
     estadoSoporte:string=""
     fechacreacionSoporte:Date=new Date()
-    users:Users=new Users()
+    usuario:Users=new Users()
 }

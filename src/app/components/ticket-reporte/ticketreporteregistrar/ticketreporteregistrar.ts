@@ -11,10 +11,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-ticketreporteregistrar',
-  imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule,MatRadioModule,MatDatepickerModule,MatButtonModule,MatSelectModule,MatDatepickerModule],
+  imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule,MatRadioModule,MatDatepickerModule,MatButtonModule,MatSelectModule,MatDatepickerModule, MatNativeDateModule],
   templateUrl: './ticketreporteregistrar.html',
   styleUrl: './ticketreporteregistrar.css',
 })
@@ -65,7 +66,7 @@ export class Ticketreporteregistrar implements OnInit {
       this.ticket.descripcionSoporte=this.form.value.descripcion
       this.ticket.estadoSoporte=this.form.value.estado;
       this.ticket.fechacreacionSoporte=this.form.value.fechacreacion;
-      this.ticket.users.id=this.form.value.fk
+      this.ticket.usuario.id=this.form.value.fk
       if(this.edicion){
         this.tS.update(this.ticket).subscribe((data)=>{
           this.tS.list().subscribe((data)=>{
@@ -93,7 +94,7 @@ export class Ticketreporteregistrar implements OnInit {
           descripcion: new FormControl(data.descripcionSoporte),
           estado: new FormControl(data.estadoSoporte),
           fechacreacion: new FormControl(data.fechacreacionSoporte),
-          fk:new FormControl(data.users.id)
+          fk:new FormControl(data.usuario.id)
         });
       });
     }

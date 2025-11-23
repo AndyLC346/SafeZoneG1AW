@@ -10,7 +10,7 @@ const base_url=environment.base
 })
 export class TicketSoporteService implements OnInit{
 
-  private url=`${base_url}/ticketsoporte`
+  private url=`${base_url}/ticketreportes`
 
   private listaCambio=new Subject<TicketSoporte[]>();
 

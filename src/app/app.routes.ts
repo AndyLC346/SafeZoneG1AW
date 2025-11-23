@@ -6,6 +6,7 @@ import { Ticketreporteregistrar } from './components/ticket-reporte/ticketreport
 import { TicketReporte } from './components/ticket-reporte/ticket-reporte';
 import { RespuestaSoporte } from './components/respuesta-soporte/respuesta-soporte';
 import { Respuestasoportelistar } from './components/respuesta-soporte/respuestasoportelistar/respuestasoportelistar';
+import { Ticketreportelistar } from './components/ticket-reporte/ticketreportelistar/ticketreportelistar';
 
 export const routes: Routes = [
     {
@@ -22,19 +23,12 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'registrar',
+        path: 'tickets',
         component: TicketReporte, 
         children: [
-            { path: 'news', component: Ticketreporteregistrar },
+            { path: 'create', component: Ticketreporteregistrar },
             { path: 'edits/:id', component: Ticketreporteregistrar },
-        ],
-    },
-    {
-        path: 'listar',
-        component: RespuestaSoporte, 
-        children: [
-            { path: 'news', component: Respuestasoportelistar },
-            { path: 'edits/:id', component: Respuestasoportelistar },
+            { path: '' , component: Ticketreportelistar},
         ],
     },
 ];
