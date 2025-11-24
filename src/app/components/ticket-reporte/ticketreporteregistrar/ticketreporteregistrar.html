@@ -1,8 +1,8 @@
 <div class="container">
-  <div style="text-align: center;margin: 5%;">
+  <div style="text-align: center;margin: 5%">
     <h2>{{edicion ? 'Editar Ticket': 'Registrar Ticket'}}</h2>
   </div>
-  <div style="text-align: center; margin: 5%;">
+  <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
       @if (edicion){
         <mat-form-field>
@@ -11,21 +11,13 @@
         </mat-form-field>
       }
       <br />
-      <div>
-        <mat-form-field class="example-full width">
-          <mat-label>Tipo: </mat-label>
-          <mat-select formControlName="tipo" required>
-            @for (p of tipos;track p.value){
-              <mat-option [value]="p.value">
-                {{p.viewValue}}
-              </mat-option>
-            }
-          </mat-select>
-          @if (form.get('tipo')?.hasError('required')){
-            <mat-error>El campo tipo es obligatorio</mat-error>
-          }
-        </mat-form-field>
-      </div>
+      <mat-form-field>
+        <mat-label>tipo</mat-label>
+        <input matInput formControlName="tipo" />
+        <mat-error>
+          @if (form.get('tipo')?.hasError('required')) { Ingrese tipo del ticket!! }
+        </mat-error>
+      </mat-form-field>
       <br />
       <mat-form-field>
         <mat-label>Asunto</mat-label>

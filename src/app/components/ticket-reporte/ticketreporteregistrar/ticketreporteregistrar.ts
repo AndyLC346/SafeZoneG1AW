@@ -12,11 +12,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-ticketreporteregistrar',
   imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule,MatRadioModule,MatDatepickerModule,MatButtonModule,MatSelectModule,MatDatepickerModule, MatNativeDateModule],
   templateUrl: './ticketreporteregistrar.html',
+  providers:[provideNativeDateAdapter()],
   styleUrl: './ticketreporteregistrar.css',
 })
 export class Ticketreporteregistrar implements OnInit {
@@ -24,7 +26,7 @@ export class Ticketreporteregistrar implements OnInit {
   ticket: TicketSoporte = new TicketSoporte();
   edicion: boolean = false;
   id: number = 0;
-  listaUsuarios:Users[]=[];
+  listaUsuarios: Users[] = [];
 
   constructor(
     private tS: TicketSoporteService,
@@ -33,11 +35,6 @@ export class Ticketreporteregistrar implements OnInit {
     private route: ActivatedRoute,
     private uS: UsersService
   ) {}
-
-  tipos: { value: string; viewValue: string }[] = [
-    { value: 'Reporte de errores', viewValue: 'Reporte de errores' },
-    { value: 'Reporte de incidentes', viewValue: 'Reporte de incidentes' },
-  ];
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -63,7 +60,7 @@ export class Ticketreporteregistrar implements OnInit {
       this.ticket.idSoporte=this.form.value.codigo;
       this.ticket.tipoSoporte=this.form.value.tipo;
       this.ticket.asuntoSoporte=this.form.value.asunto;
-      this.ticket.descripcionSoporte=this.form.value.descripcion
+      this.ticket.descripcionSoporte=this.form.value.descripcion;
       this.ticket.estadoSoporte=this.form.value.estado;
       this.ticket.fechacreacionSoporte=this.form.value.fechacreacion;
       this.ticket.usuario.id=this.form.value.fk
@@ -80,7 +77,7 @@ export class Ticketreporteregistrar implements OnInit {
           });
         });
       }
-      this.router.navigate(['tickets'])
+      this.router.navigate(['tickets']);
     }
   }
 
