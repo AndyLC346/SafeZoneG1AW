@@ -7,6 +7,11 @@ import { Alertaregistrar } from './components/alerta/alertaregistrar/alertaregis
 import { Alertalistar } from './components/alerta/alertalistar/alertalistar';
 import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
+import { Recursobuscar } from './components/recurso/recursobuscar/recursobuscar';
+import { Recursolistar } from './components/recurso/recursolistar/recursolistar';
+import { Recursoregistrar } from './components/recurso/recursoregistrar/recursoregistrar';
+import { Recurso } from './components/recurso/recurso';
+import { Recursoquery2 } from './components/recurso/recursoquery2/recursoquery2';
 
 export const routes: Routes = [
     {
@@ -32,7 +37,19 @@ export const routes: Routes = [
             { path: 'buscar', component: Alertabuscar },
              {path: 'reporte1',component: Alertaquery1,},
         ],
-          },
+    },
+     {
+        path: 'recursosducativos',
+        component: Recurso,
+        children: [
+            { path: 'listar', component: Recursolistar },
+            { path: 'registrar', component: Recursoregistrar },
+            { path: 'editar/:id', component: Recursoregistrar },
+            { path: 'buscar', component: Recursobuscar },
+            {path: 'reporte2',component: Recursoquery2,},
+           
+        ],
+    },
        
 
 ];
