@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { Auditoria } from '../../../models/Auditoria';
 import { AuditoriaService } from '../../../services/auditoria-service';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auditorialistar',
@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 export class AuditoriaListar implements OnInit {
   dataSource: MatTableDataSource<Auditoria> = new MatTableDataSource();
  
-  displayedColumns: string[] = ['id', 'fecha', 'tipo', 'descripcion', 'usuario', 'acciones'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
 
   constructor(private aS: AuditoriaService) {}
 

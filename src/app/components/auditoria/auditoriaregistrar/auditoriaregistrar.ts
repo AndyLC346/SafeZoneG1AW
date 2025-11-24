@@ -1,96 +1,104 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // <--- 1. FALTA ESTO PARA EL *ngIf
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
+  ReactiveFormsModule,
   Validators,
-  FormControl
 } from '@angular/forms';
 import { Auditoria } from '../../../models/Auditoria';
 import { AuditoriaService } from '../../../services/auditoria-service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router'; // <--- 2. FALTA RouterLink
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-auditoriaregistrar',
+  standalone: true,
+  imports: [
+    CommonModule,         // <--- 3. AGREGAR AQUÍ (Indispensable)
+    RouterLink,           // <--- 4. AGREGAR AQUÍ (Para el botón cancelar)
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatButtonModule,
+  ],
   templateUrl: './auditoriaregistrar.html',
+  providers: [provideNativeDateAdapter()],
   styleUrls: ['./auditoriaregistrar.css'],
 })
 export class AuditoriaRegistrarComponent implements OnInit {
-
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
   audit: Auditoria = new Auditoria();
-
-  edicion = false;
-  id = 0;
+  edicion: boolean = false;
+  id: number = 0;
 
   constructor(
     private aS: AuditoriaService,
     private router: Router,
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute
-  ) {
-    // inicializamos el form aquí por seguridad
-    this.form = this.fb.group({
-      codigo: [''],
-      tipoAuditoria: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      fechaAuditoria: ['', Validators.required],
-      usuario: ['', Validators.required], // ID del usuario
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
-      if (this.edicion) {
-        this.init();
-      }
+      this.init();
+    });
+
+    this.form = this.formBuilder.group({
+      codigo: [''],
+      tipoAuditoria: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      fechaAuditoria: ['', Validators.required],
+      usuario: ['', Validators.required],
     });
   }
 
   aceptar(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+    if (this.form.valid) {
+      this.audit.idAuditoria = this.edicion ? this.id : 0;
+      this.audit.tipoAuditoria = this.form.value.tipoAuditoria;
+      this.audit.descripcion = this.form.value.descripcion;
+      this.audit.fechaAuditoria = this.form.value.fechaAuditoria;
 
-    this.audit.idAuditoria = this.form.value.codigo;
-    this.audit.tipoAuditoria = this.form.value.tipoAuditoria;
-    this.audit.descripcion = this.form.value.descripcion;
-    this.audit.fechaAuditoria = this.form.value.fechaAuditoria;
+      // Asignación de ID de usuario
+      this.audit.usuario.id = this.form.value.usuario;
 
-    // si tu modelo usuario tiene 'id' como propiedad
-    if (!this.audit.usuario) {
-      this.audit.usuario = { id: this.form.value.usuario } as any;
-    } else {
-      (this.audit.usuario as any).id = this.form.value.usuario;
-    }
-
-    if (this.edicion) {
-      this.aS.update(this.audit).subscribe(() => {
-        this.aS.list().subscribe((data) => this.aS.setList(data));
-        this.router.navigate(['auditorias']);
-      });
-    } else {
-      this.aS.insert(this.audit).subscribe(() => {
-        this.aS.list().subscribe((data) => this.aS.setList(data));
-        this.router.navigate(['auditorias']);
-      });
+      if (this.edicion) {
+        this.aS.update(this.audit).subscribe(() => {
+          this.aS.list().subscribe((data) => {
+            this.aS.setList(data);
+          });
+        });
+      } else {
+        this.aS.insert(this.audit).subscribe(() => {
+          this.aS.list().subscribe((data) => {
+            this.aS.setList(data);
+          });
+        });
+      }
+      this.router.navigate(['auditorias']);
     }
   }
 
   init() {
-    this.aS.listId(this.id).subscribe((data) => {
-     
-      this.form.patchValue({
-        codigo: data.idAuditoria,
-        tipoAuditoria: data.tipoAuditoria,
-        descripcion: data.descripcion,
-        fechaAuditoria: data.fechaAuditoria,
-        usuario: data.usuario?.id ?? '',
+    if (this.edicion) {
+      this.aS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          codigo: new FormControl(data.idAuditoria),
+          tipoAuditoria: new FormControl(data.tipoAuditoria),
+          descripcion: new FormControl(data.descripcion),
+          fechaAuditoria: new FormControl(data.fechaAuditoria),
+          usuario: new FormControl(data.usuario.id),
+        });
       });
-    }, err => {
-      console.error('Error al cargar auditoría:', err);
-    });
+    }
   }
 }

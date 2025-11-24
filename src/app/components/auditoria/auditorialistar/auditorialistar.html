@@ -1,46 +1,55 @@
 <div class="container">
-    <div style="text-align: center;margin:5%">
-        <h2>Lista de Registros de Auditoría 🕵️</h2>
-    </div>
-    <div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div style="text-align: center; margin: 5%">
+    <h2>Lista de Auditorías</h2>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                        <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID</th>
-                <td mat-cell *matCellDef="let element"> {{element.idAuditoria}} </td>
-            </ng-container>
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.idAuditoria }}</td>
+      </ng-container>
 
-                        <ng-container matColumnDef="fecha">
-                <th mat-header-cell *matHeaderCellDef> Fecha </th>
-                                <td mat-cell *matCellDef="let element"> {{element.fechaAuditoria | date: 'dd/MM/yyyy HH:mm'}} </td>
-            </ng-container>
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaAuditoria| date:'dd/MM/yyyy HH:mm' }}</td>
+      </ng-container>
 
-                        <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef> Tipo de Auditoría </th>
-                <td mat-cell *matCellDef="let element"> {{element.tipoAuditoria}} </td>
-            </ng-container>
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Tipo</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipoAuditoria }}</td>
+      </ng-container>
 
-                        <ng-container matColumnDef="descripcion">
-                <th mat-header-cell *matHeaderCellDef> Descripción </th>
-                <td mat-cell *matCellDef="let element"> {{ element.descripcion }}</td>
-            </ng-container>
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Descripción</th>
+        <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+      </ng-container>
 
-                        <ng-container matColumnDef="usuario">
-                <th mat-header-cell *matHeaderCellDef> Usuario </th>
-                <td mat-cell *matCellDef="let element"> {{element.usuario?.username || 'N/A'}} </td>
-            </ng-container>
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.usuario.id }}</td>
+      </ng-container>
 
-                        <ng-container matColumnDef="acciones">
-                <th mat-header-cell *matHeaderCellDef> Acciones </th>
-                <td mat-cell *matCellDef="let element">
-                                        <button matButton (click)="eliminar(element.idAuditoria)">
-                        <mat-icon color="warn">delete</mat-icon>
-                    </button>
-                </td>
-            </ng-container>
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button [routerLink]="['/auditorias/edicion', element.idAuditoria]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div>
+      <ng-container matColumnDef="c7">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button (click)="eliminar(element.idAuditoria)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 </div>
