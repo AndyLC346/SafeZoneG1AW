@@ -33,12 +33,12 @@ export const routes: Routes = [
         ],
     },
     {
-        path: 'respuestas',
-        component: RespuestaSoporte, 
-        children: [
-            { path: 'create', component: Respuestasoporteregistrar },
-            { path: 'edits/:id', component: Respuestasoporteregistrar },
-            { path: '' , component: Respuestasoportelistar},
-        ],
-    },
+        path:'respuestas',
+        component:RespuestaSoporte,
+        children:[
+            {path:'create',component:Respuestasoporteregistrar},
+            {path:'edits/:id',component:Respuestasoporteregistrar},
+            {path:'',component:Respuestasoportelistar},
+        ]
+    }
 ];
