@@ -5,6 +5,8 @@ import { Usuarioregistrar } from './components/users/usuarioregistrar/usuarioreg
 import { Menu } from './components/menu/menu';
 import { Cuenta } from './components/cuenta/cuenta';
 import { Cuentaregistrar } from './components/cuenta/cuentaregistrar/cuentaregistrar';
+import { Archivos } from './components/archivos/archivos';
+import { Archivoregistrar } from './components/archivos/archivoregistrar/archivoregistrar';
 
 export const routes: Routes = [
     {
@@ -30,6 +32,15 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Cuentaregistrar },
             { path: 'actualizar/:id', component: Cuentaregistrar },
+        ]
+    },
+
+    {
+        path:'archivos',
+        component: Archivos,
+        children: [
+            { path: 'registrar', component: Archivoregistrar },
+            { path: 'actualizar/:id', component: Archivoregistrar },
         ]
     }
 ];
