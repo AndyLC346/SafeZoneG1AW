@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -23,12 +23,12 @@ import { UsersService } from '../../../services/users-service';
     MatDatepickerModule,
     MatButtonModule,
   MatTimepickerModule,
-    MatSelectModule],
+    MatSelectModule,],
   templateUrl: './recursoregistrar.html',
       providers: [provideNativeDateAdapter()],
   styleUrl: './recursoregistrar.css',
 })
-export class Recursoregistrar {
+export class Recursoregistrar implements OnInit{
 form: FormGroup = new FormGroup({});
   re: Recurso = new Recurso();
   listaUsuarios: Users[] = [];
@@ -110,11 +110,11 @@ form: FormGroup = new FormGroup({});
       this.rS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.idRecurso),
-          mensaje: new FormControl(data.tituloRecurso),
-          tipo: new FormControl(data.descripcionRecurso),
-          fecha: new FormControl(data.tipoRecurso),
-          hora: new FormControl(data.nivelRecurso),
-          visto: new FormControl(data.urlRecurso),
+          titulo: new FormControl(data.tituloRecurso),
+          descripcion: new FormControl(data.descripcionRecurso),
+          tipo: new FormControl(data.tipoRecurso),
+          nivel: new FormControl(data.nivelRecurso),
+          url: new FormControl(data.urlRecurso),
           fk: new FormControl(data.usuario.id)
         });
       });
