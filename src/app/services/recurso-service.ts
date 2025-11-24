@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Recurso } from '../models/Recurso';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environment/environment';
 import { RecursoQuery2DTO } from '../models/RecursoQuery2DTO';
 const base_url=environment.base;
@@ -42,6 +42,13 @@ export class RecursoService {
   }
   search(id: number): Observable<Recurso> {
   return this.http.get<Recurso>(`${this.url}/${id}`);
+}
+query1(tipo: string,nivel:string): Observable<Recurso> {
+   let parametros = new HttpParams();
+    if (tipo) { parametros = parametros.set('tipo', tipo); }
+    if (nivel) { parametros = parametros.set('nivel', nivel); }
+    
+  return this.http.get<Recurso>(`${this.url}/bsuquedatipoynivel`, { params: parametros });
 }
   getCount(username : string):Observable<RecursoQuery2DTO[]>{
     return this.http.get<RecursoQuery2DTO[]>(`${this.url}/cantidadrecursoxusername?username=${username}`);

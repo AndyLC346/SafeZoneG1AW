@@ -12,6 +12,7 @@ import { Recursolistar } from './components/recurso/recursolistar/recursolistar'
 import { Recursoregistrar } from './components/recurso/recursoregistrar/recursoregistrar';
 import { Recurso } from './components/recurso/recurso';
 import { Recursoquery2 } from './components/recurso/recursoquery2/recursoquery2';
+import { Recursoquery1 } from './components/recurso/recursoquery1/recursoquery1';
 
 export const routes: Routes = [
     {
@@ -46,6 +47,7 @@ export const routes: Routes = [
             { path: 'registrar', component: Recursoregistrar },
             { path: 'editar/:id', component: Recursoregistrar },
             { path: 'buscar', component: Recursobuscar },
+            {path: 'reporte1',component: Recursoquery1,},
             {path: 'reporte2',component: Recursoquery2,},
            
         ],
