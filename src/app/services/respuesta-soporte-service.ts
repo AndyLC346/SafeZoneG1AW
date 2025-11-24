@@ -9,7 +9,7 @@ const base_url=environment.base
   providedIn: 'root',
 })
 export class RespuestaSoporteService implements OnInit{
-  private url=`${base_url}/respuestasoporte`;
+  private url=`${base_url}/RespuestaSoporte`;
   private listaCambio=new Subject<RespuestaSoporte[]>();
   constructor(private http:HttpClient){}
 

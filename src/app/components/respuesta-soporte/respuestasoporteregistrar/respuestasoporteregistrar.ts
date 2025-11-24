@@ -11,10 +11,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from "@angular/material/menu";
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-respuestasoporteregistrar',
-  imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule,MatRadioModule,MatDatepickerModule,MatButtonModule,MatSelectModule,MatDatepickerModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatDatepickerModule, MatButtonModule, MatSelectModule, MatDatepickerModule, MatMenuModule],
+  providers:[provideNativeDateAdapter()],
   templateUrl: './respuestasoporteregistrar.html',
   styleUrl: './respuestasoporteregistrar.css',
 })
@@ -52,8 +55,8 @@ export class Respuestasoporteregistrar implements OnInit {
   aceptar(): void {
     if (this.form.valid) {
       this.resp.idRespuestaSoporte = this.form.value.codigo;
-      this.resp.mensajeRespuestaSoporte = this.form.value.nombre;
-      this.resp.fechacierreRespuestaSoporte = this.form.value.tipo;
+      this.resp.mensajeRespuestaSoporte = this.form.value.mensaje;
+      this.resp.fechacierreRespuestaSoporte = this.form.value.fecha;
       this.resp.ticketreporte.idSoporte=this.form.value.fk
       if (this.edicion) {
         this.rS.update(this.resp).subscribe((data) => {
@@ -68,7 +71,7 @@ export class Respuestasoporteregistrar implements OnInit {
           });
         });
       }
-      this.router.navigate(['respuesta-soporte']);
+      this.router.navigate(['respuestas']);
     }
   }
 
