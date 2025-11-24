@@ -4,6 +4,7 @@ import { Users } from './components/users/users';
 import { Usuarioregistrar } from './components/users/usuarioregistrar/usuarioregistrar';
 import { Alerta } from './components/alerta/alerta';
 import { Alertaregistrar } from './components/alerta/alertaregistrar/alertaregistrar';
+import { Alertalistar } from './components/alerta/alertalistar/alertalistar';
 
 export const routes: Routes = [
     {
@@ -23,8 +24,8 @@ export const routes: Routes = [
         path: 'alertas',
         component: Alerta,
         children: [
-            { path: 'news', component: Alertaregistrar },
-            { path: 'edits/:id', component: Alertaregistrar },
+            { path: 'listar', component: Alertalistar },
+            { path: 'registrar', component: Alertaregistrar },
         ],
     },
 ];

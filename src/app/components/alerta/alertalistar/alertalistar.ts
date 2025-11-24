@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class Alertalistar implements OnInit{
  dataSource: MatTableDataSource<Alerta> = new MatTableDataSource();
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'cF','c7', 'c8'];
 
   constructor(private aS: AlertaService) {}
 

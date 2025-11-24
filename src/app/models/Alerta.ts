@@ -5,7 +5,7 @@ export class Alerta{
     mensajeAlerta:String=""
     tipoAlerta:String=""
     fechaAlerta:Date=new Date()
-    horaAlerta:string = new Date().toLocaleTimeString()
+    horaAlerta: Date= new Date()
     vistoAlerta:boolean=false
-    user:Users=new Users()
+    usuario:Users=new Users()
 }
