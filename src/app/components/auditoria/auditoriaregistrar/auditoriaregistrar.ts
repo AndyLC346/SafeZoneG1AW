@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // <--- 1. FALTA ESTO PARA EL *ngIf
+import { CommonModule } from '@angular/common'; 
 import {
   FormBuilder,
   FormControl,
@@ -20,8 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-auditoriaregistrar',
   standalone: true,
   imports: [
-    CommonModule,         // <--- 3. AGREGAR AQUÍ (Indispensable)
-    RouterLink,           // <--- 4. AGREGAR AQUÍ (Para el botón cancelar)
+    CommonModule,
+    RouterLink,
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
@@ -68,7 +68,7 @@ export class AuditoriaRegistrarComponent implements OnInit {
       this.audit.descripcion = this.form.value.descripcion;
       this.audit.fechaAuditoria = this.form.value.fechaAuditoria;
 
-      // Asignación de ID de usuario
+
       this.audit.usuario.id = this.form.value.usuario;
 
       if (this.edicion) {

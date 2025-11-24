@@ -1,77 +1,117 @@
-// src/app/components/cuenta/cuentaregistrar/cuentaregistrar.component.ts
 import { Component, OnInit } from '@angular/core';
-import { CuentaService } from '../../../services/cuenta-service';
-import { Cuenta } from '../../../models/Cuenta';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Cuenta } from '../../../models/Cuenta';
+import { CuentaService } from '../../../services/cuenta-service';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select'; // Para el estado (Activo/Inactivo)
 
 @Component({
   selector: 'app-cuentaregistrar',
-  standalone: true, 
+  standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
     MatButtonModule,
     MatSelectModule,
-    CommonModule
+    RouterLink
   ],
-  templateUrl: './cuentaregistrar.component.html',
-  styleUrl: './cuentaregistrar.component.css',
+  templateUrl: './cuentaregistrar.html',
+  providers: [provideNativeDateAdapter()],
+  styleUrls: ['./cuentaregistrar.css'],
 })
-export class CuentaRegistrarComponent implements OnInit {
+export class Cuentaregistrar implements OnInit {
   form: FormGroup = new FormGroup({});
-
   cuenta: Cuenta = new Cuenta();
+  edicion: boolean = false;
+  id: number = 0;
+
+  // Opciones para el estado
+  listaEstados = [
+    { value: true, viewValue: 'Activo' },
+    { value: false, viewValue: 'Inactivo' },
+  ];
 
   constructor(
-    private formBuilder: FormBuilder,
     private cS: CuentaService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-
-    this.form = this.formBuilder.group({
-      idCuenta: [''],
-      servicioCuenta: ['', Validators.required],
-      nombreCuenta: ['', Validators.required],
-      estadoCuenta: [true],
-      fecharegistroCuenta: [new Date()],
-      idUsuario: ['', Validators.required]
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
     });
 
+    this.form = this.formBuilder.group({
+      codigo: [''],
+      nombreCuenta: ['', Validators.required],
+      servicioCuenta: ['', Validators.required],
+      estadoCuenta: [true, Validators.required],
+      fecharegistroCuenta: [new Date(), Validators.required],
+      usuario: ['', Validators.required],
+    });
   }
 
   aceptar(): void {
     if (this.form.valid) {
-      this.cuenta.servicioCuenta = this.form.value.servicioCuenta;
+
+      this.cuenta.idCuenta = this.edicion ? this.id : 0;
+
       this.cuenta.nombreCuenta = this.form.value.nombreCuenta;
+      this.cuenta.servicioCuenta = this.form.value.servicioCuenta;
       this.cuenta.estadoCuenta = this.form.value.estadoCuenta;
       this.cuenta.fecharegistroCuenta = this.form.value.fecharegistroCuenta;
 
-      this.cuenta.usuario.id = this.form.value.idUsuario;
+      this.cuenta.usuario = { id: this.form.value.usuario } as any;
 
-      this.cS.insert(this.cuenta).subscribe({
-        next: (data) => {
-          this.cS.list().subscribe((listData) => {
-            this.cS.setList(listData);
-            this.router.navigate(['cuentas']);
+      if (this.edicion) {
+        this.cS.update(this.cuenta).subscribe(() => {
+          this.cS.list().subscribe((data) => {
+            this.cS.setList(data);
           });
-        },
-        error: (err) => {
-          console.error("Error al registrar cuenta:", err);
-        }
-      });
+          this.router.navigate(['cuentas']);
+        });
+      } else {
+        this.cS.insert(this.cuenta).subscribe(() => {
+          this.cS.list().subscribe((data) => {
+            this.cS.setList(data);
+          });
+          this.router.navigate(['cuentas']);
+        });
+      }
     }
   }
 
-  obtenerControl(name: string) {
-    return this.form.controls[name];
+  init() {
+    if (this.edicion) {
+      this.cS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          codigo: new FormControl(data.idCuenta),
+          nombreCuenta: new FormControl(data.nombreCuenta),
+          servicioCuenta: new FormControl(data.servicioCuenta),
+          estadoCuenta: new FormControl(data.estadoCuenta),
+          fecharegistroCuenta: new FormControl(data.fecharegistroCuenta),
+          usuario: new FormControl(data.usuario.id),
+        });
+      });
+    }
   }
 }
