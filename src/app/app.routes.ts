@@ -26,6 +26,7 @@ export const routes: Routes = [
         children: [
             { path: 'listar', component: Alertalistar },
             { path: 'registrar', component: Alertaregistrar },
+            { path: 'editar/:id', component: Alertaregistrar },
         ],
     },
 ];

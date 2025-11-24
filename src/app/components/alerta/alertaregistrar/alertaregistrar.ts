@@ -42,9 +42,9 @@ export class Alertaregistrar implements OnInit {
   edicion: boolean = false;
   id: number = 0;
   tipos: { value: string; viewValue: string }[] = [
-    { value: 'Peligro bajo', viewValue: 'Peligro bajo' },
-    { value: 'Peligro moderado', viewValue: 'Peligro moderado' },
-    { value: 'Peligro alto', viewValue: 'Peligro alto' },
+    { value: "Peligro bajo", viewValue: "Peligro bajo" },
+    { value: "Peligro moderado", viewValue: "Peligro moderado" },
+    { value: "Peligro bajo", viewValue: "Peligro bajo" },
   ];
   constructor(
     private aS: AlertaService,
@@ -58,18 +58,19 @@ export class Alertaregistrar implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
-       this.form = this.formBuilder.group({fecha: [new Date()] });
       this.init();
     });
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
+    const now = new Date();
+    const horaActual = now.toTimeString().slice(0, 8);
     this.form = this.formBuilder.group({
       codigo:[''],
-      mensaje: ['', Validators.required],
+      mensaje: ['',  [Validators.required, Validators.maxLength(50)]],
       tipo: ['', Validators.required],
-      fecha: ['', Validators.required],
-      hora: ['', Validators.required],
+      fecha: [new Date(), Validators.required],
+      hora: [horaActual, Validators.required],
       visto: [false, Validators.required],
       fk:['',Validators.required]
     });
@@ -104,6 +105,7 @@ cancelar() {
       }
       this.router.navigate(['alertas']);
     }
+    
   }
 
   init() {
