@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { Auditoria } from '../../../models/Auditoria';
 import { AuditoriaService } from '../../../services/auditoria-service';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router'; // <--- 2. FALTA RouterLink
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
