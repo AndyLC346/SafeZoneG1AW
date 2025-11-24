@@ -5,6 +5,7 @@ import { Usuarioregistrar } from './components/users/usuarioregistrar/usuarioreg
 import { Alerta } from './components/alerta/alerta';
 import { Alertaregistrar } from './components/alerta/alertaregistrar/alertaregistrar';
 import { Alertalistar } from './components/alerta/alertalistar/alertalistar';
+import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,8 @@ export const routes: Routes = [
             { path: 'listar', component: Alertalistar },
             { path: 'registrar', component: Alertaregistrar },
             { path: 'editar/:id', component: Alertaregistrar },
+            { path: 'buscar', component: Alertabuscar },
+
         ],
     },
 ];

@@ -3,6 +3,7 @@ import { environment } from '../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Alerta } from '../models/Alerta';
 import { Observable, Subject } from 'rxjs';
+import { AlertaQuery1DTO } from '../models/AlertaQuery1DTO';
 const base_url=environment.base;
 
 @Injectable({
@@ -40,9 +41,10 @@ export class AlertaService implements OnInit{
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`,{ responseType: 'text' })
   }
-  search(fe: Date) {
-  const formattedDate = fe.toISOString().split('T')[0]; 
-  const params = { f: formattedDate }; 
-  return this.http.get<Alerta[]>(`${this.url}/busquedas`, { params });
-  }
+  search(id: number): Observable<Alerta> {
+  return this.http.get<Alerta>(`${this.url}/${id}`);
+}
+getCount():Observable<AlertaQuery1DTO[]>{
+      return this.http.get<AlertaQuery1DTO[]>(`${this.url}/contar`);
+    }
 } 
