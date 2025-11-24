@@ -6,6 +6,7 @@ import { Alerta } from './components/alerta/alerta';
 import { Alertaregistrar } from './components/alerta/alertaregistrar/alertaregistrar';
 import { Alertalistar } from './components/alerta/alertalistar/alertalistar';
 import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
+import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 
 export const routes: Routes = [
     {
@@ -19,7 +20,7 @@ export const routes: Routes = [
         children: [
             { path: 'news', component: Usuarioregistrar },
             { path: 'edits/:id', component: Usuarioregistrar },
-        ]
+        ],
     },
      {
         path: 'alertas',
@@ -29,7 +30,9 @@ export const routes: Routes = [
             { path: 'registrar', component: Alertaregistrar },
             { path: 'editar/:id', component: Alertaregistrar },
             { path: 'buscar', component: Alertabuscar },
-
+             {path: 'reporte1',component: Alertaquery1,},
         ],
-    },
+          },
+       
+
 ];

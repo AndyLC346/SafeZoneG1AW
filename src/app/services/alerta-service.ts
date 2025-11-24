@@ -44,7 +44,7 @@ export class AlertaService implements OnInit{
   search(id: number): Observable<Alerta> {
   return this.http.get<Alerta>(`${this.url}/${id}`);
 }
-getCount():Observable<AlertaQuery1DTO[]>{
-      return this.http.get<AlertaQuery1DTO[]>(`${this.url}/contar`);
+  getCount():Observable<AlertaQuery1DTO[]>{
+      return this.http.get<AlertaQuery1DTO[]>(`${this.url}/cantidadalertaspendientesporusuario`);
     }
 } 
