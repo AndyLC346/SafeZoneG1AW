@@ -7,6 +7,8 @@ import { Cuenta } from './components/cuenta/cuenta';
 import { Cuentaregistrar } from './components/cuenta/cuentaregistrar/cuentaregistrar';
 import { Archivos } from './components/archivos/archivos';
 import { Archivoregistrar } from './components/archivos/archivoregistrar/archivoregistrar';
+import { Recomendacionregistrar } from './components/recomendacion/recomendacionregistrar/recomendacionregistrar';
+import { Recomendacion } from './components/recomendacion/recomendacion';
 
 export const routes: Routes = [
     {
@@ -41,6 +43,15 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Archivoregistrar },
             { path: 'actualizar/:id', component: Archivoregistrar },
+        ]
+    },
+
+    {
+        path:'recomendaciones',
+        component: Recomendacion,
+        children: [
+            { path: 'registrar', component: Recomendacionregistrar },
+            { path: 'actualizar/:id', component: Recomendacionregistrar },
         ]
     }
 ];

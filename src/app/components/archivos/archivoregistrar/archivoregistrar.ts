@@ -79,7 +79,6 @@ export class Archivoregistrar implements OnInit {
       this.arc.nombreArchivo = this.form.value.nombre;
       this.arc.tipoArchivo = this.form.value.tipo;
       this.arc.fechaArchivo = this.form.value.fecha;
-      //this.arc.usuario = new Users();
       this.arc.usuario.id = this.form.value.fk;
 
 
