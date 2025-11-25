@@ -14,6 +14,9 @@ import { Recurso } from './components/recurso/recurso';
 import { Recursoquery2 } from './components/recurso/recursoquery2/recursoquery2';
 import { Recursoquery1 } from './components/recurso/recursoquery1/recursoquery1';
 import { APIcomponent } from './components/apicomponent/apicomponent';
+import { Rollistar } from './components/role/rollistar/rollistar';
+import { Rolregistrar } from './components/role/rolregistrar/rolregistrar';
+import { Role } from './components/role/role';
 
 export const routes: Routes = [
     {
@@ -53,6 +56,19 @@ export const routes: Routes = [
            
         ],
     },
+
+    {
+        path: 'roles',
+        component: Role,
+        children: [
+            { path: 'listar', component: Rollistar },
+            { path: 'registrar', component: Rolregistrar }, 
+            { path: 'editar/:id', component: Rolregistrar },
+            { path: 'buscar', component: Recursobuscar },
+           
+        ],
+    },
+
       {
         path: 'scan',
         component: APIcomponent,

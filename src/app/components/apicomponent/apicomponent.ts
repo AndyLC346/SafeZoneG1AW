@@ -1,7 +1,7 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { APIScannerService } from '../../services/apiscanner';
+import { APIScannerService } from '../../services/apiscanner-service';
 
 @Component({
   selector: 'app-apicomponent',
