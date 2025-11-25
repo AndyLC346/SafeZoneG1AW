@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>VirusTotal Analyzer</h2>
+
+  <div>
+    <h3>Analyze File</h3>
+    <input type="file" (change)="onFileChange($event)" />
+    <button (click)="analyzeFile()">Analyze File</button>
+  </div>
+
+  <div *ngIf="result">
+    <h3>Analysis Result</h3>
+     <div class="result-summary">
+      <p><strong>Nombre del archivo:</strong> {{ file?.name }}</p>
+      <p><strong>Tamaño:</strong> {{ (file?.size || 0) / 1024 | number:'1.2-2' }} KB</p>
+    </div>
+
+    <div class="stats" *ngIf="result.data?.attributes?.last_analysis_stats">
+      <h4>Estadísticas de Detección</h4>
+      <div class="stat-grid">
+        <div class="stat-item malicious">
+          <span class="label">Malicioso:</span>
+          <span class="value">{{ result.data.attributes.last_analysis_stats.malicious || 0 }}</span>
+        </div>
+        <div class="stat-item suspicious">
+          <span class="label">Sospechoso:</span>
+          <span class="value">{{ result.data.attributes.last_analysis_stats.suspicious || 0 }}</span>
+        </div>
+        <div class="stat-item undetected">
+          <span class="label">No detectado:</span>
+          <span class="value">{{ result.data.attributes.last_analysis_stats.undetected || 0 }}</span>
+        </div>
+        <div class="stat-item harmless">
+          <span class="label">Inofensivo:</span>
+          <span class="value">{{ result.data.attributes.last_analysis_stats.harmless || 0 }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="raw-data">
+      <h4>Datos Completos (JSON)</h4>
+      <pre>{{ result | json }}</pre>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import { Recursoregistrar } from './components/recurso/recursoregistrar/recursor
 import { Recurso } from './components/recurso/recurso';
 import { Recursoquery2 } from './components/recurso/recursoquery2/recursoquery2';
 import { Recursoquery1 } from './components/recurso/recursoquery1/recursoquery1';
+import { APIcomponent } from './components/apicomponent/apicomponent';
 
 export const routes: Routes = [
     {
@@ -44,7 +45,7 @@ export const routes: Routes = [
         component: Recurso,
         children: [
             { path: 'listar', component: Recursolistar },
-            { path: 'registrar', component: Recursoregistrar },
+            { path: 'registrar', component: Recursoregistrar }, 
             { path: 'editar/:id', component: Recursoregistrar },
             { path: 'buscar', component: Recursobuscar },
             {path: 'reporte1',component: Recursoquery1,},
@@ -52,6 +53,10 @@ export const routes: Routes = [
            
         ],
     },
-       
+      {
+        path: 'virustotal',
+        component: APIcomponent,
+    },
+ 
 
 ];
