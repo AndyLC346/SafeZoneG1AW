@@ -9,12 +9,31 @@ import { Archivos } from './components/archivos/archivos';
 import { Archivoregistrar } from './components/archivos/archivoregistrar/archivoregistrar';
 import { Recomendacionregistrar } from './components/recomendacion/recomendacionregistrar/recomendacionregistrar';
 import { Recomendacion } from './components/recomendacion/recomendacion';
+import { Inicio } from './components/inicio/inicio';
+import { Registrar } from './components/registrar/registrar';
+import { Login } from './components/login/login';
 
 export const routes: Routes = [
     {
         path: '', //ruta por default
-        component: Home,
+        redirectTo: 'inicio',
         pathMatch: 'full',
+    },
+    {
+    path: 'inicio',
+    component: Inicio,
+    },
+    {
+    path: 'registrar',
+    component: Registrar,
+    },
+    {
+    path: 'login',
+    component: Login,
+    },
+    {
+        path: 'home',
+        component: Home,
     },
     {
         path: 'menu',
