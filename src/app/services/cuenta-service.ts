@@ -45,4 +45,8 @@ export class CuentaService implements OnInit {
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
   }
+
+  buscarCuentasActivas(id: number, fecha: string): Observable<Cuenta[]> {
+    return this.http.get<Cuenta[]>(`${this.url}/activas-usuario-fecha?id=${id}&fecha=${fecha}`);
+  }
 }

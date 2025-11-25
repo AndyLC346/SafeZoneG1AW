@@ -39,6 +39,7 @@ export const routes: Routes = [
         children: [
             { path: 'nuevo', component: Cuentaregistrar },
             { path: 'edicion/:id', component: Cuentaregistrar },
+            { path: 'buscar', component: LogAccesoBuscar },
         ]
     },
         {
