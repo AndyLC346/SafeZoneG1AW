@@ -45,4 +45,9 @@ export class AuditoriaService implements OnInit {
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
   }
+  buscarPorFechaYTipo(fechaInicio: string, fechaFin: string, tipo: string): Observable<Auditoria[]> {
+    return this.http.get<Auditoria[]>(
+      `${this.url}/buscarAuditoriaPorusuarioyrangofechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&tipoAuditoria=${tipo}`
+    );
+  }
 }

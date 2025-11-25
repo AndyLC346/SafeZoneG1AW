@@ -9,6 +9,8 @@ import { Cuentaregistrar } from './components/cuenta/cuentaregistrar/cuentaregis
 import { LogAcceso } from './components/log-acceso/log-acceso';
 import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
 import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
+import { CuentaBuscarComponent } from './components/cuenta/cuentabuscar/cuentabuscar';
+import { AuditoriaBuscarComponent } from './components/auditoria/auditoriabuscar/auditoriabuscar';
 
 
 export const routes: Routes = [
@@ -31,6 +33,8 @@ export const routes: Routes = [
         children: [
             { path: 'nuevo', component: AuditoriaRegistrarComponent },
             { path: 'edicion/:id', component: AuditoriaRegistrarComponent },
+            { path: 'buscar', component: AuditoriaBuscarComponent },
+
         ]
     },
     {
@@ -39,7 +43,7 @@ export const routes: Routes = [
         children: [
             { path: 'nuevo', component: Cuentaregistrar },
             { path: 'edicion/:id', component: Cuentaregistrar },
-            { path: 'buscar', component: LogAccesoBuscar },
+            { path: 'buscar', component: CuentaBuscarComponent },
         ]
     },
         {
