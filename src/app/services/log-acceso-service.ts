@@ -43,4 +43,10 @@ export class LogAccesoService {
   getList() {
     return this.listaCambio.asObservable();
   }
+
+  // Método de búsqueda personalizado
+  buscarPorUsuarioYRango(id: number, fi: string, ff: string): Observable<LogAcceso[]> {
+    return this.http.get<LogAcceso[]>(`${this.url}/buscarLogsPorusuarioyrangofechas?id=${id}&fi=${fi}&ff=${ff}`);
+  }
 }
+

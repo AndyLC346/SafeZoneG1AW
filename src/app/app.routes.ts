@@ -8,6 +8,7 @@ import { Cuenta } from './components/cuenta/cuenta';
 import { Cuentaregistrar } from './components/cuenta/cuentaregistrar/cuentaregistrar';
 import { LogAcceso } from './components/log-acceso/log-acceso';
 import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
+import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
 
 
 export const routes: Routes = [
@@ -46,6 +47,7 @@ export const routes: Routes = [
         children: [
             { path: 'nuevo', component: LogAccesoRegistrar },
             { path: 'edicion/:id', component: LogAccesoRegistrar },
+            { path: 'buscar', component: LogAccesoBuscarComponent },
         ]
     }
 ];
