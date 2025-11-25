@@ -1,14 +1,14 @@
 <div class="container">
-  <h2>VirusTotal Analyzer</h2>
+  <h2>SafeZone Analizador</h2>
 
   <div>
-    <h3>Analyze File</h3>
+    <h3>Analizar archivo</h3>
     <input type="file" (change)="onFileChange($event)" />
-    <button (click)="analyzeFile()">Analyze File</button>
+    <button (click)="analyzeFile()">Analizar archivo</button>
   </div>
 
   <div *ngIf="result">
-    <h3>Analysis Result</h3>
+    <h3>Resultado del análisis</h3>
      <div class="result-summary">
       <p><strong>Nombre del archivo:</strong> {{ file?.name }}</p>
       <p><strong>Tamaño:</strong> {{ (file?.size || 0) / 1024 | number:'1.2-2' }} KB</p>

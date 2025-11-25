@@ -54,7 +54,7 @@ export const routes: Routes = [
         ],
     },
       {
-        path: 'virustotal',
+        path: 'scan',
         component: APIcomponent,
     },
  
