@@ -8,6 +8,8 @@ import { RespuestaSoporte } from './components/respuesta-soporte/respuesta-sopor
 import { Respuestasoportelistar } from './components/respuesta-soporte/respuestasoportelistar/respuestasoportelistar';
 import { Ticketreportelistar } from './components/ticket-reporte/ticketreportelistar/ticketreportelistar';
 import { Respuestasoporteregistrar } from './components/respuesta-soporte/respuestasoporteregistrar/respuestasoporteregistrar';
+import { Cantidadrespuestatickets } from './components/cantidadrespuestatickets/cantidadrespuestatickets';
+import { Contarticketporusuario } from './components/contarticketporusuario/contarticketporusuario';
 
 export const routes: Routes = [
     {
@@ -39,6 +41,12 @@ export const routes: Routes = [
             {path:'create',component:Respuestasoporteregistrar},
             {path:'edits/:id',component:Respuestasoporteregistrar},
             {path:'',component:Respuestasoportelistar},
-        ]
+        ],
+    },
+    {
+        path:'cantidadrespuestatickets', component:Cantidadrespuestatickets,
+    },
+    {
+        path:'contarticketporusuario',component:Contarticketporusuario,
     }
 ];

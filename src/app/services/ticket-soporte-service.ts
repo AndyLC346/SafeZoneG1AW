@@ -3,6 +3,8 @@ import { environment } from '../../environment/environment';
 import { Observable, Subject } from 'rxjs';
 import { TicketSoporte } from '../models/TicketSoporte';
 import { HttpClient } from '@angular/common/http';
+import { CantidadRespuestaTicket } from '../models/CantidadRespuestaTicket';
+import { ContarTicketsPorUsuario } from '../models/ContarTicketsPorUsuario';
 
 const base_url=environment.base
 @Injectable({
@@ -43,5 +45,13 @@ export class TicketSoporteService implements OnInit{
 
   delete(id:number){
     return this.http.delete(`${this.url}/${id}`,{responseType:'text'})
+  }
+
+  getCantidad():Observable<CantidadRespuestaTicket[]>{
+    return this.http.get<CantidadRespuestaTicket[]>(`${this.url}/CantidadRespuestas`);
+  }
+
+  getContar():Observable<ContarTicketsPorUsuario[]>{
+    return this.http.get<ContarTicketsPorUsuario[]>(`${this.url}/ContarTicktesPorUsuario`)
   }
 }
