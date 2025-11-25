@@ -1,0 +1,94 @@
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Estilos para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Campo de texto */
+mat-form-field {
+  width: 100%;
+}
+
+/* Estilo del botón */
+button {
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para los campos de error */
+mat-error {
+  color: #f44336;  /* Rojo para errores */
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+/* Estilo de las etiquetas de los campos */
+mat-label {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Estilos para el campo de fecha */
+mat-hint {
+  color: #999;
+  font-size: 0.875rem;
+}
+
+/* Espaciado en los campos de formulario */
+mat-form-field {
+  margin-bottom: 1rem;
+}
+
+/* Agregar márgenes generales */
+br {
+  margin-bottom: 1.2rem;
+}
+
+/* Estilos para el formulario dentro de un contenedor centralizado */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .container h2 {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+}
