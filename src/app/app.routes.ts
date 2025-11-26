@@ -12,6 +12,8 @@ import { Recomendacion } from './components/recomendacion/recomendacion';
 import { Inicio } from './components/inicio/inicio';
 import { Registrar } from './components/registrar/registrar';
 import { Login } from './components/login/login';
+import { BuscarArchivosXFecha } from './components/archivos/buscar-archivos-xfecha/buscar-archivos-xfecha';
+
 
 export const routes: Routes = [
     {
@@ -62,6 +64,7 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Archivoregistrar },
             { path: 'actualizar/:id', component: Archivoregistrar },
+            {path: 'buscarxfecha', component: BuscarArchivosXFecha},
         ]
     },
 

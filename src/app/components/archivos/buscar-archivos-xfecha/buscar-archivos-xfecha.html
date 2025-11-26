@@ -1,1 +1,35 @@
-<p>buscar-archivos-xfecha works!</p>
+<div class="glass-panel">
+
+  <h2>📁 Buscar Archivos por Rango de Fechas</h2>
+
+  <label>Desde:</label>
+  <input type="date" [(ngModel)]="fechaInicio">
+
+  <label>Hasta:</label>
+  <input type="date" [(ngModel)]="fechaFin">
+
+  <button (click)="buscar()">Buscar</button>
+
+  <hr>
+
+  <h3>Resultados:</h3>
+
+  <table *ngIf="resultado.length > 0">
+    <tr>
+      <th>Nombre Archivo</th>
+      <th>Tipo</th>
+      <th>Fecha</th>
+      <th>Usuario</th>
+    </tr>
+
+    <tr *ngFor="let r of resultado">
+      <td>{{ r.nombreArchivo }}</td>
+      <td>{{ r.tipoArchivo }}</td>
+      <td>{{ r.fechaArchivo }}</td>
+      <td>{{ r.username }}</td>
+    </tr>
+  </table>
+
+  <p *ngIf="resultado.length === 0">No hay datos para mostrar</p>
+
+</div>
