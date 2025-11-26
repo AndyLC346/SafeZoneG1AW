@@ -3,13 +3,14 @@ import { environment } from '../../environment/environment';
 import { Archivos } from '../models/Archivos';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BuscarArchivoXFechaDTO } from '../models/BuscarArchivoXFechaDTO';
 
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
 })
-export class ArchivoService implements OnInit{
-private url = `${base_url}/archivos`;
+export class ArchivoService implements OnInit {
+  private url = `${base_url}/archivos`;
 
   private listaCambio = new Subject<Archivos[]>();
 
@@ -40,11 +41,12 @@ private url = `${base_url}/archivos`;
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`,{ responseType: 'text' })
+    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
   }
-      search(fe: Date) {
-  const formattedDate = fe.toISOString().split('T')[0];
-  const params = { f: formattedDate };
-  return this.http.get<Archivos[]>(`${this.url}/busquedas`, { params });
-}
+
+  buscarPorFechas(fechaInicio: string, fechaFin: string) {
+    return this.http.get<BuscarArchivoXFechaDTO[]>(`${this.url}/BuscarArchivosXFecha`, {
+      params: { fechaInicio, fechaFin },
+    });
+  }
 }
