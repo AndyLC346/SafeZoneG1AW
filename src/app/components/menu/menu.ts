@@ -22,8 +22,8 @@ export class Menu {
   cerrar() {
     sessionStorage.clear();
   }
-  
- 
+
+
   verificar() {
     this.role = this.loginService.showRole();
 

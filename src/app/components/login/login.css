@@ -1,5 +1,54 @@
-.logo-pequeno {
-    width: 120px;   /* ajusta el tamaño que quieras */
-    height: auto;   /* mantiene proporción */
-  }
-  
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-card {
+  width: 420px;
+  padding: 20px;
+  border-radius: 18px;
+
+  /* ⭐ liquid glass effect */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+}
+
+.logo {
+  width: 85px;
+  margin-bottom: 10px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  width: 100%;
+  background: #1976d2;
+  color: white;
+  border-radius: 8px;
+  height: 45px;
+  font-size: 16px;
+}
+
+.register-link {
+  display: block;
+  margin-top: 15px;
+  color: #ffffff;
+  opacity: 0.8;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  opacity: 1;
+}
