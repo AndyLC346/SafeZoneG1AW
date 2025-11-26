@@ -19,7 +19,7 @@ import { Inicio } from './components/inicio/inicio';
 import { Registrar } from './components/registrar/registrar';
 import { Login } from './components/login/login';
 import { BuscarArchivosXFecha } from './components/archivos/buscar-archivos-xfecha/buscar-archivos-xfecha';
-import { Cuenta } from './models/Cuenta';
+import { Cuenta } from './components/cuenta/cuenta';
 
 
 

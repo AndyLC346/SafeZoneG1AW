@@ -35,6 +35,14 @@
       <mat-icon>folder</mat-icon>Archivos
     </button>
 
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuAuditoria">
+      <mat-icon>policy</mat-icon> Auditoría
+    </button>
+
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuLog">
+      <mat-icon>history</mat-icon> Logs
+    </button>
+
     <!-- RECOMENDACIONES -->
     <button
       matButton
@@ -68,14 +76,18 @@
   </mat-menu>
 
   <!-- MENU CUENTA -->
-  <mat-menu #menuCuenta="matMenu">
-    <button mat-menu-item routerLink="/cuenta">
+     <mat-menu #menuCuenta="matMenu">
+    <button mat-menu-item routerLink="/cuentas">
       <mat-icon>list</mat-icon>Listar cuentas
     </button>
-    <button mat-menu-item routerLink="/cuenta/registrar">
-      <mat-icon>add</mat-icon>Registrar cuenta
+    <button mat-menu-item routerLink="/cuentas/nuevo">
+      <mat-icon>add</mat-icon>Nueva cuenta
+    </button>
+    <button mat-menu-item routerLink="/cuentas/buscar">
+      <mat-icon>search</mat-icon>Buscar activas
     </button>
   </mat-menu>
+
 
   <!-- MENU ARCHIVOS -->
   <mat-menu #menuArchivos="matMenu">
@@ -97,6 +109,31 @@
     </button>
     <button mat-menu-item routerLink="/recomendaciones/registrar">
       <mat-icon>add</mat-icon>Nueva recomendación
+    </button>
+  </mat-menu>
+
+  <mat-menu #menuAuditoria="matMenu">
+    <button mat-menu-item routerLink="/auditorias">
+      <mat-icon>list</mat-icon>Listar auditorías
+    </button>
+    <button mat-menu-item routerLink="/auditorias/nuevo">
+      <mat-icon>add</mat-icon>Registrar auditoría
+    </button>
+    <button mat-menu-item routerLink="/auditorias/buscar">
+      <mat-icon>search</mat-icon>Buscar por fecha
+    </button>
+  </mat-menu>
+
+
+  <mat-menu #menuLog="matMenu">
+    <button mat-menu-item routerLink="/logacceso">
+      <mat-icon>list</mat-icon>Historial de accesos
+    </button>
+    <button mat-menu-item routerLink="/logacceso/nuevo">
+      <mat-icon>add</mat-icon>Registrar log
+    </button>
+    <button mat-menu-item routerLink="/logacceso/buscar">
+      <mat-icon>search</mat-icon>Buscar por rango
     </button>
   </mat-menu>
 
