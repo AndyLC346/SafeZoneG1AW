@@ -5,7 +5,7 @@
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.18); /* borde suave tipo glass */
   box-shadow: 0 4px 12px rgba(120, 0, 100, 0.25); /* brillo morado debajo */
-  
+
   display: flex;
   align-items: center;
   padding: 0 8px;
@@ -14,12 +14,12 @@
 
 /* --- Botón principal con glass morado --- */
 .btn-rojo {
-  background: rgba(120, 0, 130, 0.30); /* morado translúcido */
+  background: rgba(120, 0, 130, 0.3); /* morado translúcido */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  
-  font-size: 0.70rem;
+
+  font-size: 0.7rem;
   border-radius: 6px;
   margin: 2px;
   padding: 4px 8px;
@@ -28,10 +28,7 @@
   gap: 6px;
   cursor: pointer;
 
-  transition: 
-    background 0.25s ease,
-    transform 0.15s ease,
-    box-shadow 0.25s ease;
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 
 /* Hover Glass */
@@ -65,12 +62,12 @@
 /* --- Elementos del menú --- */
 .mat-mdc-menu-item {
   color: #4e144e !important;
-  font-size: 0.80rem;
+  font-size: 0.8rem;
   font-weight: 500;
 }
 
 .mat-mdc-menu-item:hover {
-  background: rgba(160, 0, 140, 0.30) !important;
+  background: rgba(160, 0, 140, 0.3) !important;
 }
 .spacer {
   flex: 1 1 auto;

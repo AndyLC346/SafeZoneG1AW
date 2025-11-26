@@ -5,12 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { LoginService } from '../../services/login-service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { JwtRequestDTO } from '../../models/jwtRequestDTO';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule, FormsModule, MatInputModule, MatButtonModule],
+  imports: [MatFormFieldModule, FormsModule, MatInputModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -20,6 +21,8 @@ export class Login implements OnInit{
     private router: Router,
     private snackBar: MatSnackBar 
   ) {}
+
+  hidePassword = true;
   username: string = '';
   password: string = '';
   mensaje: string = '';

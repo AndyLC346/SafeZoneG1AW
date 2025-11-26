@@ -1,51 +1,30 @@
 <div class="container">
   <mat-toolbar class="custom-toolbar">
-
     <!-- INICIO -->
-    <button matButton class="btn-rojo" routerLink="/inicio">
-      <mat-icon>home</mat-icon>Inicio
-    </button>
+    <button matButton class="btn-rojo" routerLink="/inicio"><mat-icon>home</mat-icon>Inicio</button>
 
     <!-- USUARIOS -->
-    <button
-      matButton
-      class="btn-rojo"
-      [matMenuTriggerFor]="menuUsuarios"
-    >
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuUsuarios">
       <mat-icon>group</mat-icon>Usuarios
     </button>
 
     <!-- CUENTAS -->
-    <button
-      matButton
-      class="btn-rojo"
-      [matMenuTriggerFor]="menuCuenta"
-    >
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuCuenta">
       <mat-icon>account_balance_wallet</mat-icon>Cuenta
     </button>
 
     <!-- ARCHIVOS -->
-    <button
-      matButton
-      class="btn-rojo"
-      [matMenuTriggerFor]="menuArchivos"
-    >
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuArchivos">
       <mat-icon>folder</mat-icon>Archivos
     </button>
 
     <!-- RECOMENDACIONES -->
-    <button
-      matButton
-      class="btn-rojo"
-      [matMenuTriggerFor]="menuRecomendaciones"
-    >
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuRecomendaciones">
       <mat-icon>tips_and_updates</mat-icon>Recomendaciones
     </button>
 
     <!-- LOGIN -->
-    <button matButton class="btn-rojo" routerLink="/login">
-      <mat-icon>login</mat-icon>Login
-    </button>
+    <button matButton class="btn-rojo" routerLink="/login"><mat-icon>login</mat-icon>Login</button>
 
     <!-- REGISTRO -->
     <button matButton class="btn-rojo" routerLink="/registrar">
@@ -53,31 +32,16 @@
     </button>
 
     <span class="spacer"> </span>
-    
-    <!-- *** SALIR (BOTÓN QUE FALTABA) *** -->
+
+    <!-- Usuario Salir-->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuSalir">
-      <mat-icon>user</mat-icon>Usuario
+      <mat-icon>account_circle</mat-icon>Usuario
     </button>
-    
-    <mat-menu #menuSalir="matMenu">
-      <button matButton class="btn-rojo" routerLink="/login" (click)="cerrar()">
-        <mat-icon>logout</mat-icon>
-        <span>Cerrar sesión</span>
-      </button>
-      <button mat-menu-item>
-        Rol:
-        <span>{{ role }}</span>
-      </button>
-    </mat-menu>
-
   </mat-toolbar>
-
 
   <!-- MENU USUARIOS -->
   <mat-menu #menuUsuarios="matMenu">
-    <button mat-menu-item routerLink="/usuarios">
-      <mat-icon>list</mat-icon>Listar usuarios
-    </button>
+    <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar usuarios</button>
     <button mat-menu-item routerLink="/usuarios/registrar">
       <mat-icon>add</mat-icon>Registrar usuario
     </button>
@@ -85,9 +49,7 @@
 
   <!-- MENU CUENTA -->
   <mat-menu #menuCuenta="matMenu">
-    <button mat-menu-item routerLink="/cuenta">
-      <mat-icon>list</mat-icon>Listar cuentas
-    </button>
+    <button mat-menu-item routerLink="/cuenta"><mat-icon>list</mat-icon>Listar cuentas</button>
     <button mat-menu-item routerLink="/cuenta/registrar">
       <mat-icon>add</mat-icon>Registrar cuenta
     </button>
@@ -95,9 +57,7 @@
 
   <!-- MENU ARCHIVOS -->
   <mat-menu #menuArchivos="matMenu">
-    <button mat-menu-item routerLink="/archivos">
-      <mat-icon>list</mat-icon>Listar archivos
-    </button>
+    <button mat-menu-item routerLink="/archivos"><mat-icon>list</mat-icon>Listar archivos</button>
     <button mat-menu-item routerLink="/archivos/registrar">
       <mat-icon>add</mat-icon>Registrar archivo
     </button>
@@ -111,3 +71,16 @@
     <button mat-menu-item routerLink="/recomendaciones">
       <mat-icon>list</mat-icon>Listar recomendaciones
     </button>
+  </mat-menu>
+
+  <mat-menu #menuSalir="matMenu">
+    <button matButton class="btn-rojo" routerLink="/login" (click)="cerrar()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+    <button mat-menu-item>
+      Rol:
+      <span>{{ role }}</span>
+    </button>
+  </mat-menu>
+</div>
