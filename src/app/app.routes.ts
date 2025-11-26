@@ -13,6 +13,7 @@ import { Inicio } from './components/inicio/inicio';
 import { Registrar } from './components/registrar/registrar';
 import { Login } from './components/login/login';
 import { BuscarArchivosXFecha } from './components/archivos/buscar-archivos-xfecha/buscar-archivos-xfecha';
+import { guardseguridadGuard } from './guards/guardseguridad-guard';
 
 
 export const routes: Routes = [
@@ -36,10 +37,7 @@ export const routes: Routes = [
     {
         path: 'home',
         component: Home,
-    },
-    {
-        path: 'menu',
-        component: Menu,
+        canActivate: [guardseguridadGuard],
     },
     {
         path: 'usuarios',
@@ -47,7 +45,8 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Usuarioregistrar },
             { path: 'actualizar/:id', component: Usuarioregistrar },
-        ]
+        ],
+        canActivate: [guardseguridadGuard],
     },
     {
         path:'cuenta',
@@ -55,7 +54,8 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Cuentaregistrar },
             { path: 'actualizar/:id', component: Cuentaregistrar },
-        ]
+        ],
+        canActivate: [guardseguridadGuard],
     },
 
     {
@@ -65,7 +65,8 @@ export const routes: Routes = [
             { path: 'registrar', component: Archivoregistrar },
             { path: 'actualizar/:id', component: Archivoregistrar },
             {path: 'buscarxfecha', component: BuscarArchivosXFecha},
-        ]
+        ],
+        canActivate: [guardseguridadGuard],
     },
 
     {
@@ -74,6 +75,7 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Recomendacionregistrar },
             { path: 'actualizar/:id', component: Recomendacionregistrar },
-        ]
+        ],
+        canActivate: [guardseguridadGuard],
     }
 ];
