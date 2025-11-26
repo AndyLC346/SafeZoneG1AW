@@ -4,12 +4,13 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Menu } from "./components/menu/menu";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [RouterOutlet, RouterOutlet, MatIconModule, MatButtonModule, CommonModule, FormsModule],
+  imports: [RouterOutlet, RouterOutlet, MatIconModule, MatButtonModule, CommonModule, FormsModule, Menu],
 })
 export class App {
   protected readonly title = signal('SafeZoneG1AW');
