@@ -17,20 +17,20 @@ export class Usuariolistar implements OnInit {
 
     displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
 
-    constructor(private aS: UsersService) {}
+    constructor(private uS: UsersService) {}
 
     ngOnInit(): void {
-      this.aS.list().subscribe((data) => {
+      this.uS.list().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
       });
-      this.aS.getList().subscribe((data) => {
+      this.uS.getList().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
       });
     }
     eliminar(id: number) {
-      this.aS.delete(id).subscribe((data) => {
-        this.aS.list().subscribe(data=>{
-          this.aS.setList(data)
+      this.uS.delete(id).subscribe((data) => {
+        this.uS.list().subscribe(data=>{
+          this.uS.setList(data)
         })
       });
     }

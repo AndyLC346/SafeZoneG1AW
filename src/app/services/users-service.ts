@@ -20,8 +20,8 @@ export class UsersService implements OnInit{
     return this.http.get<Users[]>(this.url);
   }
 
-  insert(a: Users): Observable<string> {
-    return this.http.post(this.url, a, { responseType: 'text' });
+  insert(u: Users): Observable<string> {
+    return this.http.post(this.url, u, { responseType: 'text' });
   }
 
   setList(listaNueva: Users[]) {
@@ -35,8 +35,8 @@ export class UsersService implements OnInit{
     return this.http.get<Users>(`${this.url}/${id}`);
   }
 
-  update(a: Users) {
-    return this.http.put(`${this.url}`, a, { responseType: 'text' });
+  update(u: Users) {
+    return this.http.put(`${this.url}`, u, { responseType: 'text' });
   }
 
   delete(id: number) {
