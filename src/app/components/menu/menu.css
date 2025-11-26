@@ -36,7 +36,7 @@
 
 /* Hover Glass */
 .btn-rojo:hover {
-  background: rgba(150, 0, 160, 0.45); /* más brillo morado */
+  background: rgba(0, 255, 34, 0.45); /* más brillo morado */
   box-shadow: 0 0 10px rgba(180, 0, 180, 0.4);
   transform: scale(1.04);
 }
@@ -64,7 +64,7 @@
 
 /* --- Elementos del menú --- */
 .mat-mdc-menu-item {
-  color: #000000 !important;
+  color: #4e144e !important;
   font-size: 0.80rem;
   font-weight: 500;
 }
