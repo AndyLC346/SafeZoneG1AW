@@ -1,13 +1,14 @@
 
 
 <div class="container">
+  @if(verificar()){
   <mat-toolbar class="custom-toolbar">
 
     <!-- INICIO -->
     <button matButton class="btn-rojo" routerLink="/inicio">
       <mat-icon>home</mat-icon>Inicio
     </button>
-
+@if(isAdmin()){
     <!-- USUARIOS -->
     <button
       matButton
@@ -16,7 +17,8 @@
     >
       <mat-icon>group</mat-icon>Usuarios
     </button>
-
+}
+@if(isTester()){
     <!-- CUENTAS -->
     <button
       matButton
@@ -43,7 +45,7 @@
     >
       <mat-icon>tips_and_updates</mat-icon>Recomendaciones
     </button>
-
+}
     <!-- LOGIN -->
     <button matButton class="btn-rojo" routerLink="/login">
       <mat-icon>login</mat-icon>Login
@@ -53,7 +55,12 @@
     <button matButton class="btn-rojo" routerLink="/registrar">
       <mat-icon>person_add</mat-icon>Registrarse
     </button>
-
+    
+    <span class="spacer"> </span>
+  
+    <button mat-button [matMenuTriggerFor]="menuSalir">
+      <mat-icon>person</mat-icon>Usuario
+    </button>
   </mat-toolbar>
 
 
@@ -99,5 +106,15 @@
       <mat-icon>add</mat-icon>Nueva recomendación
     </button>
   </mat-menu>
-
+  }
+  <mat-menu #menuSalir="matMenu">
+    <button mat-menu-item routerLink="/login" (click)="cerrar()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+    <button mat-menu-item>
+      Rol:
+      <span>{{ role }}</span>
+    </button>
+  </mat-menu>
 </div>

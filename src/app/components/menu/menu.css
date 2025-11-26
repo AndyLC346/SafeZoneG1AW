@@ -64,3 +64,6 @@
 .mat-mdc-menu-item:hover {
   background-color: rgba(246, 136, 111, 0.2) !important; /* un verde más visible al pasar el mouse */
 }
+.spacer {
+  flex: 1 1 auto;
+}
