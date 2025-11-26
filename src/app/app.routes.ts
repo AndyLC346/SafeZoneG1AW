@@ -41,6 +41,7 @@ export const routes: Routes = [
     {
     path: 'inicio',
     component: Inicio,
+    canActivate: [seguridadGuardGuard],
     },
     {
     path: 'registrar',
@@ -58,10 +59,12 @@ export const routes: Routes = [
     {
         path: 'menu',
         component: Menu,
+        canActivate: [seguridadGuardGuard],
     },
     {
         path: 'usuarios',
         component: Users,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'registrar', component: Usuarioregistrar },
             { path: 'actualizar/:id', component: Usuarioregistrar },
@@ -70,6 +73,7 @@ export const routes: Routes = [
     {
         path:'cuenta',
         component: Cuenta,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'registrar', component: Cuentaregistrar },
             { path: 'actualizar/:id', component: Cuentaregistrar },
@@ -79,6 +83,7 @@ export const routes: Routes = [
     {
         path:'archivos',
         component: Archivos,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'registrar', component: Archivoregistrar },
             { path: 'actualizar/:id', component: Archivoregistrar },
@@ -89,6 +94,7 @@ export const routes: Routes = [
     {
         path:'recomendaciones',
         component: Recomendacion,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'registrar', component: Recomendacionregistrar },
             { path: 'actualizar/:id', component: Recomendacionregistrar },
@@ -98,6 +104,7 @@ export const routes: Routes = [
      {
         path: 'alertas',
         component: Alerta,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'listar', component: Alertalistar },
             { path: 'registrar', component: Alertaregistrar },
@@ -109,6 +116,7 @@ export const routes: Routes = [
      {
         path: 'recursosducativos',
         component: Recurso,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'listar', component: Recursolistar },
             { path: 'registrar', component: Recursoregistrar }, 

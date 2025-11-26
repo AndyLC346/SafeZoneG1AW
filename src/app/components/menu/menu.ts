@@ -14,7 +14,7 @@ import { LoginService } from '../../services/login-service';
   styleUrl: './menu.css',
 })
 export class Menu {
-role: string = '';
+  role: string = '';
   usuario: string = '';
 
   constructor(private loginService: LoginService) {}
