@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { Role } from '../models/Role';
 import { HttpClient } from '@angular/common/http';
@@ -8,7 +8,7 @@ const base_url=environment.base;
 @Injectable({
   providedIn: 'root',
 })
-export class RoleService {
+export class RoleService implements OnInit {
   
   private url = `${base_url}/roles`;
   private listaCambio = new Subject<Role[]>();

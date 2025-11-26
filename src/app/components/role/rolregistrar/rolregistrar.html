@@ -15,9 +15,9 @@
       <br />
       <mat-form-field>
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" />
+        <input matInput formControlName="rol" />
         <mat-error>
-          @if (form.get('nombre')?.hasError('required')) { Ingrese el nombre del rol }
+          @if (form.get('rol')?.hasError('required')) { Ingrese el nombre del rol }
         </mat-error>
       </mat-form-field>
       <br /> 
