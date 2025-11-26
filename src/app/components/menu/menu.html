@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <mat-toolbar class="custom-toolbar">
 
@@ -54,6 +52,24 @@
       <mat-icon>person_add</mat-icon>Registrarse
     </button>
 
+    <span class="spacer"> </span>
+    
+    <!-- *** SALIR (BOTÓN QUE FALTABA) *** -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuSalir">
+      <mat-icon>user</mat-icon>Usuario
+    </button>
+    
+    <mat-menu #menuSalir="matMenu">
+      <button matButton class="btn-rojo" routerLink="/login" (click)="cerrar()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+      <button mat-menu-item>
+        Rol:
+        <span>{{ role }}</span>
+      </button>
+    </mat-menu>
+
   </mat-toolbar>
 
 
@@ -95,9 +111,3 @@
     <button mat-menu-item routerLink="/recomendaciones">
       <mat-icon>list</mat-icon>Listar recomendaciones
     </button>
-    <button mat-menu-item routerLink="/recomendaciones/registrar">
-      <mat-icon>add</mat-icon>Nueva recomendación
-    </button>
-  </mat-menu>
-
-</div>

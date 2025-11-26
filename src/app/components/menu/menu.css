@@ -1,66 +1,77 @@
-/* --- Toolbar --- */
+/* --- Toolbar con efecto Liquid Glass Morado --- */
 .custom-toolbar {
-  background-color: rgb(242, 94, 35);/* verde principal */
+  background: rgba(90, 0, 85, 0.35); /* morado visible pero translúcido */
+  backdrop-filter: blur(14px) saturate(140%); /* efecto vidrio líquido */
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18); /* borde suave tipo glass */
+  box-shadow: 0 4px 12px rgba(120, 0, 100, 0.25); /* brillo morado debajo */
+  
   display: flex;
   align-items: center;
   padding: 0 8px;
+  border-radius: 8px; /* bordes glass */
 }
 
-/* --- Botón principal --- */
+/* --- Botón principal con glass morado --- */
 .btn-rojo {
-  background-color: rgb(242, 94, 35);
-  border: none;
-  font-size: smaller;
-  border-radius: 4px;
-  margin: 4px;
-  padding: 6px 10px;
+  background: rgba(120, 0, 130, 0.30); /* morado translúcido */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  
+  font-size: 0.70rem;
+  border-radius: 6px;
+  margin: 2px;
+  padding: 4px 8px;
   display: flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+
+  transition: 
+    background 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.25s ease;
 }
 
+/* Hover Glass */
 .btn-rojo:hover {
-  background-color: rgb(96, 245, 119);
+  background: rgba(150, 0, 160, 0.45); /* más brillo morado */
+  box-shadow: 0 0 10px rgba(180, 0, 180, 0.4);
+  transform: scale(1.04);
 }
 
-/* --- Icono --- */
-.btn-rojo mat-icon,
-.btn-rojo .material-symbols-outlined {
-  font-size: 1.3rem;
-  vertical-align: middle;
-  line-height: 1;
+/* --- Icono dentro del botón --- */
+.btn-rojo mat-icon {
+  font-size: 1rem;
+  color: white;
 }
 
-/* --- Texto dentro del botón --- */
-.btn-rojo span:not(.material-symbols-outlined),
-.btn-rojo {
-  vertical-align: middle;
-}
-
-/* --- Asegurar color blanco --- */
+/* --- Color de texto e iconos --- */
 .custom-toolbar button,
 .custom-toolbar mat-icon {
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.92);
 }
 
-/* --- Menú desplegable translúcido verde claro --- */
+/* --- Menú estilo glass morado --- */
 .mat-mdc-menu-panel {
-  background-color: rgba(243, 122, 122, 0.3) !important; /* verde claro translúcido (lightgreen con transparencia) */
-  backdrop-filter: blur(6px); /* efecto suave de vidrio */
-  border: 1px solid rgba(238, 79, 10, 0.3);
-  border-radius: 8px;
+  background: rgba(90, 0, 85, 0.35) !important;
+  backdrop-filter: blur(10px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 10px !important;
   padding: 4px 0;
 }
 
-/* --- Opciones del menú --- */
+/* --- Elementos del menú --- */
 .mat-mdc-menu-item {
-  color: #f43218 !important; /* texto verde oscuro */
-  font-size: 0.85rem;
+  color: #000000 !important;
+  font-size: 0.80rem;
   font-weight: 500;
 }
 
 .mat-mdc-menu-item:hover {
-  background-color: rgba(246, 136, 111, 0.2) !important; /* un verde más visible al pasar el mouse */
+  background: rgba(160, 0, 140, 0.30) !important;
+}
+.spacer {
+  flex: 1 1 auto;
 }
