@@ -1,70 +1,98 @@
+/* Fondo */
 body {
-    background: #d6e8ff;
-    font-family: Arial, sans-serif;
+  background: #0a0f1f;
+  font-family: Arial, sans-serif;
 }
 
-.user-table-wrapper {
-    max-width: 90%;
-    margin: auto;
-    padding: 20px;
-    background: #ffffffcc;
-    border-radius: 12px;
-    backdrop-filter: blur(5px);
+/* Glass + Neon Card */
+.glass-card-table {
+  max-width: 92%;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  animation: pulseNeon 3s infinite alternate;
+  box-shadow: 0 0 30px rgba(0,255,255,0.3);
 }
 
+/* Neon breathing animation */
+@keyframes pulseNeon {
+  0% { box-shadow: 0 0 12px cyan; }
+  100% { box-shadow: 0 0 32px cyan, 0 0 60px #00eaff; }
+}
+
+/* Title */
 .title {
-    color: #003B73;
-    font-size: 28px;
-    font-weight: bold;
+  color: #00eaff;
+  font-size: 32px;
+  text-shadow: 0px 0px 12px cyan;
 }
 
+/* Table */
 .custom-table {
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* Header */
+/* Table Header */
 .custom-table th {
-    background: #4C8DFF;
-    color: white !important;
-    text-align: center;
-    font-size: 16px;
-    padding: 10px;
+  background: rgba(0, 238, 255, 0.4);
+  color: white !important;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid cyan;
 }
 
-/* Celdas */
+/* Table Cells */
 .custom-table td {
-    background: #ffffff;
-    padding: 10px;
-    transition: background 0.2s ease-in-out;
+  background: rgba(255,255,255,0.15);
+  color: #e3faff;
+  padding: 12px;
+  text-align: center;
+  transition: 0.25s ease-in-out;
 }
 
-/* Hover rows */
+/* Hover Row Effect */
 .custom-table tr:hover td {
-    background: #e9f2ff;
+  background: rgba(0,255,255,0.25);
+  color: white;
 }
 
-/* Buttons */
+/* Buttons Neon Style */
 button {
-    border-radius: 8px;
-    padding: 5px 10px;
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: 0.2s ease;
 }
 
+/* Edit Button */
 button[color="primary"] {
-    background-color: #17a2b8 !important;
-    color: white;
+  background-color: #00bcd4 !important;
+  color: white;
+  box-shadow: 0px 0px 10px #00d0ff;
 }
 
 button[color="primary"]:hover {
-    background-color: #0d7685 !important;
+  background-color: #009bb2 !important;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px #00eaff;
 }
 
+/* Delete Button */
 button[color="warn"] {
-    background-color: #dc3545 !important;
-    color: white;
+  background-color: #ff1744 !important;
+  color: white;
+  box-shadow: 0px 0px 10px #ff4c6a;
 }
 
 button[color="warn"]:hover {
-    background-color: #b02a37 !important;
+  background-color: #d50032 !important;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 18px #ff4c6a;
 }

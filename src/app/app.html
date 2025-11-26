@@ -2,7 +2,7 @@
 <div *ngIf="mostrarMenu" class="container">
   <mat-toolbar class="custom-toolbar">
     <!-- INICIO -->
-    <button matButton class="btn-rojo" routerLink="/inicio"><mat-icon>home</mat-icon>Inicio</button>
+    <button matButton class="btn-rojo" routerLink="/home"><mat-icon>home</mat-icon>Inicio</button>
 
     <!-- USUARIOS -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuUsuarios">
@@ -22,14 +22,6 @@
     <!-- RECOMENDACIONES -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuRecomendaciones">
       <mat-icon>tips_and_updates</mat-icon>Recomendaciones
-    </button>
-
-    <!-- LOGIN -->
-    <button matButton class="btn-rojo" routerLink="/login"><mat-icon>login</mat-icon>Login</button>
-
-    <!-- REGISTRO -->
-    <button matButton class="btn-rojo" routerLink="/registrar">
-      <mat-icon>person_add</mat-icon>Registrarse
     </button>
 
     <span class="spacer"> </span>
@@ -57,18 +49,13 @@
 
   <mat-menu #menuArchivos="matMenu">
     <button mat-menu-item routerLink="/archivos"><mat-icon>list</mat-icon>Listar archivos</button>
-    <button mat-menu-item routerLink="/archivos/registrar">
-      <mat-icon>add</mat-icon>Registrar archivo
-    </button>
-    <button mat-menu-item routerLink="/archivos/buscarxfecha">
-      <mat-icon>search</mat-icon>Buscar por fecha
-    </button>
+    <button mat-menu-item routerLink="/archivos/registrar"><mat-icon>add</mat-icon>Registrar archivo</button>
+    <button mat-menu-item routerLink="/archivos/buscarxfecha"><mat-icon>search</mat-icon>Buscar por fecha</button>
   </mat-menu>
 
   <mat-menu #menuRecomendaciones="matMenu">
-    <button mat-menu-item routerLink="/recomendaciones">
-      <mat-icon>list</mat-icon>Listar recomendaciones
-    </button>
+    <button mat-menu-item routerLink="/recomendaciones"><mat-icon>list</mat-icon>Listar recomendaciones</button>
+    <button mat-menu-item routerLink="/recomendaciones/registrar"><mat-icon>add</mat-icon>Registrar recomendación</button>
   </mat-menu>
 
   <mat-menu #menuSalir="matMenu">

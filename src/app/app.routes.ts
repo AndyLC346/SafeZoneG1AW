@@ -39,7 +39,7 @@ export const routes: Routes = [
             { path: 'registrar', component: Usuarioregistrar },
             { path: 'actualizar/:id', component: Usuarioregistrar },
         ],
-        canActivate: [guardseguridadGuard],
+        //canActivate: [guardseguridadGuard],
     },
     {
         path:'cuenta',
@@ -48,7 +48,7 @@ export const routes: Routes = [
             { path: 'registrar', component: Cuentaregistrar },
             { path: 'actualizar/:id', component: Cuentaregistrar },
         ],
-        canActivate: [guardseguridadGuard],
+        //canActivate: [guardseguridadGuard],
     },
 
     {
@@ -59,7 +59,7 @@ export const routes: Routes = [
             { path: 'actualizar/:id', component: Archivoregistrar },
             {path: 'buscarxfecha', component: BuscarArchivosXFecha},
         ],
-        canActivate: [guardseguridadGuard],
+        //canActivate: [guardseguridadGuard],
     },
 
     {
@@ -69,6 +69,6 @@ export const routes: Routes = [
             { path: 'registrar', component: Recomendacionregistrar },
             { path: 'actualizar/:id', component: Recomendacionregistrar },
         ],
-        canActivate: [guardseguridadGuard],
+        //canActivate: [guardseguridadGuard],
     }
 ];
