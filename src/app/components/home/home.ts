@@ -11,7 +11,7 @@ export class Home {
   constructor(private router: Router) { }
 
   Registrar() {
-    this.router.navigate(['/registrar']);
+    this.router.navigate(['/usuarios/registrar']);
   }
 
   IniciarSesion() {
