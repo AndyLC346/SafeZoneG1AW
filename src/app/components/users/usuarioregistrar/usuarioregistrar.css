@@ -35,8 +35,8 @@ mat-form-field {
 
 /* BUTTON STYLE */
 button[matButton="elevated"] {
-  background-color:rgb(242, 94, 35);
-  color: white;
+  background-color:rgb(35, 242, 39);
+  color: rgb(0, 0, 0);
   border: none;
   padding: 0.7rem 1.4rem;
   font-size: 1.2rem;
@@ -47,7 +47,7 @@ button[matButton="elevated"] {
 }
 
 button[matButton="elevated"]:hover {
-  background-color: #faf67c;
+  background-color: #24d333;
   transform: scale(1.05);
 }
 
