@@ -19,7 +19,7 @@ export class Login implements OnInit{
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private snackBar: MatSnackBar 
+    private snackBar: MatSnackBar
   ) {}
 
   hidePassword = true;
@@ -34,7 +34,7 @@ export class Login implements OnInit{
     this.loginService.login(request).subscribe(
       (data: any) => {
         sessionStorage.setItem('token', data.jwttoken);
-        this.router.navigate(['home']);
+        this.router.navigate(['menu']);
       },
       (error) => {
         this.mensaje = 'Credenciales incorrectas!!!';

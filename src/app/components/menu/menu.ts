@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,28 +13,17 @@ import { LoginService } from '../../services/login-service';
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
-export class Menu {
-  role: string = '';
-  usuario: string = '';
+export class Menu implements OnInit{
+  username: string = "";
 
-  constructor(private loginService: LoginService) {}
+  ngOnInit(): void {
+    const token = sessionStorage.getItem("token");
 
-  cerrar() {
-    sessionStorage.clear();
+    if (token) {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      this.username = payload.sub; // si tu token guarda el username en "sub"
+    } else {
+      this.username = "Invitado";
+    }
   }
-
-
-  verificar() {
-    this.role = this.loginService.showRole();
-
-    return this.loginService.verificar();
-  }
-  isAdmin() {
-    return this.role === 'ADMIN';
-  }
-
-  isTester() {
-    return this.role === 'TESTER';
-  }
-
 }
