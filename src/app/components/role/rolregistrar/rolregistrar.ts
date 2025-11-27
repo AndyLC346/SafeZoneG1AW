@@ -55,7 +55,7 @@ form: FormGroup = new FormGroup({});
     const horaActual = now.toTimeString().slice(0, 8);
     this.form = this.formBuilder.group({
       codigo:[''],
-      nombre: ['', Validators.required],
+      rol: ['', Validators.required],
       fk:['',Validators.required]
     });
 
@@ -66,13 +66,8 @@ form: FormGroup = new FormGroup({});
 
   aceptar(): void {
     if (this.form.valid) {
-      this.ro.idRol=this.form.value.codigo
-      this.ro.nombreRol = this.form.value.nombre;
-
-          if (!this.ro.usuario) {
-      this.ro.usuario = new Users();
-    }
-
+      this.ro.id=this.form.value.codigo
+      this.ro.rol = this.form.value.rol;
       this.ro.usuario.id=this.form.value.fk
 
       if(this.edicion){
@@ -90,7 +85,7 @@ form: FormGroup = new FormGroup({});
       }
       this.router.navigate(['roles']);
     }else {
-    this.form.markAllAsTouched(); // Muestra errores si el formulario es inválido
+    this.form.markAllAsTouched();
   }
     
   }
@@ -99,8 +94,8 @@ form: FormGroup = new FormGroup({});
     if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
-          codigo: new FormControl(data.idRol),
-          nombre: new FormControl(data.nombreRol),
+          codigo: new FormControl(data.id),
+          rol: new FormControl(data.rol),
           fk: new FormControl(data.usuario.id)
         });
       });

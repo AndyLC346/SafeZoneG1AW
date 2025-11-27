@@ -1,7 +1,7 @@
 import { Users } from "./Users";
 
 export class Role{
-    idRol: number=0
-    nombreRol: string=""
+    id: number=0
+    rol: string=""
     usuario:Users=new Users()
 }
