@@ -18,7 +18,7 @@ export class LoginService {
   showRole() {
     let token = sessionStorage.getItem('token');
     if (!token) {
-    
+
       return null; 
     }
     const helper = new JwtHelperService();

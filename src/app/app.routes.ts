@@ -28,6 +28,7 @@ import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 import { Login } from './components/login/login';
 import { TotalArchivosXUsuario } from './components/users/total-archivos-xusuario/total-archivos-xusuario';
+import { guardseguridadGuard } from './guards/guardseguridad-guard';
 
 export const routes: Routes = [
   {
@@ -46,17 +47,17 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
-    //canActivate: [guardseguridadGuard],
+
   },
   {
     path: 'menu',
     component: Menu,
-    //canActivate: [guardseguridadGuard],
+    canActivate: [guardseguridadGuard]
   },
   {
     path: 'usuarios',
     component: Users,
-    //canActivate: [guardseguridadGuard],
+    canActivate: [guardseguridadGuard],
     children: [
       { path: 'registrar', component: Usuarioregistrar },
       { path: 'actualizar/:id', component: Usuarioregistrar },
