@@ -5,6 +5,11 @@ html, body {
   height: 100%;
   font-family: "Poppins", sans-serif;
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   /* IMAGEN DE FONDO */
   background-image: url("assets/img/fondoanimado2.gif");
 

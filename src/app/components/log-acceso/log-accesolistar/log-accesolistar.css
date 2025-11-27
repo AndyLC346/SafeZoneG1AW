@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Estilos generales (Idénticos para mantener consistencia) */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -93,7 +93,7 @@ mat-button {
     transition: all 0.3s ease !important;
 }
 
-/* Botón editar (En Cuentas es la columna c7) */
+/* Botón editar (En LogAcceso es la columna c7) */
 .mat-column-c7 mat-button {
     background: #2196f3 !important;
     color: white !important;
@@ -103,7 +103,7 @@ mat-button {
     transform: scale(1.1);
 }
 
-/* Botón eliminar (En Cuentas es la columna c8) */
+/* Botón eliminar (En LogAcceso es la columna c8) */
 .mat-column-c8 mat-button {
     background: #f44336 !important;
     color: white !important;
@@ -144,7 +144,8 @@ mat-cell:nth-last-child(2) {
         font-size: 12px;
     }
 
-    /* Ocultar columnas menos importantes en tablet: Fecha y Usuario */
+    /* Ocultar IP, SO y Usuario en tablet */
+    .mat-column-c3,
     .mat-column-c5,
     .mat-column-c6 {
         display: none;
@@ -153,9 +154,8 @@ mat-cell:nth-last-child(2) {
 
 @media (max-width: 480px) {
     h2 { font-size: 20px; }
-    /* Ocultar ID, Servicio y Estado en móvil, dejar solo Nombre y Acciones */
+    /* Ocultar ID, Navegador en móvil (Dejar solo fecha y acciones) */
     .mat-column-c1,
-    .mat-column-c2,
     .mat-column-c4 {
         display: none;
     }
@@ -163,7 +163,7 @@ mat-cell:nth-last-child(2) {
     mat-icon { font-size: 16px !important; }
 }
 
-/* --- ANCHOS DE COLUMNAS ESPECÍFICOS PARA CUENTAS --- */
+/* --- ANCHOS DE COLUMNAS ESPECÍFICOS PARA LOG ACCESO --- */
 
 /* c1: ID */
 .mat-column-c1 {
@@ -172,33 +172,33 @@ mat-cell:nth-last-child(2) {
     padding-left: 10px !important;
 }
 
-/* c2: Servicio (Ej: Netflix, Gmail) */
+/* c2: Fecha */
 .mat-column-c2 {
-    width: 120px;
-    font-weight: 500;
+    width: 130px;
+    font-size: 13px; /* Un poco más pequeño para que quepa la hora */
 }
 
-/* c3: Nombre Cuenta (La más ancha) */
+/* c3: IP Acceso */
 .mat-column-c3 {
-    flex: 2;
-    min-width: 180px;
+    width: 120px;
+    text-align: center;
 }
 
-/* c4: Estado (Activo/Inactivo) */
+/* c4: Navegador (Flexible) */
 .mat-column-c4 {
-    width: 100px;
-    text-align: center;
+    flex: 1; /* Toma espacio disponible */
+    min-width: 120px;
 }
 
-/* c5: Fecha Registro */
+/* c5: Sistema Operativo (Flexible) */
 .mat-column-c5 {
-    width: 110px;
-    text-align: center;
+    flex: 1; /* Toma espacio disponible */
+    min-width: 120px;
 }
 
 /* c6: ID Usuario */
 .mat-column-c6 {
-    width: 90px;
+    width: 80px;
     text-align: center;
 }
 

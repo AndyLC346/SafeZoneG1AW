@@ -1,3 +1,5 @@
+/* auditoriaregistrar.css */
+
 /* Estilos generales */
 * {
     box-sizing: border-box;
@@ -5,7 +7,7 @@
     padding: 0;
 }
 
-/* Fondo degradado */
+/* Nota: Si esto no pinta el fondo completo, mueve el estilo de 'body' a tu styles.css global */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -16,7 +18,6 @@ body {
     padding: 20px;
 }
 
-/* Tarjeta del formulario */
 .container {
     background: white;
     border-radius: 12px;
@@ -25,12 +26,18 @@ body {
     max-width: 500px;
     padding: 40px 30px;
     animation: slideUp 0.5s ease-out;
-    margin: 0 auto;
+    margin: 0 auto; /* Asegura centrado si el body flex falla */
 }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Título */
@@ -62,14 +69,14 @@ form {
     gap: 20px;
 }
 
-/* Grupos de inputs */
+/* Grupos de formulario (divs que envuelven label e input) */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Etiquetas */
+/* Labels */
 mat-label {
     font-weight: 500;
     color: #333;
@@ -77,13 +84,13 @@ mat-label {
     margin-bottom: 4px;
 }
 
-/* Asterisco rojo */
+/* Asterisco rojo para campos requeridos */
 mat-label:after {
     content: " *";
     color: #ff4444;
 }
 
-/* Inputs de Texto */
+/* Campos de entrada */
 input[matInput] {
     width: 100%;
     padding: 12px 16px;
@@ -101,13 +108,13 @@ input[matInput]:focus {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
+/* Validación visual */
 input[matInput].ng-invalid.ng-touched {
     border-color: #ff4444;
 }
 
-/* --- ESTILOS ESPECIALES PARA SELECT Y FECHA --- */
-
-/* Wrapper para el Datepicker (alinear input e icono) */
+/* Ajuste específico para el Datepicker de Auditoría */
+/* Esto asegura que el input y el botón del calendario estén alineados */
 .date-wrapper {
     display: flex;
     align-items: center;
@@ -116,30 +123,15 @@ input[matInput].ng-invalid.ng-touched {
 }
 
 .date-wrapper input[matInput] {
-    flex: 1;
+    flex: 1; /* El input toma todo el espacio posible */
 }
 
+/* Estilo para el botón del calendario */
 mat-datepicker-toggle {
     color: #667eea;
 }
 
-/* Estilo para el Mat-Select (Estado) para que parezca un input normal */
-mat-form-field {
-    width: 100%;
-}
-/* Forzamos el estilo del mat-select para que coincida con los inputs */
-::ng-deep .mat-mdc-text-field-wrapper {
-    background-color: #fafafa !important;
-    border: 2px solid #e0e0e0 !important;
-    border-radius: 8px !important;
-    padding: 0 12px !important;
-}
-
-::ng-deep .mat-mdc-form-field-focus-overlay {
-    background-color: transparent !important;
-}
-
-/* Botones */
+/* Grupo de botones */
 .button-group {
     display: flex;
     gap: 15px;
@@ -147,37 +139,43 @@ mat-form-field {
     margin-top: 20px;
 }
 
+/* Botones generales */
 button[mat-button],
 button[mat-raised-button] {
     padding: 12px 24px;
     border-radius: 8px;
     font-weight: 500;
     font-size: 14px;
-    cursor: pointer;
+    transition: all 0.3s ease;
     border: none;
+    cursor: pointer;
 }
 
-/* Botón Aceptar */
+/* Botón primario (Aceptar) */
 .btn-primary {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white !important;
+    color: white !important; /* Importante para sobrescribir material */
 }
+
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
+
 .btn-primary:disabled {
     background: #ccc;
     cursor: not-allowed;
+    transform: none;
     box-shadow: none;
 }
 
-/* Botón Cancelar */
+/* Botón secundario (Cancelar) */
 .btn-secondary {
     background: #f5f5f5;
     color: #666 !important;
     border: 1px solid #ddd !important;
 }
+
 .btn-secondary:hover {
     background: #e0e0e0;
     transform: translateY(-2px);
@@ -188,12 +186,23 @@ button[mat-raised-button] {
     color: #ff4444;
     font-size: 12px;
     margin-top: 4px;
+    min-height: 16px;
     font-weight: 500;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-    .container { padding: 20px; margin: 10px; }
-    .button-group { flex-direction: column-reverse; }
-    button { width: 100%; }
+    .container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .button-group {
+        flex-direction: column-reverse; /* Botón Aceptar arriba en móvil */
+    }
+
+    button[mat-button],
+    button[mat-raised-button] {
+        width: 100%;
+    }
 }

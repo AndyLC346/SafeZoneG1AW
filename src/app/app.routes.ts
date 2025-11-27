@@ -29,6 +29,13 @@ import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 import { Login } from './components/login/login';
 import { TotalArchivosXUsuario } from './components/users/total-archivos-xusuario/total-archivos-xusuario';
 import { guardseguridadGuard } from './guards/guardseguridad-guard';
+import { Auditoria } from './components/auditoria/auditoria';
+import { CuentaBuscarComponent } from './components/cuenta/cuentabuscar/cuentabuscar';
+import { Cuentalistar } from './components/cuenta/cuentalistar/cuentalistar';
+import { LogAcceso } from './components/log-acceso/log-acceso';
+import { LogAccesoListar } from './components/log-acceso/log-accesolistar/log-accesolistar';
+import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
+import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
 
 export const routes: Routes = [
   {
@@ -47,12 +54,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
-
   },
   {
     path: 'menu',
     component: Menu,
-    canActivate: [guardseguridadGuard]
+    canActivate: [guardseguridadGuard],
   },
   {
     path: 'usuarios',
@@ -61,8 +67,7 @@ export const routes: Routes = [
     children: [
       { path: 'registrar', component: Usuarioregistrar },
       { path: 'actualizar/:id', component: Usuarioregistrar },
-      { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario},
-
+      { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario },
     ],
   },
   {
@@ -134,7 +139,32 @@ export const routes: Routes = [
   },
 
   {
-    path: 'scan',
-    component: APIcomponent,
+    path: 'auditoria',
+    component: Auditoria,
+    children: [{ path: 'listar', component: Recursolistar },
+      { path: 'buscar', component: Recursobuscar },
+      { path: 'registrar', component: Recursoregistrar }
+    ],
+  },
+
+  {
+    path: 'cuentas',
+    component: Cuenta,
+    children: [
+      { path: 'listar', component: Cuentalistar },
+      {
+        path: 'buscar', component: CuentaBuscarComponent,
+      },
+      { path: 'registrar', component: Cuentaregistrar },
+    ],
+  },
+
+  {
+    path: 'logacceso',
+    component: LogAcceso,
+    children: [{ path: 'listar', component: LogAccesoListar },
+      { path: 'registrar', component: LogAccesoRegistrar },
+      { path: 'buscar', component: LogAccesoBuscarComponent }
+    ],
   },
 ];

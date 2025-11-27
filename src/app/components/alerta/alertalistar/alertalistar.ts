@@ -21,12 +21,15 @@ export class Alertalistar implements OnInit{
   constructor(private aS: AlertaService) {}
 
   ngOnInit(): void {
-    this.aS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
-    this.aS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
+    // Primera carga desde backend
+  this.aS.list().subscribe(data => {
+    this.dataSource.data = data;
+  });
+
+  // Refrescos posteriores desde el Subject
+  this.aS.getList().subscribe(data => {
+    this.dataSource.data = data;
+  });
   }
   eliminar(id: number) {
     this.aS.delete(id).subscribe((data) => {

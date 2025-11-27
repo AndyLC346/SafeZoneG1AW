@@ -1,40 +1,40 @@
-<div class="container">
-  <div style="text-align: center; margin: 5%">
-    <h2>Lista de Alertas</h2>
-  </div>
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- ID Column -->
+<div class="glass-page">
+  <div class="glass-card neon-border">
+    <h2 class="neon-title">Lista de Alertas</h2>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 neon-table">
+
+      <!-- ID -->
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>ID</th>
         <td mat-cell *matCellDef="let element">{{ element.idAlerta }}</td>
       </ng-container>
 
-      <!-- Mensaje Column -->
+      <!-- Mensaje -->
       <ng-container matColumnDef="c2">
         <th mat-header-cell *matHeaderCellDef>Mensaje</th>
         <td mat-cell *matCellDef="let element">{{ element.mensajeAlerta }}</td>
       </ng-container>
 
-      <!-- Tipo Column -->
+      <!-- Tipo -->
       <ng-container matColumnDef="c3">
         <th mat-header-cell *matHeaderCellDef>Tipo</th>
         <td mat-cell *matCellDef="let element">{{ element.tipoAlerta }}</td>
       </ng-container>
 
-      <!-- Fecha Column -->
+      <!-- Fecha -->
       <ng-container matColumnDef="c4">
         <th mat-header-cell *matHeaderCellDef>Fecha</th>
-        <td mat-cell *matCellDef="let element">{{ element.fechaAlerta}}</td>
+        <td mat-cell *matCellDef="let element">{{ element.fechaAlerta }}</td>
       </ng-container>
 
-      <!-- Hora Column -->
+      <!-- Hora -->
       <ng-container matColumnDef="c5">
         <th mat-header-cell *matHeaderCellDef>Hora</th>
         <td mat-cell *matCellDef="let element">{{ element.horaAlerta }}</td>
       </ng-container>
 
-      <!-- Estado Column -->
+      <!-- Estado -->
       <ng-container matColumnDef="c6">
         <th mat-header-cell *matHeaderCellDef>Estado</th>
         <td mat-cell *matCellDef="let element">
@@ -44,27 +44,27 @@
         </td>
       </ng-container>
 
-      <!-- Usuario Column -->
+      <!-- Usuario -->
       <ng-container matColumnDef="cF">
         <th mat-header-cell *matHeaderCellDef>Usuario</th>
         <td mat-cell *matCellDef="let element">{{ element.usuario.id }}</td>
       </ng-container>
 
-      <!-- Actualizar Column -->
+      <!-- Editar -->
       <ng-container matColumnDef="c7">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button [routerLink]="['editar', element.idAlerta]">
+          <button mat-button class="btn neon-btn" [routerLink]="['editar', element.idAlerta]">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
       </ng-container>
 
-      <!-- Eliminar Column -->
+      <!-- Eliminar -->
       <ng-container matColumnDef="c8">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button (click)="eliminar(element.idAlerta)">
+          <button mat-button class="btn neon-btn danger" (click)="eliminar(element.idAlerta)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
