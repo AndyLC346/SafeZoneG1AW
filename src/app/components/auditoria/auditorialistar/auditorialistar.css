@@ -93,22 +93,22 @@ mat-button {
     transition: all 0.3s ease !important;
 }
 
-/* Botón editar (En Cuentas es la columna c7) */
-.mat-column-c7 mat-button {
+/* Botón editar (Está en la columna c6) */
+.mat-column-c6 mat-button {
     background: #2196f3 !important;
     color: white !important;
 }
-.mat-column-c7 mat-button:hover {
+.mat-column-c6 mat-button:hover {
     background: #1976d2 !important;
     transform: scale(1.1);
 }
 
-/* Botón eliminar (En Cuentas es la columna c8) */
-.mat-column-c8 mat-button {
+/* Botón eliminar (Está en la columna c7) */
+.mat-column-c7 mat-button {
     background: #f44336 !important;
     color: white !important;
 }
-.mat-column-c8 mat-button:hover {
+.mat-column-c7 mat-button:hover {
     background: #d32f2f !important;
     transform: scale(1.1);
 }
@@ -144,26 +144,25 @@ mat-cell:nth-last-child(2) {
         font-size: 12px;
     }
 
-    /* Ocultar columnas menos importantes en tablet: Fecha y Usuario */
-    .mat-column-c5,
-    .mat-column-c6 {
+    /* Ocultar descripción y usuario en tablet */
+    .mat-column-c4,
+    .mat-column-c5 {
         display: none;
     }
 }
 
 @media (max-width: 480px) {
     h2 { font-size: 20px; }
-    /* Ocultar ID, Servicio y Estado en móvil, dejar solo Nombre y Acciones */
+    /* Ocultar ID y Tipo en móvil */
     .mat-column-c1,
-    .mat-column-c2,
-    .mat-column-c4 {
+    .mat-column-c3 {
         display: none;
     }
     mat-button { padding: 6px !important; }
     mat-icon { font-size: 16px !important; }
 }
 
-/* --- ANCHOS DE COLUMNAS ESPECÍFICOS PARA CUENTAS --- */
+/* --- ANCHOS DE COLUMNAS ESPECÍFICOS PARA AUDITORÍA --- */
 
 /* c1: ID */
 .mat-column-c1 {
@@ -172,44 +171,37 @@ mat-cell:nth-last-child(2) {
     padding-left: 10px !important;
 }
 
-/* c2: Servicio (Ej: Netflix, Gmail) */
+/* c2: Fecha */
 .mat-column-c2 {
+    width: 140px;
+}
+
+/* c3: Tipo Auditoria */
+.mat-column-c3 {
     width: 120px;
     font-weight: 500;
 }
 
-/* c3: Nombre Cuenta (La más ancha) */
-.mat-column-c3 {
-    flex: 2;
-    min-width: 180px;
+/* c4: Descripción (La columna más ancha) */
+.mat-column-c4 {
+    flex: 2; /* Toma el espacio disponible */
+    min-width: 200px;
 }
 
-/* c4: Estado (Activo/Inactivo) */
-.mat-column-c4 {
+/* c5: Usuario */
+.mat-column-c5 {
     width: 100px;
     text-align: center;
 }
 
-/* c5: Fecha Registro */
-.mat-column-c5 {
-    width: 110px;
-    text-align: center;
-}
-
-/* c6: ID Usuario */
+/* c6: Editar */
 .mat-column-c6 {
-    width: 90px;
-    text-align: center;
+    width: 70px;
 }
 
-/* c7: Editar */
+/* c7: Eliminar */
 .mat-column-c7 {
-    width: 60px;
-}
-
-/* c8: Eliminar */
-.mat-column-c8 {
-    width: 60px;
+    width: 70px;
 }
 
 /* Mejoras visuales tabla */
