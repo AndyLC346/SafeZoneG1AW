@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { AlertaService } from '../../../services/alerta-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { Alerta } from '../../../models/Alerta';
-import { AlertaService } from '../../../services/alerta-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-alertalistar',
@@ -16,7 +16,7 @@ import { AlertaService } from '../../../services/alerta-service';
 export class Alertalistar implements OnInit{
  dataSource: MatTableDataSource<Alerta> = new MatTableDataSource();
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'cF','c7', 'c8'];
 
   constructor(private aS: AlertaService) {}
 

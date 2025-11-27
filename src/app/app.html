@@ -1,6 +1,78 @@
+<!-- MENU SOLO SI mostrarMenu ES TRUE -->
+<div *ngIf="mostrarMenu" class="container">
+  <mat-toolbar class="custom-toolbar">
+    <!-- INICIO -->
+    <button matButton class="btn-rojo" routerLink="/home"><mat-icon>home</mat-icon>Inicio</button>
+
+    <!-- USUARIOS -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuUsuarios">
+      <mat-icon>group</mat-icon>Usuarios
+    </button>
+
+    <!-- CUENTAS -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuCuenta">
+      <mat-icon>account_balance_wallet</mat-icon>Cuenta
+    </button>
+
+    <!-- ARCHIVOS -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuArchivos">
+      <mat-icon>folder</mat-icon>Archivos
+    </button>
+
+    <!-- RECOMENDACIONES -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuRecomendaciones">
+      <mat-icon>tips_and_updates</mat-icon>Recomendaciones
+    </button>
+
+    <span class="spacer"> </span>
+
+    <!-- Usuario Salir-->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuSalir">
+      <mat-icon>account_circle</mat-icon>Usuario
+    </button>
+  </mat-toolbar>
+
+  <!-- MENÚS (NO SE TOCAN) -->
+  <mat-menu #menuUsuarios="matMenu">
+    <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar usuarios</button>
+    <button mat-menu-item routerLink="/usuarios/registrar"><mat-icon>add</mat-icon>Registrar usuario</button>
+    <button mat-menu-item routerLink="/usuarios/totalarchivosXusuario"><mat-icon>bar_chart</mat-icon>Total de Archivos por Usuario</button>
+  </mat-menu>
+
+  <mat-menu #menuCuenta="matMenu">
+    <button mat-menu-item routerLink="/cuenta"><mat-icon>list</mat-icon>Listar cuentas</button>
+    <button mat-menu-item routerLink="/cuenta/registrar">
+      <mat-icon>add</mat-icon>Registrar cuenta
+    </button>
+  </mat-menu>
+
+  <mat-menu #menuArchivos="matMenu">
+    <button mat-menu-item routerLink="/archivos"><mat-icon>list</mat-icon>Listar archivos</button>
+    <button mat-menu-item routerLink="/archivos/registrar"><mat-icon>add</mat-icon>Registrar archivo</button>
+    <button mat-menu-item routerLink="/archivos/buscarxfecha"><mat-icon>search</mat-icon>Buscar por fecha</button>
+  </mat-menu>
+
+  <mat-menu #menuRecomendaciones="matMenu">
+    <button mat-menu-item routerLink="/recomendaciones"><mat-icon>list</mat-icon>Listar recomendaciones</button>
+    <button mat-menu-item routerLink="/recomendaciones/registrar"><mat-icon>add</mat-icon>Registrar recomendación</button>
+  </mat-menu>
+
+  <mat-menu #menuSalir="matMenu">
+    <button matButton class="btn-rojo" routerLink="/login" (click)="cerrar()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+    <button mat-menu-item>
+      Rol:
+      <span>{{ role }}</span>
+    </button>
+  </mat-menu>
+</div>
+
+<!-- RUTAS -->
 <router-outlet></router-outlet>
 
-<!--  Música de fondo  -->
+<!-- AUDIO -->
 <audio #audioPlayer muted loop>
   <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" />
 </audio>

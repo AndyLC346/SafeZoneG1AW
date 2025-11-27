@@ -6,6 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Alerta } from '../../../models/Alerta';
+import { AlertaService } from '../../../services/alerta-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,8 +16,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersService } from '../../../services/users-service';
-import { Alerta } from '../../../models/Alerta';
-import { AlertaService } from '../../../services/alerta-service';
+import { MatTimepickerModule } from '@angular/material/timepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { Users } from '../../../models/Users';
 
 
 @Component({
@@ -25,7 +28,9 @@ import { AlertaService } from '../../../services/alerta-service';
     MatFormFieldModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatButtonModule,],
+    MatButtonModule,
+  MatTimepickerModule,
+    MatSelectModule],
   templateUrl: './alertaregistrar.html',
     providers: [provideNativeDateAdapter()],
   styleUrl: './alertaregistrar.css',
@@ -33,10 +38,14 @@ import { AlertaService } from '../../../services/alerta-service';
 export class Alertaregistrar implements OnInit {
   form: FormGroup = new FormGroup({});
   al: Alerta = new Alerta();
-  listaAlerta: Alerta[] = [];
+  listaUsuarios: Users[] = [];
   edicion: boolean = false;
   id: number = 0;
-
+  tipos: { value: string; viewValue: string }[] = [
+    { value: "Peligro bajo", viewValue: "Peligro bajo" },
+    { value: "Peligro moderado", viewValue: "Peligro moderado" },
+    { value: "Peligro bajo", viewValue: "Peligro bajo" },
+  ];
   constructor(
     private aS: AlertaService,
     private router: Router,
@@ -51,17 +60,26 @@ export class Alertaregistrar implements OnInit {
       this.edicion = data['id'] != null;
       this.init();
     });
-
+    this.uS.list().subscribe((data) => {
+      this.listaUsuarios = data;
+    });
+    const now = new Date();
+    const horaActual = now.toTimeString().slice(0, 8);
     this.form = this.formBuilder.group({
       codigo:[''],
-      mensaje: ['', Validators.required],
+      mensaje: ['',  [Validators.required, Validators.maxLength(50)]],
       tipo: ['', Validators.required],
-      fecha: ['', Validators.required],
-      hora: ['', Validators.required],
+      fecha: [new Date(), Validators.required],
+      hora: [horaActual, Validators.required],
       visto: [false, Validators.required],
       fk:['',Validators.required]
     });
   }
+
+cancelar() {
+  this.router.navigate(['/alertas']);
+}
+
   aceptar(): void {
     if (this.form.valid) {
       this.al.idAlerta=this.form.value.codigo
@@ -70,7 +88,7 @@ export class Alertaregistrar implements OnInit {
       this.al.fechaAlerta = this.form.value.fecha;
       this.al.horaAlerta = this.form.value.hora;
       this.al.vistoAlerta = this.form.value.visto;
-      this.al.user.id=this.form.value.fk
+      this.al.usuario.id=this.form.value.fk
 
       if(this.edicion){
         this.aS.update(this.al).subscribe((data) => {
@@ -87,6 +105,7 @@ export class Alertaregistrar implements OnInit {
       }
       this.router.navigate(['alertas']);
     }
+    
   }
 
   init() {
@@ -99,7 +118,7 @@ export class Alertaregistrar implements OnInit {
           fecha: new FormControl(data.fechaAlerta),
           hora: new FormControl(data.horaAlerta),
           visto: new FormControl(data.vistoAlerta),
-          fk: new FormControl(data.user.id)
+          fk: new FormControl(data.usuario.id)
         });
       });
     }

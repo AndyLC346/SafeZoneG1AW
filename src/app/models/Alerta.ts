@@ -2,10 +2,10 @@ import { Users } from "./Users"
 
 export class Alerta{
     idAlerta:number=0
-    mensajeAlerta:String=""
-    tipoAlerta:String=""
+    mensajeAlerta:string=""
+    tipoAlerta:string=""
     fechaAlerta:Date=new Date()
-    horaAlerta:string = new Date().toLocaleTimeString()
+    horaAlerta: Date=new Date()
     vistoAlerta:boolean=false
-    user:Users=new Users()
+    usuario:Users=new Users()
 }
