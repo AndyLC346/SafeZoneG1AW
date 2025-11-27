@@ -27,7 +27,7 @@ import { Alertaregistrar } from './components/alerta/alertaregistrar/alertaregis
 import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 import { Login } from './components/login/login';
-import { guardseguridadGuard } from './guards/guardseguridad-guard';
+import { TotalArchivosXUsuario } from './components/users/total-archivos-xusuario/total-archivos-xusuario';
 
 export const routes: Routes = [
   {
@@ -60,6 +60,8 @@ export const routes: Routes = [
     children: [
       { path: 'registrar', component: Usuarioregistrar },
       { path: 'actualizar/:id', component: Usuarioregistrar },
+      { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario},
+
     ],
   },
   {

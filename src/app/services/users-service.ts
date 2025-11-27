@@ -3,6 +3,7 @@ import { environment } from '../../environment/environment';
 import { Users } from '../models/Users';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TotalArchivosXUsuarioDTO } from '../models/TotalArchivosXUsuarioDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -42,9 +43,8 @@ export class UsersService implements OnInit{
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`,{ responseType: 'text' })
   }
-      search(fe: Date) {
-  const formattedDate = fe.toISOString().split('T')[0];
-  const params = { f: formattedDate };
-  return this.http.get<Users[]>(`${this.url}/busquedas`, { params });
-}
+
+  getTotalArchivosPorUsuario(): Observable<TotalArchivosXUsuarioDTO[]> {
+    return this.http.get<TotalArchivosXUsuarioDTO[]>(`${this.url}/TotalArchivosPorUsuario`);
+  }
 }
