@@ -46,27 +46,14 @@
       <mat-icon>tips_and_updates</mat-icon>Recomendaciones
     </button>
 
-
-
-<button
+    <!-- ALERTAS -->
+    <button
       matButton
       class="btn-rojo"
-      [matMenuTriggerFor]="menuRecomendaciones"
+      [matMenuTriggerFor]="menuAlertas"
     >
-      <mat-icon>tips_and_updates</mat-icon>Recomendaciones
+      <mat-icon>tips_and_updates</mat-icon>Alertas
     </button>
-    
-
-
-
-
-
-
-
-
-
-
-
 }
     <!-- LOGIN -->
     <button matButton class="btn-rojo" routerLink="/login">
@@ -126,6 +113,16 @@
     </button>
     <button mat-menu-item routerLink="/recomendaciones/registrar">
       <mat-icon>add</mat-icon>Nueva recomendación
+    </button>
+  </mat-menu>
+  
+  <!-- MENU ALERTAS -->
+  <mat-menu #menuAlertas="matMenu">
+    <button mat-menu-item routerLink="/alertas">
+      <mat-icon>list</mat-icon>Listar alertas
+    </button>
+    <button mat-menu-item routerLink="/alertas/registrar">
+      <mat-icon>add</mat-icon>Nueva alerta
     </button>
   </mat-menu>
   }
