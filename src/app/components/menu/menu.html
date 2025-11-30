@@ -54,7 +54,36 @@
     >
       <mat-icon>tips_and_updates</mat-icon>Alertas
     </button>
+
+    <!-- TICKETS  -->
+    <button
+      matButton
+      class="btn-rojo"
+      [matMenuTriggerFor]="menuTickets"
+    >
+      <mat-icon>tips_and_updates</mat-icon>Tickets
+    </button>
+
+    <!-- RESPUESTAS  -->
+    <button
+      matButton
+      class="btn-rojo"
+      [matMenuTriggerFor]="menuRespuestas"
+    >
+      <mat-icon>tips_and_updates</mat-icon>Respuestas
+    </button>
 }
+
+
+
+
+
+
+
+
+
+
+
     <!-- LOGIN -->
     <button matButton class="btn-rojo" routerLink="/login">
       <mat-icon>login</mat-icon>Login
@@ -71,6 +100,24 @@
       <mat-icon>person</mat-icon>Usuario
     </button>
   </mat-toolbar>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <!-- MENU USUARIOS -->
@@ -92,6 +139,32 @@
       <mat-icon>add</mat-icon>Registrar cuenta
     </button>
   </mat-menu>
+
+
+   <!-- MENU TICKETS -->
+  <mat-menu #menuTickets="matMenu">
+    <button mat-menu-item routerLink="/tickets">
+      <mat-icon>list</mat-icon>Listar Tickets
+    </button>
+    <button mat-menu-item routerLink="/tickets/registrar">
+      <mat-icon>add</mat-icon>Nuevo Ticket
+    </button>
+  </mat-menu>
+
+<!-- MENU RESPUESTAS -->
+  <mat-menu #menuRespuestas="matMenu">
+    <button mat-menu-item routerLink="/respuestas">
+      <mat-icon>list</mat-icon>Listar respuestas
+    </button>
+    <button mat-menu-item routerLink="/respuestas/registrar">
+      <mat-icon>add</mat-icon>Nueva respuesta
+    </button>
+  </mat-menu>
+
+
+
+
+
 
   <!-- MENU ARCHIVOS -->
   <mat-menu #menuArchivos="matMenu">

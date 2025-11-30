@@ -201,8 +201,8 @@ export const routes: Routes = [
         component: TicketReporte, 
         canActivate: [seguridadGuardGuard],
         children: [
-            { path: 'create', component: Ticketreporteregistrar },
-            { path: 'edits/:id', component: Ticketreporteregistrar },
+            { path: 'registrar', component: Ticketreporteregistrar },
+            { path: 'editar/:id', component: Ticketreporteregistrar },
             { path: '' , component: Ticketreportelistar},
         ],
     },
@@ -211,24 +211,17 @@ export const routes: Routes = [
         component:RespuestaSoporte,
         canActivate: [seguridadGuardGuard],
         children:[
-            {path:'create',component:Respuestasoporteregistrar},
-            {path:'edits/:id',component:Respuestasoporteregistrar},
+            {path:'registrar',component:Respuestasoporteregistrar},
+            {path:'editar/:id',component:Respuestasoporteregistrar},
             {path:'',component:Respuestasoportelistar},
+            {path:'cantidadrespuestatickets', component:Cantidadrespuestatickets},
+            {path:'contarticketporusuario',component:Contarticketporusuario}
         ],
     },
-    {
-        path:'cantidadrespuestatickets', component:Cantidadrespuestatickets,
-        canActivate: [seguridadGuardGuard],
-    },
-    {
-        path:'contarticketporusuario',component:Contarticketporusuario,
-        canActivate: [seguridadGuardGuard],
-    },
-
+    
       {
         path: 'scan',
         component: APIcomponent,
-        canActivate: [seguridadGuardGuard],
     },
 
 ];
