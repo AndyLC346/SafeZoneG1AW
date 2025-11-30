@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Alerta } from '../../../models/Alerta';
-import { AlertaService } from '../../../services/alerta-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,6 +18,7 @@ import { UsersService } from '../../../services/users-service';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { Users } from '../../../models/Users';
+import { AlertaService } from '../../../services/alerta-service';
 
 
 @Component({

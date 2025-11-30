@@ -1,9 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
-import { environment } from '../../environment/environment';
-import { HttpClient } from '@angular/common/http';
-import { Alerta } from '../models/Alerta';
-import { Observable, Subject } from 'rxjs';
-import { AlertaQuery1DTO } from '../models/AlertaQuery1DTO';
+import { Injectable, OnInit } from "@angular/core";
+import { environment } from "../../environment/environment";
+import { HttpClient } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
+import { AlertaQuery1DTO } from "../models/AlertaQuery1DTO";
+import { Alerta } from "../models/Alerta";
+
 const base_url=environment.base;
 
 @Injectable({

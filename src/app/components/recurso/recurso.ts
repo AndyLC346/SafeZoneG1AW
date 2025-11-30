@@ -10,5 +10,4 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 })
 export class Recurso {
     constructor(public route:ActivatedRoute) {}
-
 }

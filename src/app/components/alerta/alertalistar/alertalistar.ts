@@ -23,12 +23,12 @@ export class Alertalistar implements OnInit{
   ngOnInit(): void {
     // Primera carga desde backend
   this.aS.list().subscribe(data => {
-    this.dataSource.data = data;
+     this.dataSource = new MatTableDataSource(data);
   });
 
   // Refrescos posteriores desde el Subject
   this.aS.getList().subscribe(data => {
-    this.dataSource.data = data;
+     this.dataSource = new MatTableDataSource(data);
   });
   }
   eliminar(id: number) {

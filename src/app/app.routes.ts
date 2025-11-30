@@ -83,7 +83,7 @@ export const routes: Routes = [
   {
     path: 'archivos',
     component: Archivos,
-    //canActivate: [guardseguridadGuard],
+    canActivate: [guardseguridadGuard],
     children: [
       { path: 'registrar', component: Archivoregistrar },
       { path: 'actualizar/:id', component: Archivoregistrar },
@@ -104,7 +104,7 @@ export const routes: Routes = [
   {
     path: 'alertas',
     component: Alerta,
-    //canActivate: [guardseguridadGuard],
+    canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: Alertalistar },
       { path: 'registrar', component: Alertaregistrar },
