@@ -58,12 +58,12 @@ export const routes: Routes = [
   {
     path: 'menu',
     component: Menu,
-    canActivate: [guardseguridadGuard],
+    //canActivate: [guardseguridadGuard],
   },
   {
     path: 'usuarios',
     component: Users,
-    canActivate: [guardseguridadGuard],
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'registrar', component: Usuarioregistrar },
       { path: 'actualizar/:id', component: Usuarioregistrar },
