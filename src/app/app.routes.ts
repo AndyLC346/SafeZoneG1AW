@@ -30,6 +30,13 @@ import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 import { Autenticador } from './components/autenticador/autenticador';
 import { seguridadGuardGuard } from './guard/seguridad-guard-guard';
+import { Cuentalistar } from './components/cuenta/cuentalistar/cuentalistar';
+import { CuentaBuscarComponent } from './components/cuenta/cuentabuscar/cuentabuscar';
+import { LogAccesoListar } from './components/log-acceso/log-accesolistar/log-accesolistar';
+import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
+import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
+import { Auditoria } from './components/auditoria/auditoria';
+import { LogAcceso } from './components/log-acceso/log-acceso';
 
 
 export const routes: Routes = [
@@ -140,6 +147,35 @@ export const routes: Routes = [
         ],
     },
 
+    {
+    path: 'auditoria',
+    component: Auditoria,
+    children: [{ path: 'listar', component: Recursolistar },
+      { path: 'buscar', component: Recursobuscar },
+      { path: 'registrar', component: Recursoregistrar }
+    ],
+  },
+
+  {
+    path: 'cuentas',
+    component: Cuenta,
+    children: [
+      { path: 'listar', component: Cuentalistar },
+      {
+        path: 'buscar', component: CuentaBuscarComponent,
+      },
+      { path: 'registrar', component: Cuentaregistrar },
+    ],
+  },
+
+  {
+    path: 'logacceso',
+    component: LogAcceso,
+    children: [{ path: 'listar', component: LogAccesoListar },
+      { path: 'registrar', component: LogAccesoRegistrar },
+      { path: 'buscar', component: LogAccesoBuscarComponent }
+    ],
+  },
       {
         path: 'scan',
         component: APIcomponent,
