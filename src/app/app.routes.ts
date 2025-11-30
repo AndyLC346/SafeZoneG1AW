@@ -36,6 +36,14 @@ import { LogAcceso } from './components/log-acceso/log-acceso';
 import { LogAccesoListar } from './components/log-acceso/log-accesolistar/log-accesolistar';
 import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
 import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
+import { RespuestaSoporte } from './models/RespuestaSoporte';
+import { CantidadRespuestaTicket } from './models/CantidadRespuestaTicket';
+import { TicketReporte } from './components/ticket-reporte/ticket-reporte';
+import { Ticketreportelistar } from './components/ticket-reporte/ticketreportelistar/ticketreportelistar';
+import { Ticketreporteregistrar } from './components/ticket-reporte/ticketreporteregistrar/ticketreporteregistrar';
+import { Contarticketporusuario } from './components/contarticketporusuario/contarticketporusuario';
+import { Respuestasoportelistar } from './components/respuesta-soporte/respuestasoportelistar/respuestasoportelistar';
+import { Respuestasoporteregistrar } from './components/respuesta-soporte/respuestasoporteregistrar/respuestasoporteregistrar';
 
 export const routes: Routes = [
   {
@@ -43,24 +51,28 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+
   {
     path: 'home',
     component: Home,
   },
+
   {
     path: 'login',
     component: Login,
   },
+
   {
     path: 'registrar',
     component: Registrar,
   },
-  
+
   {
     path: 'menu',
     component: Menu,
     //canActivate: [guardseguridadGuard],
   },
+
   {
     path: 'usuarios',
     component: Users,
@@ -71,6 +83,7 @@ export const routes: Routes = [
       { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario },
     ],
   },
+
   {
     path: 'cuenta',
     component: Cuenta,
@@ -114,6 +127,7 @@ export const routes: Routes = [
       { path: 'reporte1', component: Alertaquery1 },
     ],
   },
+
   {
     path: 'recursosducativos',
     component: Recurso,
@@ -141,9 +155,10 @@ export const routes: Routes = [
   {
     path: 'auditoria',
     component: Auditoria,
-    children: [{ path: 'listar', component: Recursolistar },
+    children: [
+      { path: 'listar', component: Recursolistar },
       { path: 'buscar', component: Recursobuscar },
-      { path: 'registrar', component: Recursoregistrar }
+      { path: 'registrar', component: Recursoregistrar },
     ],
   },
 
@@ -152,9 +167,7 @@ export const routes: Routes = [
     component: Cuenta,
     children: [
       { path: 'listar', component: Cuentalistar },
-      {
-        path: 'buscar', component: CuentaBuscarComponent,
-      },
+      { path: 'buscar', component: CuentaBuscarComponent },
       { path: 'registrar', component: Cuentaregistrar },
     ],
   },
@@ -162,15 +175,43 @@ export const routes: Routes = [
   {
     path: 'logacceso',
     component: LogAcceso,
-    children: [{ path: 'listar', component: LogAccesoListar },
+    children: [
+      { path: 'listar', component: LogAccesoListar },
       { path: 'registrar', component: LogAccesoRegistrar },
-      { path: 'buscar', component: LogAccesoBuscarComponent }
+      { path: 'buscar', component: LogAccesoBuscarComponent },
     ],
+  },
+
+  {
+    path: 'respuestasoporte',
+    component: RespuestaSoporte,
+    children: [
+      { path: 'listar', component: Respuestasoportelistar },
+      { path: 'registrar', component: Respuestasoporteregistrar },
+    ],
+  },
+
+  {
+    path: 'cantidadrespuestaticket',
+    component: CantidadRespuestaTicket,
+  },
+
+  {
+    path: 'ticketsoporte',
+    component: TicketReporte,
+    children: [
+      { path: 'listar', component: Ticketreportelistar },
+      { path: 'registrar', component: Ticketreporteregistrar },
+    ],
+  },
+
+  {
+    path: 'contarticketporusuario',
+    component: Contarticketporusuario,
   },
 
   {
     path: 'scan',
     component: APIcomponent,
-  }
-
+  },
 ];
