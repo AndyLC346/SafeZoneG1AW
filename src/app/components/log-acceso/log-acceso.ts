@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LogAccesoListar } from './log-accesolistar/log-accesolistar';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { LogAccesoListar } from './log-accesolistar/log-accesolistar';
 
 @Component({
   selector: 'app-log-acceso',
@@ -10,4 +10,5 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 })
 export class LogAcceso {
   constructor(public route:ActivatedRoute) {}
+
 }

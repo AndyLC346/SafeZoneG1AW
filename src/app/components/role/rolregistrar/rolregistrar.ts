@@ -9,9 +9,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { Role } from '../../../models/Role';
-import { Users } from '../../../models/Users';
 import { RoleService } from '../../../services/role-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Users } from '../../../models/Users';
 import { UsersService } from '../../../services/users-service';
 
 @Component({
@@ -29,17 +29,19 @@ import { UsersService } from '../../../services/users-service';
   styleUrl: './rolregistrar.css',
 })
 export class Rolregistrar implements OnInit{
+
 form: FormGroup = new FormGroup({});
   ro: Role = new Role();
-  listaUsuarios: Users[] = [];
   edicion: boolean = false;
   id: number = 0;
+  listaUsuarios: Users[] = [];
+
    constructor(
     private rS: RoleService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private uS: UsersService
+    private uS: UsersService,
   ) {}
 
   ngOnInit(): void {
@@ -48,35 +50,34 @@ form: FormGroup = new FormGroup({});
       this.edicion = data['id'] != null;
       this.init();
     });
+
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
-    const now = new Date();
-    const horaActual = now.toTimeString().slice(0, 8);
-    this.form = this.formBuilder.group({
-      codigo:[''],
-      rol: ['', Validators.required],
-      fk:['',Validators.required]
-    });
 
+    this.form = this.formBuilder.group({
+      codigo: [''],
+      rol: ['', Validators.required],
+      fk:['',Validators.required],
+    });
   }
   cancelar() {
   this.router.navigate(['/roles']);
 }
 
   aceptar(): void {
-    if (this.form.valid) {
-      this.ro.id=this.form.value.codigo
+   if (this.form.valid) {
+      this.ro.id = this.form.value.codigo;
       this.ro.rol = this.form.value.rol;
-      this.ro.usuario.id=this.form.value.fk
+      this.ro.usuario.id=this.form.value.fk;
 
-      if(this.edicion){
+      if (this.edicion) {
         this.rS.update(this.ro).subscribe((data) => {
           this.rS.list().subscribe((data) => {
             this.rS.setList(data);
           });
         });
-      }else{
+      } else {
         this.rS.insert(this.ro).subscribe((data) => {
           this.rS.list().subscribe((data) => {
             this.rS.setList(data);
@@ -84,14 +85,11 @@ form: FormGroup = new FormGroup({});
         });
       }
       this.router.navigate(['roles']);
-    }else {
-    this.form.markAllAsTouched();
-  }
-    
+    }
   }
 
   init() {
-    if (this.edicion) {
+  if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.id),

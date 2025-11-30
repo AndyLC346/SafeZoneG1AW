@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-
-import { AuditoriaListar } from "./auditorialistar/auditorialistar";
+import { AuditoriaListar } from './auditorialistar/auditorialistar';
 
 @Component({
   selector: 'app-auditoria',
@@ -10,5 +9,5 @@ import { AuditoriaListar } from "./auditorialistar/auditorialistar";
   styleUrl: './auditoria.css',
 })
 export class Auditoria {
-  constructor(public route:ActivatedRoute) {}
+ constructor(public route:ActivatedRoute) {}
 }

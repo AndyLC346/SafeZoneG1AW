@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { Cuentalistar } from './cuentalistar/cuentalistar';
+import { Cuentalistar } from "./cuentalistar/cuentalistar";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-cuenta',
-  imports: [RouterOutlet, Cuentalistar],
+  imports: [Cuentalistar, RouterModule],
   templateUrl: './cuenta.html',
   styleUrl: './cuenta.css',
 })
 export class Cuenta {
   constructor(public route:ActivatedRoute) {}
+
 }

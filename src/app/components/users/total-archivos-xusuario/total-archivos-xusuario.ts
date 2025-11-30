@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../../services/users-service';
+import { Component } from '@angular/core';
 import { TotalArchivosXUsuarioDTO } from '../../../models/TotalArchivosXUsuarioDTO';
+import { UsersService } from '../../../services/users-service';
 import { CommonModule } from '@angular/common';
 
 
@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './total-archivos-xusuario.html',
   styleUrl: './total-archivos-xusuario.css',
 })
-export class TotalArchivosXUsuario implements OnInit{
-  data: TotalArchivosXUsuarioDTO[] = [];
+export class TotalArchivosXUsuario {
+   data: TotalArchivosXUsuarioDTO[] = [];
   loading = false;
   errorMessage: string | null = null;
 

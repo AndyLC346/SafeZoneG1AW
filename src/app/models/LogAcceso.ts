@@ -1,7 +1,7 @@
 import { Users } from "./Users";
 
 export class LogAcceso{
-  idLogAcceso: number = 0;
+idLogAcceso: number = 0;
   fechaAcceso: Date = new Date();
   ipAcceso: string = "";
   navegadorAcceso: string = "";

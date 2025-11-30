@@ -1,16 +1,15 @@
-import { Injectable, OnInit } from '@angular/core';
-import { environment } from '../../environment/environment';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Cuenta } from '../models/Cuenta';
 import { Observable, Subject } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment/environment';
 const base_url = environment.base;
 
 @Injectable({
   providedIn: 'root',
 })
-export class CuentaService implements OnInit {
-  private url = `${base_url}/cuentas`;
+export class CuentaService {
+   private url = `${base_url}/cuentas`;
 
   private listaCambio = new Subject<Cuenta[]>();
 

@@ -1,15 +1,14 @@
 import { Injectable, OnInit } from '@angular/core';
-import { environment } from '../../environment/environment';
-import { HttpClient } from '@angular/common/http';
-import { Auditoria } from '../models/Auditoria';
 import { Observable, Subject } from 'rxjs';
-
+import { Auditoria } from '../models/Auditoria';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment/environment';
 const base_url = environment.base;
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuditoriaService implements OnInit {
+
   private url = `${base_url}/auditorias`;
 
   private listaCambio = new Subject<Auditoria[]>();

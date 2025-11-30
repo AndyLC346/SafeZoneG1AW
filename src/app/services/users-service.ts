@@ -43,8 +43,7 @@ export class UsersService implements OnInit{
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`,{ responseType: 'text' })
   }
-
-  getTotalArchivosPorUsuario(): Observable<TotalArchivosXUsuarioDTO[]> {
+   getTotalArchivosPorUsuario(): Observable<TotalArchivosXUsuarioDTO[]> {
     return this.http.get<TotalArchivosXUsuarioDTO[]>(`${this.url}/TotalArchivosPorUsuario`);
   }
 }
