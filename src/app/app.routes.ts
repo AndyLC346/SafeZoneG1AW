@@ -44,26 +44,27 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'registrar',
-    component: Registrar,
+    path: 'home',
+    component: Home,
   },
   {
     path: 'login',
     component: Login,
   },
   {
-    path: 'home',
-    component: Home,
+    path: 'registrar',
+    component: Registrar,
   },
+  
   {
     path: 'menu',
     component: Menu,
-    canActivate: [guardseguridadGuard],
+    //canActivate: [guardseguridadGuard],
   },
   {
     path: 'usuarios',
     component: Users,
-    canActivate: [guardseguridadGuard],
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'registrar', component: Usuarioregistrar },
       { path: 'actualizar/:id', component: Usuarioregistrar },
@@ -83,7 +84,7 @@ export const routes: Routes = [
   {
     path: 'archivos',
     component: Archivos,
-    canActivate: [guardseguridadGuard],
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'registrar', component: Archivoregistrar },
       { path: 'actualizar/:id', component: Archivoregistrar },
@@ -104,7 +105,7 @@ export const routes: Routes = [
   {
     path: 'alertas',
     component: Alerta,
-    canActivate: [guardseguridadGuard],
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: Alertalistar },
       { path: 'registrar', component: Alertaregistrar },
@@ -134,7 +135,6 @@ export const routes: Routes = [
       { path: 'listar', component: Rollistar },
       { path: 'registrar', component: Rolregistrar },
       { path: 'editar/:id', component: Rolregistrar },
-      { path: 'buscar', component: Recursobuscar },
     ],
   },
 
@@ -167,4 +167,10 @@ export const routes: Routes = [
       { path: 'buscar', component: LogAccesoBuscarComponent }
     ],
   },
+
+  {
+    path: 'scan',
+    component: APIcomponent,
+  }
+
 ];

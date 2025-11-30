@@ -26,22 +26,22 @@
 
     <!-- Alertas -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuAlertas">
-      <mat-icon>warning</mat-icon>Alertas 
+      <mat-icon>warning</mat-icon>Alertas
     </button>
 
     <!-- Recursos Educativos -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuRecursos">
-      <mat-icon>library_books</mat-icon>Recursos 
+      <mat-icon>library_books</mat-icon>Recursos
     </button>
-    
+
     <!-- Roles -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuRoles">
-      <mat-icon>security</mat-icon>Roles 
+      <mat-icon>security</mat-icon>Roles
     </button>
 
     <!-- Roles -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuScanner">
-      <mat-icon>bug_report</mat-icon>Scanner 
+      <mat-icon>bug_report</mat-icon>Scanner
     </button>
 
     <span class="spacer"> </span>
@@ -52,39 +52,43 @@
     </button>
   </mat-toolbar>
 
-  <!-- MENÚS (NO SE TOCAN) -->
+  <!-- MENÚS  -->
   <mat-menu #menuUsuarios="matMenu">
     <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar usuarios</button>
-    <button mat-menu-item routerLink="/usuarios/registrar"><mat-icon>add</mat-icon>Registrar usuario</button>
-    <button mat-menu-item routerLink="/usuarios/totalarchivosXusuario"><mat-icon>bar_chart</mat-icon>Total de Archivos por Usuario</button>
-  </mat-menu>
-
-  <mat-menu #menuCuenta="matMenu">
-    <button mat-menu-item routerLink="/cuenta"><mat-icon>list</mat-icon>Listar cuentas</button>
-    <button mat-menu-item routerLink="/cuenta/registrar">
-      <mat-icon>add</mat-icon>Registrar cuenta
+    <button mat-menu-item routerLink="/usuarios/registrar">
+      <mat-icon>add</mat-icon>Registrar usuario
+    </button>
+    <button mat-menu-item routerLink="/usuarios/totalarchivosXusuario">
+      <mat-icon>bar_chart</mat-icon>Total de Archivos por Usuario
     </button>
   </mat-menu>
 
   <mat-menu #menuArchivos="matMenu">
     <button mat-menu-item routerLink="/archivos"><mat-icon>list</mat-icon>Listar archivos</button>
-    <button mat-menu-item routerLink="/archivos/registrar"><mat-icon>add</mat-icon>Registrar archivo</button>
-    <button mat-menu-item routerLink="/archivos/buscarxfecha"><mat-icon>search</mat-icon>Buscar por fecha</button>
+    <button mat-menu-item routerLink="/archivos/registrar">
+      <mat-icon>add</mat-icon>Registrar archivo
+    </button>
+    <button mat-menu-item routerLink="/archivos/buscarxfecha">
+      <mat-icon>search</mat-icon>Buscar por fecha
+    </button>
   </mat-menu>
 
   <mat-menu #menuRecomendaciones="matMenu">
-    <button mat-menu-item routerLink="/recomendaciones"><mat-icon>list</mat-icon>Listar recomendaciones</button>
-    <button mat-menu-item routerLink="/recomendaciones/registrar"><mat-icon>add</mat-icon>Registrar recomendación</button>
+    <button mat-menu-item routerLink="/recomendaciones">
+      <mat-icon>list</mat-icon>Listar recomendaciones
+    </button>
+    <button mat-menu-item routerLink="/recomendaciones/registrar">
+      <mat-icon>add</mat-icon>Registrar recomendación
+    </button>
   </mat-menu>
 
   <mat-menu #menuAlertas="matMenu">
     <button mat-menu-item routerLink="/alertas"><mat-icon>list</mat-icon>Listar alertas</button>
     <button mat-menu-item routerLink="/alertas/registrar"><mat-icon>add</mat-icon>Registrar alertas</button>
     <button mat-menu-item routerLink="/alertas/buscar"><mat-icon>search</mat-icon>Buscar alertas</button>
-
   </mat-menu>
 
-   <mat-menu #menuRecursos="matMenu">
+  <mat-menu #menuRecursos="matMenu">
     <button mat-menu-item routerLink="/recursosducativos"><mat-icon>list</mat-icon>Listar Recursos</button>
     <button mat-menu-item routerLink="/recursosducativos/registrar"><mat-icon>add</mat-icon>Registrar Recursos</button>
     <button mat-menu-item routerLink="/recursosducativos/buscar"><mat-icon>search</mat-icon>Buscar Recursos</button>
@@ -93,13 +97,34 @@
   <mat-menu #menuRoles="matMenu">
     <button mat-menu-item routerLink="/roles"><mat-icon>list</mat-icon>Listar Roles</button>
     <button mat-menu-item routerLink="/roles/registrar"><mat-icon>add</mat-icon>Registrar Roles</button>
-    <button mat-menu-item routerLink="/roles/buscar"><mat-icon>search</mat-icon>Buscar Roles</button>
   </mat-menu>
+
+  <mat-menu #menuCuenta="matMenu">
+    <button mat-menu-item routerLink="/auditoria"><mat-icon>list</mat-icon>Listar cuentas</button>
+    <button mat-menu-item routerLink="/auditoria/registrar">
+      <mat-icon>add</mat-icon>Registrar cuenta
+    </button>
+    <button mat-menu-item routerLink="/auditoria/buscar">
+      <mat-icon>add</mat-icon>Registrar cuenta
+    </button>
+  </mat-menu>
+
+  <mat-menu #menuCuenta="matMenu">
+    <button mat-menu-item routerLink="/cuenta"><mat-icon>list</mat-icon>Listar cuentas</button>
+    <button mat-menu-item routerLink="/cuenta/registrar"><mat-icon>add</mat-icon>Registrar cuenta</button>
+    <button mat-menu-item routerLink="/cuenta/buscar"><mat-icon>search</mat-icon>Buscar cuenta</button>
+  </mat-menu>
+
+  <mat-menu #menuCuenta="matMenu">
+    <button mat-menu-item routerLink="/cuenta"><mat-icon>list</mat-icon>Listar cuentas</button>
+    <button mat-menu-item routerLink="/cuenta/registrar"><mat-icon>add</mat-icon>Registrar cuenta</button>
+    <button mat-menu-item routerLink="/cuenta/buscar"><mat-icon>search</mat-icon>Buscar cuenta</button>
+  </mat-menu>
+
 
   <mat-menu #menuScanner="matMenu">
     <button mat-menu-item routerLink="/scan"><mat-icon>list</mat-icon>Scanner</button>
   </mat-menu>
-
 
   <mat-menu #menuSalir="matMenu">
     <button matButton class="btn-rojo" routerLink="/login" (click)="cerrar()">

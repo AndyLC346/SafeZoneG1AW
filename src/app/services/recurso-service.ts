@@ -11,7 +11,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class RecursoService implements OnInit {
-  private url = `${base_url}/recursos`;
+  private url = `${base_url}/recursosducativos`;
 
   private listaCambio = new Subject<Recurso[]>();
 
