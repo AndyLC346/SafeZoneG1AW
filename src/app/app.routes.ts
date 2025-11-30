@@ -28,7 +28,6 @@ import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 import { Login } from './components/login/login';
 import { TotalArchivosXUsuario } from './components/users/total-archivos-xusuario/total-archivos-xusuario';
-import { guardseguridadGuard } from './guards/guardseguridad-guard';
 import { Auditoria } from './components/auditoria/auditoria';
 import { CuentaBuscarComponent } from './components/cuenta/cuentabuscar/cuentabuscar';
 import { Cuentalistar } from './components/cuenta/cuentalistar/cuentalistar';
@@ -36,7 +35,6 @@ import { LogAcceso } from './components/log-acceso/log-acceso';
 import { LogAccesoListar } from './components/log-acceso/log-accesolistar/log-accesolistar';
 import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
 import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
-
 import { TicketReporte } from './components/ticket-reporte/ticket-reporte';
 import { Ticketreportelistar } from './components/ticket-reporte/ticketreportelistar/ticketreportelistar';
 import { Ticketreporteregistrar } from './components/ticket-reporte/ticketreporteregistrar/ticketreporteregistrar';
@@ -48,6 +46,8 @@ import { RespuestaSoporte } from './components/respuesta-soporte/respuesta-sopor
 import { AuditoriaListar } from './components/auditoria/auditorialistar/auditorialistar';
 import { AuditoriaBuscarComponent } from './components/auditoria/auditoriabuscar/auditoriabuscar';
 import { AuditoriaRegistrarComponent } from './components/auditoria/auditoriaregistrar/auditoriaregistrar';
+import { BuscarRecomendacionXCategoria } from './components/recomendacion/buscar-recomendacion-xcategoria/buscar-recomendacion-xcategoria';
+import { guardseguridadGuard } from './guards/guardseguridad-guard';
 
 export const routes: Routes = [
   {
@@ -104,6 +104,7 @@ export const routes: Routes = [
     children: [
       { path: 'registrar', component: Recomendacionregistrar },
       { path: 'actualizar/:id', component: Recomendacionregistrar },
+      { path: 'buscarrecomendacionxcatergoria', component: BuscarRecomendacionXCategoria },
     ],
   },
 
