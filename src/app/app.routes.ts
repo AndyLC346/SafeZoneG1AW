@@ -37,6 +37,10 @@ import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/
 import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
 import { Auditoria } from './components/auditoria/auditoria';
 import { LogAcceso } from './components/log-acceso/log-acceso';
+import { TotalArchivosXUsuario } from './components/users/total-archivos-xusuario/total-archivos-xusuario';
+import { AuditoriaListar } from './components/auditoria/auditorialistar/auditorialistar';
+import { AuditoriaBuscarComponent } from './components/auditoria/auditoriabuscar/auditoriabuscar';
+import { AuditoriaRegistrarComponent } from './components/auditoria/auditoriaregistrar/auditoriaregistrar';
 
 
 export const routes: Routes = [
@@ -75,6 +79,7 @@ export const routes: Routes = [
         children: [
             { path: 'registrar', component: Usuarioregistrar },
             { path: 'actualizar/:id', component: Usuarioregistrar },
+            { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario },
         ]
     },
     {
@@ -138,6 +143,7 @@ export const routes: Routes = [
     {
         path: 'roles',
         component: Role,
+        canActivate: [seguridadGuardGuard],
         children: [
             { path: 'listar', component: Rollistar },
             { path: 'registrar', component: Rolregistrar }, 
@@ -148,17 +154,20 @@ export const routes: Routes = [
     },
 
     {
-    path: 'auditoria',
+    path: 'auditorias',
     component: Auditoria,
-    children: [{ path: 'listar', component: Recursolistar },
-      { path: 'buscar', component: Recursobuscar },
-      { path: 'registrar', component: Recursoregistrar }
+    canActivate: [seguridadGuardGuard],
+    children: [
+      { path: 'listar', component: AuditoriaListar },
+      { path: 'buscar', component: AuditoriaBuscarComponent },
+      { path: 'registrar', component: AuditoriaRegistrarComponent }
     ],
   },
 
   {
     path: 'cuentas',
     component: Cuenta,
+    canActivate: [seguridadGuardGuard],
     children: [
       { path: 'listar', component: Cuentalistar },
       {
@@ -171,6 +180,7 @@ export const routes: Routes = [
   {
     path: 'logacceso',
     component: LogAcceso,
+    canActivate: [seguridadGuardGuard],
     children: [{ path: 'listar', component: LogAccesoListar },
       { path: 'registrar', component: LogAccesoRegistrar },
       { path: 'buscar', component: LogAccesoBuscarComponent }
