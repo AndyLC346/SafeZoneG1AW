@@ -4,12 +4,12 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* Card estilo glass + neon */
+/* Card principal estilo glass + neon */
 .glass-card {
-  margin: 80px auto;
-  width: 70%;
-  max-width: 700px;
-  padding: 40px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 900px;
+  padding: 45px;
   text-align: center;
   color: #fff;
   backdrop-filter: blur(15px);
@@ -32,7 +32,7 @@ h1 span {
   font-size: 18px;
 }
 
-/* Botones neon cyberpunk */
+/* Botones neon */
 .menu-buttons {
   display: flex;
   flex-direction: column;
@@ -57,4 +57,110 @@ h1 span {
 .neon-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 22px rgba(0, 255, 255, 0.9);
+}
+
+/* Grid de cards (máximo 4 por fila en pantallas grandes) */
+.cards-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 25px;
+  padding: 20px;
+}
+
+/* ⬇️ CENTRAR LAS ÚLTIMAS DOS CARDS (posición 11 y 12) */
+.cards-grid .menu-card:nth-child(11),
+.cards-grid .menu-card:nth-child(12) {
+  grid-column: span 1;
+  justify-self: center;
+  width: 70%;
+}
+
+/* Card neon */
+.menu-card {
+  background: rgba(0, 255, 255, 0.07);
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  padding: 35px;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  color: #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  animation: idleGlow 3s infinite alternate ease-in-out;
+}
+
+/* Hover futurista */
+.menu-card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 1);
+  animation: none;
+}
+
+/* Iconos grandes */
+.menu-card mat-icon {
+  font-size: 55px;
+  width: 60px;
+  height: 60px;
+  line-height: 1;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.85));
+}
+
+/* Texto */
+.menu-card h3 {
+  font-size: 19px;
+  margin: 0;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+}
+
+/* Animación sutil respiración futurista */
+@keyframes idleGlow {
+  from {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+  }
+}
+
+/* 📱 Responsive: Tablet */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Última fila centrada si sobran dos */
+  .cards-grid .menu-card:nth-child(11),
+  .cards-grid .menu-card:nth-child(12) {
+    grid-column: span 3;
+    width: 50%;
+    justify-self: center;
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .cards-grid .menu-card {
+    width: 100%;
+    grid-column: auto;
+  }
 }

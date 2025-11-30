@@ -21,18 +21,21 @@
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 8px 22px rgba(120, 0, 100, 0.35);
+  box-shadow: 0 6px 18px rgba(120, 0, 100, 0.35);
 
   display: flex;
   align-items: center;
-  padding: 14px 18px;
-  border-radius: 12px;
-  height: 68px;
+
+  /* 🔥 REDUCIDO 🔥 */
+  padding: 6px 12px;
+  border-radius: 10px;
+  height: 50px;
+
   transition: box-shadow 0.4s ease;
 }
 
 .custom-toolbar:hover {
-  box-shadow: 0 0 30px rgba(180, 0, 255, 0.45);
+  box-shadow: 0 0 22px rgba(180, 0, 255, 0.45);
 }
 
 .custom-toolbar button,
@@ -48,14 +51,16 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  font-size: 0.9rem;
-  border-radius: 10px;
-  margin: 4px;
-  padding: 10px 14px;
+  /* 🔥 REDUCIDO 🔥 */
+  font-size: 0.78rem;
+
+  border-radius: 8px;
+  margin: 3px;
+  padding: 6px 8px;
 
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
 
   transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
@@ -63,40 +68,38 @@
 
 .btn-rojo:hover {
   background: rgba(0, 255, 34, 0.45);
-  box-shadow: 0 0 14px rgba(0, 255, 34, 0.6);
-  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(0, 255, 34, 0.6);
+  transform: scale(1.05);
 }
 
 
-/* ---------------- FIX PARA ICONOS CORTADOS ---------------- */
+/* ---------------- FIX ICONOS ---------------- */
 .custom-toolbar button.mat-mdc-button,
 .custom-toolbar .btn-rojo,
 .custom-toolbar button.mat-mdc-menu-trigger {
-  min-height: 48px !important;
-  line-height: 48px !important;
-  padding: 0 16px !important;
+
+  /* 🔥 REDUCIDO 🔥 */
+  min-height: 36px !important;
+  line-height: 36px !important;
+  padding: 0 12px !important;
+
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
 .custom-toolbar mat-icon {
-  font-size: 22px !important;
-  height: 24px !important;
-  width: 24px !important;
-  line-height: 24px !important;
-  margin-right: 6px;
+  /* 🔥 MÁS PEQUEÑO 🔥 */
+  font-size: 18px !important;
+  height: 20px !important;
+  width: 20px !important;
+  line-height: 20px !important;
+  margin-right: 4px;
 }
 
-.custom-toolbar button span,
-.custom-toolbar button mat-icon {
-  vertical-align: middle;
-}
-
-
-/* tamaño de iconos */
 .btn-rojo mat-icon {
-  font-size: 1.4rem;
+  /* 🔥 REDUCIDO 🔥 */
+  font-size: 1.1rem;
 }
 
 
