@@ -96,7 +96,7 @@ export class Usuarioregistrar implements OnInit {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.id),
-          username: new FormControl(data.nombres),
+          username: new FormControl(data.username),
           contraseña: new FormControl(data.password),
           estado: new FormControl(data.enabled),
           nombres: new FormControl(data.nombres),
