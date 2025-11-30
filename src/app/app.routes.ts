@@ -36,14 +36,15 @@ import { LogAcceso } from './components/log-acceso/log-acceso';
 import { LogAccesoListar } from './components/log-acceso/log-accesolistar/log-accesolistar';
 import { LogAccesoBuscarComponent } from './components/log-acceso/logaccesobuscar/logaccesobuscar';
 import { LogAccesoRegistrar } from './components/log-acceso/log-accesoregistrar/log-accesoregistrar';
-import { RespuestaSoporte } from './models/RespuestaSoporte';
-import { CantidadRespuestaTicket } from './models/CantidadRespuestaTicket';
+
 import { TicketReporte } from './components/ticket-reporte/ticket-reporte';
 import { Ticketreportelistar } from './components/ticket-reporte/ticketreportelistar/ticketreportelistar';
 import { Ticketreporteregistrar } from './components/ticket-reporte/ticketreporteregistrar/ticketreporteregistrar';
 import { Contarticketporusuario } from './components/contarticketporusuario/contarticketporusuario';
 import { Respuestasoportelistar } from './components/respuesta-soporte/respuestasoportelistar/respuestasoportelistar';
 import { Respuestasoporteregistrar } from './components/respuesta-soporte/respuestasoporteregistrar/respuestasoporteregistrar';
+import { Cantidadrespuestatickets } from './components/cantidadrespuestatickets/cantidadrespuestatickets';
+import { RespuestaSoporte } from './components/respuesta-soporte/respuesta-soporte';
 
 export const routes: Routes = [
   {
@@ -83,17 +84,6 @@ export const routes: Routes = [
       { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario },
     ],
   },
-
-  {
-    path: 'cuenta',
-    component: Cuenta,
-    //canActivate: [guardseguridadGuard],
-    children: [
-      { path: 'registrar', component: Cuentaregistrar },
-      { path: 'actualizar/:id', component: Cuentaregistrar },
-    ],
-  },
-
   {
     path: 'archivos',
     component: Archivos,
@@ -104,7 +94,6 @@ export const routes: Routes = [
       { path: 'buscarxfecha', component: BuscarArchivosXFecha },
     ],
   },
-
   {
     path: 'recomendaciones',
     component: Recomendacion,
@@ -145,6 +134,7 @@ export const routes: Routes = [
   {
     path: 'roles',
     component: Role,
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: Rollistar },
       { path: 'registrar', component: Rolregistrar },
@@ -152,9 +142,10 @@ export const routes: Routes = [
     ],
   },
 
-  {
+{
     path: 'auditoria',
     component: Auditoria,
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: Recursolistar },
       { path: 'buscar', component: Recursobuscar },
@@ -165,6 +156,7 @@ export const routes: Routes = [
   {
     path: 'cuentas',
     component: Cuenta,
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: Cuentalistar },
       { path: 'buscar', component: CuentaBuscarComponent },
@@ -175,6 +167,7 @@ export const routes: Routes = [
   {
     path: 'logacceso',
     component: LogAcceso,
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: LogAccesoListar },
       { path: 'registrar', component: LogAccesoRegistrar },
@@ -183,22 +176,9 @@ export const routes: Routes = [
   },
 
   {
-    path: 'respuestasoporte',
-    component: RespuestaSoporte,
-    children: [
-      { path: 'listar', component: Respuestasoportelistar },
-      { path: 'registrar', component: Respuestasoporteregistrar },
-    ],
-  },
-
-  {
-    path: 'cantidadrespuestaticket',
-    component: CantidadRespuestaTicket,
-  },
-
-  {
     path: 'ticketsoporte',
     component: TicketReporte,
+    //canActivate: [guardseguridadGuard],
     children: [
       { path: 'listar', component: Ticketreportelistar },
       { path: 'registrar', component: Ticketreporteregistrar },
@@ -208,10 +188,29 @@ export const routes: Routes = [
   {
     path: 'contarticketporusuario',
     component: Contarticketporusuario,
+    //canActivate: [guardseguridadGuard],
   },
+
+  {
+    path: 'respuestasoporte',
+    component: RespuestaSoporte,
+    //canActivate: [guardseguridadGuard],
+    children: [
+      { path: 'listar', component: Respuestasoportelistar },
+      { path: 'registrar', component: Respuestasoporteregistrar },
+    ],
+  },
+
+  {
+    path: 'cantidadrespuestaticket',
+    component: Cantidadrespuestatickets,
+    //canActivate: [guardseguridadGuard],
+  },
+
 
   {
     path: 'scan',
     component: APIcomponent,
+    //canActivate: [guardseguridadGuard],
   },
 ];
