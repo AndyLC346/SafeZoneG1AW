@@ -3,6 +3,7 @@ import { environment } from '../../environment/environment';
 import { Recomendacion } from '../models/Recomendacion';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BuscarRecomendacionXCategoriaDTO } from '../models/BuscarRecomendacionXCategoriaDTO';
 
 const base_url = environment.base;
 
@@ -44,9 +45,7 @@ export class RecomendacionService implements OnInit{
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`,{ responseType: 'text' })
   }
-      search(fe: Date) {
-  const formattedDate = fe.toISOString().split('T')[0];
-  const params = { f: formattedDate };
-  return this.http.get<Recomendacion[]>(`${this.url}/busquedas`, { params });
+  buscarPorCategoria(categoria: string) {
+  return this.http.get<BuscarRecomendacionXCategoriaDTO[]>(`${this.url}/buscarRecomendacionesporcategoria?categoria=${categoria}`);
 }
 }

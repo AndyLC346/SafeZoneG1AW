@@ -40,8 +40,4 @@ export class RoleService implements OnInit {
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`,{ responseType: 'text' })
   }
-  search(id: number): Observable<Role> {
-  return this.http.get<Role>(`${this.url}/${id}`);
-}
-  
 }

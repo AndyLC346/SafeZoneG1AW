@@ -1,1 +1,39 @@
-<p>buscar-recomendacion-xcategoria works!</p>
+<div class="container">
+  <!-- Input y botón -->
+  <div style="display: flex; gap: 10px; margin-bottom: 20px">
+    <input type="text" [(ngModel)]="categoria" placeholder="Ingrese categoría" class="input" />
+    <button mat-raised-button color="primary" (click)="buscar()">Buscar</button>
+  </div>
+
+  <!-- Chart -->
+  <div style="width: 600px; margin: auto" *ngIf="barChartData.datasets[0].data.length > 0">
+    <canvas baseChart [data]="barChartData" [labels]="barChartLabels" [type]="barChartType">
+    </canvas>
+  </div>
+
+  <!-- Tabla Respaldo -->
+  <table
+    mat-table
+    [dataSource]="reporte"
+    style="margin-top: 30px; width: 100%"
+    *ngIf="reporte.length > 0"
+  >
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let item">{{ item.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef>Categoría</th>
+      <td mat-cell *matCellDef="let item">{{ item.categoriaRecomendacion }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef>Total Recomendaciones</th>
+      <td mat-cell *matCellDef="let item">{{ item.cantidadRecomendaciones }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['username', 'categoria', 'cantidad']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['username', 'categoria', 'cantidad']"></tr>
+  </table>
+</div>
