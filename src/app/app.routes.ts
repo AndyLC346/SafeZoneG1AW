@@ -45,6 +45,9 @@ import { Respuestasoportelistar } from './components/respuesta-soporte/respuesta
 import { Respuestasoporteregistrar } from './components/respuesta-soporte/respuestasoporteregistrar/respuestasoporteregistrar';
 import { Cantidadrespuestatickets } from './components/cantidadrespuestatickets/cantidadrespuestatickets';
 import { RespuestaSoporte } from './components/respuesta-soporte/respuesta-soporte';
+import { AuditoriaListar } from './components/auditoria/auditorialistar/auditorialistar';
+import { AuditoriaBuscarComponent } from './components/auditoria/auditoriabuscar/auditoriabuscar';
+import { AuditoriaRegistrarComponent } from './components/auditoria/auditoriaregistrar/auditoriaregistrar';
 
 export const routes: Routes = [
   {
@@ -147,9 +150,9 @@ export const routes: Routes = [
     component: Auditoria,
     //canActivate: [guardseguridadGuard],
     children: [
-      { path: 'listar', component: Recursolistar },
-      { path: 'buscar', component: Recursobuscar },
-      { path: 'registrar', component: Recursoregistrar },
+      { path: 'listar', component: AuditoriaListar },
+      { path: 'buscar', component: AuditoriaBuscarComponent },
+      { path: 'registrar', component: AuditoriaRegistrarComponent },
     ],
   },
 

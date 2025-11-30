@@ -9,11 +9,6 @@
       <mat-icon>group</mat-icon>Usuarios
     </button>
 
-    <!-- CUENTAS -->
-    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuCuenta">
-      <mat-icon>account_balance_wallet</mat-icon>Cuenta
-    </button>
-
     <!-- ARCHIVOS -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuArchivos">
       <mat-icon>folder</mat-icon>Archivos
@@ -39,7 +34,33 @@
       <mat-icon>security</mat-icon>Roles
     </button>
 
-    <!-- Roles -->
+    <!-- Auditoria -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuAuditoria">
+      <mat-icon>fact_check</mat-icon>Auditoria
+    </button>
+
+    <!-- CUENTAS -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuCuentas">
+      <mat-icon>share</mat-icon>Cuentas
+    </button>
+
+    <!-- LogAcesso -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuLogAcceso">
+      <mat-icon>history</mat-icon>LogAcceso
+    </button>
+
+    <!-- TicketSoporte -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuTicketSoporte">
+      <mat-icon>confirmation_number</mat-icon>Ticket Soporte
+    </button>
+
+    <!-- RespuestaSoporte -->
+    <button matButton class="btn-rojo" [matMenuTriggerFor]="menuRespuestaSoporte">
+      <mat-icon>support_agent</mat-icon>Respuesta Soporte
+    </button>
+
+
+    <!-- API -->
     <button matButton class="btn-rojo" [matMenuTriggerFor]="menuScanner">
       <mat-icon>bug_report</mat-icon>Scanner
     </button>
@@ -53,6 +74,7 @@
   </mat-toolbar>
 
   <!-- MENÚS  -->
+  <!-- USUARIOS -->
   <mat-menu #menuUsuarios="matMenu">
     <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar usuarios</button>
     <button mat-menu-item routerLink="/usuarios/registrar">
@@ -63,16 +85,18 @@
     </button>
   </mat-menu>
 
+  <!-- Archivos -->
   <mat-menu #menuArchivos="matMenu">
     <button mat-menu-item routerLink="/archivos"><mat-icon>list</mat-icon>Listar archivos</button>
     <button mat-menu-item routerLink="/archivos/registrar">
-      <mat-icon>add</mat-icon>Registrar archivo
+      <mat-icon>add</mat-icon>Registrar archivos
     </button>
     <button mat-menu-item routerLink="/archivos/buscarxfecha">
       <mat-icon>search</mat-icon>Buscar por fecha
     </button>
   </mat-menu>
 
+  <!-- Recomendacion -->
   <mat-menu #menuRecomendaciones="matMenu">
     <button mat-menu-item routerLink="/recomendaciones">
       <mat-icon>list</mat-icon>Listar recomendaciones
@@ -82,51 +106,64 @@
     </button>
   </mat-menu>
 
+  <!-- Alertas -->
   <mat-menu #menuAlertas="matMenu">
     <button mat-menu-item routerLink="/alertas"><mat-icon>list</mat-icon>Listar alertas</button>
     <button mat-menu-item routerLink="/alertas/registrar"><mat-icon>add</mat-icon>Registrar alertas</button>
     <button mat-menu-item routerLink="/alertas/buscar"><mat-icon>search</mat-icon>Buscar alertas</button>
   </mat-menu>
 
+  <!-- Recursos -->
   <mat-menu #menuRecursos="matMenu">
     <button mat-menu-item routerLink="/recursosducativos"><mat-icon>list</mat-icon>Listar Recursos</button>
     <button mat-menu-item routerLink="/recursosducativos/registrar"><mat-icon>add</mat-icon>Registrar Recursos</button>
     <button mat-menu-item routerLink="/recursosducativos/buscar"><mat-icon>search</mat-icon>Buscar Recursos</button>
   </mat-menu>
 
+  <!-- Roles -->
   <mat-menu #menuRoles="matMenu">
     <button mat-menu-item routerLink="/roles"><mat-icon>list</mat-icon>Listar Roles</button>
     <button mat-menu-item routerLink="/roles/registrar"><mat-icon>add</mat-icon>Registrar Roles</button>
   </mat-menu>
 
-  <mat-menu #menuCuenta="matMenu">
+  <!-- Auditoria -->
+  <mat-menu #menuAuditoria="matMenu">
     <button mat-menu-item routerLink="/auditoria"><mat-icon>list</mat-icon>Listar Auditoria</button>
-    <button mat-menu-item routerLink="/auditoria/registrar">
-      <mat-icon>add</mat-icon>Registrar Auditoria
-    </button>
-    <button mat-menu-item routerLink="/auditoria/buscar">
-      <mat-icon>add</mat-icon>Registrar Auditoria
+    <button mat-menu-item routerLink="/auditoria/registrar"><mat-icon>add</mat-icon>Registrar Auditoria</button>
+    <button mat-menu-item routerLink="/auditoria/buscar"><mat-icon>add</mat-icon>Buscar Auditoria
     </button>
   </mat-menu>
 
-  <mat-menu #menuCuenta="matMenu">
+  <!-- Cuenta -->
+  <mat-menu #menuCuentas="matMenu">
     <button mat-menu-item routerLink="/cuentas"><mat-icon>list</mat-icon>Listar cuentas</button>
-    <button mat-menu-item routerLink="/cuentas/registrar"><mat-icon>add</mat-icon>Registrar cuenta</button>
-    <button mat-menu-item routerLink="/cuentas/buscar"><mat-icon>search</mat-icon>Buscar cuenta</button>
+    <button mat-menu-item routerLink="/cuentas/registrar"><mat-icon>add</mat-icon>Registrar cuentas</button>
+    <button mat-menu-item routerLink="/cuentas/buscar"><mat-icon>search</mat-icon>Buscar cuentas</button>
   </mat-menu>
 
-  <mat-menu #menuCuenta="matMenu">
+  <!-- LogAcceso -->
+  <mat-menu #menuLogAcceso="matMenu">
     <button mat-menu-item routerLink="/logacceso"><mat-icon>list</mat-icon>Listar LogAcceso</button>
     <button mat-menu-item routerLink="/logacceso/registrar"><mat-icon>add</mat-icon>Registrar LogAcceso</button>
     <button mat-menu-item routerLink="/logacceso/buscar"><mat-icon>search</mat-icon>Buscar LogAcceso</button>
   </mat-menu>
 
-  <mat-menu #menuCuenta="matMenu">
-    <button mat-menu-item routerLink="/logacceso"><mat-icon>list</mat-icon>Listar LogAcceso</button>
-    <button mat-menu-item routerLink="/logacceso/registrar"><mat-icon>add</mat-icon>Registrar LogAcceso</button>
-    <button mat-menu-item routerLink="/logacceso/buscar"><mat-icon>search</mat-icon>Buscar LogAcceso</button>
+  <!-- ticketsoporte -->
+  <mat-menu #menuTicketSoporte="matMenu">
+    <button mat-menu-item routerLink="/ticketsoporte"><mat-icon>list</mat-icon>Listar Ticket Soporte</button>
+    <button mat-menu-item routerLink="/ticketsoporte/registrar"><mat-icon>add</mat-icon>Registrar Ticket Soporte</button>
+    <button mat-menu-item routerLink="/contarticketporusuario"><mat-icon>search</mat-icon>Contar Ticket Soporte por Usuario</button>
   </mat-menu>
 
+
+  <!-- RespuestaSoporte -->
+  <mat-menu #menuRespuestaSoporte="matMenu">
+    <button mat-menu-item routerLink="/respuestasoporte"><mat-icon>list</mat-icon>Listar Respuesta Soporte</button>
+    <button mat-menu-item routerLink="/respuestasoporte/registrar"><mat-icon>add</mat-icon>Registrar Respuesta Soporte</button>
+    <button mat-menu-item routerLink="/cantidadrespuestaticket"><mat-icon>search</mat-icon>Cantidad Respuesta Soporte por ticket</button>
+  </mat-menu>
+
+  <!-- Scan -->
   <mat-menu #menuScanner="matMenu">
     <button mat-menu-item routerLink="/scan"><mat-icon>list</mat-icon>Scanner</button>
   </mat-menu>
