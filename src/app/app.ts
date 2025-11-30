@@ -1,21 +1,56 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Menu } from "./components/menu/menu";
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LoginService } from './services/login-service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [RouterOutlet, RouterOutlet, MatIconModule, MatButtonModule, CommonModule, FormsModule, Menu],
+  imports: [RouterOutlet, RouterOutlet, MatIconModule, MatButtonModule, CommonModule, FormsModule, MatMenuModule, MatToolbarModule, MatIconModule, RouterModule, Menu],
 })
 export class App {
   protected readonly title = signal('SafeZoneG1AW');
   isMuted = true; // comienza silenciado
   volumenPersonalizado = 0.2; // para poner la cantidad de volumen
+
+   role: string = '';
+  usuario: string = '';
+
+  mostrarMenu = true; // ← NUEVO
+
+  constructor(private loginService: LoginService, private router: Router) {
+    // Detecta cambios de ruta
+    this.router.events.subscribe(() => {
+      const ruta = this.router.url;
+      this.mostrarMenu = !(ruta === '/home' || ruta === '/login' || ruta== '/registrar');
+    });
+  }
+
+  cerrar() {
+    sessionStorage.clear();
+  }
+
+
+  verificar() {
+    this.role = this.loginService.showRole();
+
+    return this.loginService.verificar();
+  }
+  isAdmin() {
+    return this.role === 'ADMIN';
+  }
+
+  isTester() {
+    return this.role === 'TESTER';
+  }
+
 
   toggleMute(audio: HTMLAudioElement) {
     if (this.isMuted) {

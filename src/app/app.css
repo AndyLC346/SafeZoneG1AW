@@ -1,10 +1,10 @@
-/*Boton silenciado*/
+/* ---------------- BOTÓN DE SONIDO ---------------- */
 .boton-sonido {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 999;
-  background-color: #2944dd; /* Color azul Material */
+  background-color: #2944dd;
   color: white;
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -12,4 +12,117 @@
 
 .boton-sonido:hover {
   background-color: #788AF3;
+}
+
+
+/* ---------------- TOOLBAR GLASS + NEON ---------------- */
+.custom-toolbar {
+  background: rgba(90, 0, 85, 0.35);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 22px rgba(120, 0, 100, 0.35);
+
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 12px;
+  height: 68px;
+  transition: box-shadow 0.4s ease;
+}
+
+.custom-toolbar:hover {
+  box-shadow: 0 0 30px rgba(180, 0, 255, 0.45);
+}
+
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* ---------------- BOTONES DEL MENÚ ---------------- */
+.btn-rojo {
+  background: rgba(120, 0, 130, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  font-size: 0.9rem;
+  border-radius: 10px;
+  margin: 4px;
+  padding: 10px 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.btn-rojo:hover {
+  background: rgba(0, 255, 34, 0.45);
+  box-shadow: 0 0 14px rgba(0, 255, 34, 0.6);
+  transform: scale(1.08);
+}
+
+
+/* ---------------- FIX PARA ICONOS CORTADOS ---------------- */
+.custom-toolbar button.mat-mdc-button,
+.custom-toolbar .btn-rojo,
+.custom-toolbar button.mat-mdc-menu-trigger {
+  min-height: 48px !important;
+  line-height: 48px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.custom-toolbar mat-icon {
+  font-size: 22px !important;
+  height: 24px !important;
+  width: 24px !important;
+  line-height: 24px !important;
+  margin-right: 6px;
+}
+
+.custom-toolbar button span,
+.custom-toolbar button mat-icon {
+  vertical-align: middle;
+}
+
+
+/* tamaño de iconos */
+.btn-rojo mat-icon {
+  font-size: 1.4rem;
+}
+
+
+/* ---------------- MENÚ MATERIAL DESIGN GLASS ---------------- */
+.mat-mdc-menu-panel {
+  background: rgba(90, 0, 85, 0.35) !important;
+  backdrop-filter: blur(10px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 10px !important;
+  padding: 4px 0;
+  box-shadow: 0 6px 18px rgba(120, 0, 180, 0.3) !important;
+}
+
+.mat-mdc-menu-item {
+  color: #000000 !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.mat-mdc-menu-item:hover {
+  background: rgba(160, 0, 140, 0.35) !important;
+  transform: scale(1.04);
+}
+
+/* separador flexible */
+.spacer {
+  flex: 1 1 auto;
 }
