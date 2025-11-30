@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { BaseChartDirective } from 'ng2-charts';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-buscar-recomendacion-xcategoria',
@@ -14,27 +14,27 @@ import { BaseChartDirective } from 'ng2-charts';
     MatTableModule,
     MatButtonModule,
     MatInputModule,
-    CommonModule, BaseChartDirective],
+    MatSelectModule,
+    CommonModule],
   templateUrl: './buscar-recomendacion-xcategoria.html',
   styleUrl: './buscar-recomendacion-xcategoria.css',
 })
 export class BuscarRecomendacionXCategoria implements OnInit {
 
-  categoria: string = "";
+   categoria: string = "";
   reporte: BuscarRecomendacionXCategoriaDTO[] = [];
 
-  // 📌 Variables del gráfico
-  barChartLabels: string[] = [];
-  barChartType: any = 'bar';
-  barChartData = {
-    datasets: [
-      {
-        label: 'Cantidad de recomendaciones',
-        data: [] as number[],
-        backgroundColor: ['#1976d2'], // color opcional
-      }
-    ]
-  };
+  displayedColumns: string[] = ['username', 'categoria', 'cantidad'];
+
+  // mismas categorías del registrar recomendación
+  tipos = [
+    { value: 'Software Updates', viewValue: 'Software Updates' },
+    { value: 'Network Security', viewValue: 'Network Security' },
+    { value: 'Backup & Recovery', viewValue: 'Backup & Recovery' },
+    { value: 'Phishing Awareness', viewValue: 'Phishing Awareness' },
+    { value: 'Malware Detection', viewValue: 'Malware Detection' },
+    { value: 'Best Security Practices', viewValue: 'Best Security Practices' },
+  ];
 
   constructor(private recomendacionService: RecomendacionService) {}
 
@@ -44,19 +44,12 @@ export class BuscarRecomendacionXCategoria implements OnInit {
     this.recomendacionService.buscarPorCategoria(this.categoria).subscribe({
       next: (data) => {
         this.reporte = data;
-
-        // Llenar gráfico con nuevos datos
-        this.barChartLabels = data.map(x => x.username);
-        this.barChartData.datasets[0].data = data.map(x => x.cantidadRecomendaciones);
       },
       error: () => {
         alert("No existen datos para esa categoría.");
         this.reporte = [];
-        this.barChartLabels = [];
-        this.barChartData.datasets[0].data = [];
       }
     });
   }
-
 
 }

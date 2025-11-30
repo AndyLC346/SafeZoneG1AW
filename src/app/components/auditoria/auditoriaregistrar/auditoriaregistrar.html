@@ -3,11 +3,6 @@
 
     <form [formGroup]="form" (submit)="aceptar()">
 
-        <div class="form-group" [hidden]="!edicion">
-            <mat-label>Código</mat-label>
-            <input matInput formControlName="codigo" readonly>
-        </div>
-
         <div class="form-group">
             <mat-label>Tipo de Auditoría *</mat-label>
             <input matInput formControlName="tipoAuditoria" placeholder="Ej. Interna">
