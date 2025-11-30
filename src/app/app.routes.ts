@@ -11,7 +11,6 @@ import { Recomendacionregistrar } from './components/recomendacion/recomendacion
 import { Recomendacion } from './components/recomendacion/recomendacion';
 import { Inicio } from './components/inicio/inicio';
 import { Registrar } from './components/registrar/registrar';
-import { Login } from './components/login/login';
 import { BuscarArchivosXFecha } from './components/archivos/buscar-archivos-xfecha/buscar-archivos-xfecha';
 import { Alerta } from './components/alerta/alerta';
 import { Recurso } from './components/recurso/recurso';
@@ -29,7 +28,6 @@ import { Alertaregistrar } from './components/alerta/alertaregistrar/alertaregis
 import { Alertabuscar } from './components/alerta/alertabuscar/alertabuscar';
 import { Alertaquery1 } from './components/alerta/alertaquery1/alertaquery1';
 import { Autenticador } from './components/autenticador/autenticador';
-import { seguridadGuardGuard } from './guard/seguridad-guard-guard';
 import { Cuentalistar } from './components/cuenta/cuentalistar/cuentalistar';
 import { CuentaBuscarComponent } from './components/cuenta/cuentabuscar/cuentabuscar';
 import { LogAccesoListar } from './components/log-acceso/log-accesolistar/log-accesolistar';
@@ -41,6 +39,7 @@ import { TotalArchivosXUsuario } from './components/users/total-archivos-xusuari
 import { AuditoriaListar } from './components/auditoria/auditorialistar/auditorialistar';
 import { AuditoriaBuscarComponent } from './components/auditoria/auditoriabuscar/auditoriabuscar';
 import { AuditoriaRegistrarComponent } from './components/auditoria/auditoriaregistrar/auditoriaregistrar';
+import { seguridadGuardGuard } from './guard/seguridad-guard-guard';
 
 
 export const routes: Routes = [
@@ -73,19 +72,18 @@ export const routes: Routes = [
         canActivate: [seguridadGuardGuard],
     },
     {
-        path: 'usuarios',
-        component: Users,
+        path: 'usuarios',  
+        component: Users, 
         canActivate: [seguridadGuardGuard],
         children: [
-            { path: 'registrar', component: Usuarioregistrar },
-            { path: 'actualizar/:id', component: Usuarioregistrar },
+            { path: 'registrar', component: Usuarioregistrar, },
+            { path: 'actualizar/:id', component: Usuarioregistrar,},
             { path: 'totalarchivosXusuario', component: TotalArchivosXUsuario },
         ]
     },
     {
         path:'cuenta',
-        component: Cuenta,
-        canActivate: [seguridadGuardGuard],
+        component: Cuenta,canActivate: [seguridadGuardGuard],
         children: [
             { path: 'registrar', component: Cuentaregistrar },
             { path: 'actualizar/:id', component: Cuentaregistrar },
