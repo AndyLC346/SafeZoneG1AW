@@ -13,10 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from "@angular/material/menu";
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Location } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-respuestasoporteregistrar',
-  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatDatepickerModule, MatButtonModule, MatSelectModule, MatDatepickerModule, MatMenuModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatDatepickerModule, MatButtonModule, MatSelectModule, MatDatepickerModule, MatMenuModule,MatIconModule],
   providers:[provideNativeDateAdapter()],
   templateUrl: './respuestasoporteregistrar.html',
   styleUrl: './respuestasoporteregistrar.css',
@@ -33,8 +35,10 @@ export class Respuestasoporteregistrar implements OnInit {
     private router:Router,
     private formBuilder:FormBuilder,
     private route:ActivatedRoute,
-    private tS:TicketSoporteService
+    private tS:TicketSoporteService,
+    private location: Location
   ){}
+  
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -86,6 +90,10 @@ export class Respuestasoporteregistrar implements OnInit {
         });
       });
     }
+  }
+
+  regresar(): void {
+  this.location.back();
   }
 }
 

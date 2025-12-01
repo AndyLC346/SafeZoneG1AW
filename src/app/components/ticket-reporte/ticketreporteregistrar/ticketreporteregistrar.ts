@@ -13,10 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Location } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-ticketreporteregistrar',
-  imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule,MatRadioModule,MatDatepickerModule,MatButtonModule,MatSelectModule,MatDatepickerModule, MatNativeDateModule],
+  imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule,MatRadioModule,MatDatepickerModule,MatButtonModule,MatSelectModule,MatDatepickerModule, MatNativeDateModule,MatIconModule],
   templateUrl: './ticketreporteregistrar.html',
   providers:[provideNativeDateAdapter()],
   styleUrl: './ticketreporteregistrar.css',
@@ -33,7 +35,8 @@ export class Ticketreporteregistrar implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private uS: UsersService
+    private uS: UsersService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -96,4 +99,9 @@ export class Ticketreporteregistrar implements OnInit {
       });
     }
   }
+
+  regresar(): void {
+  this.location.back();
+ }
 }
+
