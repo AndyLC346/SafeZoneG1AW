@@ -57,7 +57,7 @@ export class Respuestasoporteregistrar implements OnInit {
       this.resp.idRespuestaSoporte = this.form.value.codigo;
       this.resp.mensajeRespuestaSoporte = this.form.value.mensaje;
       this.resp.fechacierreRespuestaSoporte = this.form.value.fecha;
-      this.resp.ticketreporte.idSoporte=this.form.value.fk
+      this.resp.treporte.idSoporte=this.form.value.fk
       if (this.edicion) {
         this.rS.update(this.resp).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -82,7 +82,7 @@ export class Respuestasoporteregistrar implements OnInit {
           codigo: new FormControl(data.idRespuestaSoporte),
           mensaje: new FormControl(data.mensajeRespuestaSoporte),
           fecha: new FormControl(data.fechacierreRespuestaSoporte),
-          fk:new FormControl(data.ticketreporte.idSoporte)
+          fk:new FormControl(data.treporte.idSoporte)
         });
       });
     }
