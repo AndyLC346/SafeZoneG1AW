@@ -1,46 +1,60 @@
 <div class="container">
-    <h1>Registro de Auditoría</h1>
+    <h1>{{ edicion ? 'Editar' : 'Registro de' }} Auditoría</h1>
 
     <form [formGroup]="form" (submit)="aceptar()">
 
         <div class="form-group">
-            <mat-label>Tipo de Auditoría *</mat-label>
-            <input matInput formControlName="tipoAuditoria" placeholder="Ej. Interna">
-            <div class="error" *ngIf="form.get('tipoAuditoria')?.touched && form.get('tipoAuditoria')?.hasError('required')">
-                El tipo es requerido
-            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Tipo de Auditoría</mat-label>
+                <mat-select formControlName="tipoAuditoria">
+                    <mat-option *ngFor="let tipo of listaTipos" [value]="tipo">
+                        {{ tipo }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('tipoAuditoria')?.hasError('required')">
+                    El tipo es requerido
+                </mat-error>
+            </mat-form-field>
         </div>
 
         <div class="form-group">
-            <mat-label>Descripción *</mat-label>
-            <input matInput formControlName="descripcion" placeholder="Ingrese detalles">
-            <div class="error" *ngIf="form.get('descripcion')?.touched && form.get('descripcion')?.hasError('required')">
-                La descripción es requerida
-            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="descripcion" placeholder="Ingrese detalles..." rows="4"></textarea>
+                <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
+                    La descripción es requerida
+                </mat-error>
+            </mat-form-field>
         </div>
 
         <div class="form-group">
-            <mat-label>Fecha *</mat-label>
-            <div style="display: flex; align-items: center;">
-                <input matInput [matDatepicker]="picker" formControlName="fechaAuditoria" placeholder="DD/MM/YYYY">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaAuditoria">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-            </div>
-            <div class="error" *ngIf="form.get('fechaAuditoria')?.touched && form.get('fechaAuditoria')?.hasError('required')">
-                La fecha es requerida
-            </div>
+                <mat-error *ngIf="form.get('fechaAuditoria')?.hasError('required')">
+                    La fecha es requerida
+                </mat-error>
+            </mat-form-field>
         </div>
 
         <div class="form-group">
-            <mat-label>ID de Usuario *</mat-label>
-            <input matInput type="number" formControlName="usuario" placeholder="Ingrese ID">
-            <div class="error" *ngIf="form.get('usuario')?.touched && form.get('usuario')?.hasError('required')">
-                El ID de usuario es requerido
-            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Usuario Responsable</mat-label>
+                <mat-select formControlName="usuario">
+                    <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
+                        {{ u.username }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+                    El usuario es requerido
+                </mat-error>
+            </mat-form-field>
         </div>
 
         <div class="button-group">
-            <button type="button" mat-button class="btn-secondary" routerLink="/auditorias">
+            <button type="button" mat-button class="btn-secondary" routerLink="/auditoria/listar">
                 Cancelar
             </button>
             <button type="submit" mat-raised-button class="btn-primary" [disabled]="form.invalid">
