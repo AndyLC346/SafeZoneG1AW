@@ -32,7 +32,7 @@ export class Contarticketporusuario implements OnInit{
         this.barChartData = [{
           data: data.map(item => item.total_Tickets),
           label: 'Cantidad de Tickets por Usuario',
-          backgroundColor: ['orange', 'blue', 'green', 'purple'],
+          backgroundColor: ['cyan', 'purple', 'green', 'red'],
        }];
       }else{
         this.hasData=false;
