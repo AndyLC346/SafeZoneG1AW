@@ -18,7 +18,7 @@ export class Contarticketporusuario implements OnInit{
     responsive:true,
   };
   barChartLabels:string[]=[];
-  barChartType:ChartType='line';
+  barChartType:ChartType='bar';
   barChartLegend=true;
   barChartData:ChartDataset[]=[];
 
@@ -28,16 +28,12 @@ export class Contarticketporusuario implements OnInit{
     this.tS.getContar().subscribe((data)=>{
       if(data.length>0){
         this.hasData=true;
-        this.barChartLabels=data.map((item)=>item.Username);
-        this.barChartData=[{
-          data:data.map((item)=>item.Total_Tickets),
-          label:'Cantidad de Tickets por Usuario',
-          backgroundColor:[
-            ' rgb(242, 94, 35)',
-            ' rgb(238, 122, 75)'
-          ],
-        },
-      ];
+        this.barChartLabels = data.map(item => item.username);
+        this.barChartData = [{
+          data: data.map(item => item.total_Tickets),
+          label: 'Cantidad de Tickets por Usuario',
+          backgroundColor: ['orange', 'blue', 'green', 'purple'],
+       }];
       }else{
         this.hasData=false;
       }
