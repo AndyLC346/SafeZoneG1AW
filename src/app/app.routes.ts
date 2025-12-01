@@ -154,6 +154,7 @@ export const routes: Routes = [
       { path: 'listar', component: AuditoriaListar },
       { path: 'buscar', component: AuditoriaBuscarComponent },
       { path: 'registrar', component: AuditoriaRegistrarComponent },
+      { path: 'edicion/:id', component: AuditoriaRegistrarComponent },
     ],
   },
 
