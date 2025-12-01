@@ -4,7 +4,6 @@ import { Users } from './components/users/users';
 import { Usuarioregistrar } from './components/users/usuarioregistrar/usuarioregistrar';
 import { Menu } from './components/menu/menu';
 import { Cuenta } from './components/cuenta/cuenta';
-import { Cuentaregistrar } from './components/cuenta/cuentaregistrar/cuentaregistrar';
 import { Archivos } from './components/archivos/archivos';
 import { Archivoregistrar } from './components/archivos/archivoregistrar/archivoregistrar';
 import { Recomendacionregistrar } from './components/recomendacion/recomendacionregistrar/recomendacionregistrar';
@@ -48,6 +47,7 @@ import { AuditoriaBuscarComponent } from './components/auditoria/auditoriabuscar
 import { AuditoriaRegistrarComponent } from './components/auditoria/auditoriaregistrar/auditoriaregistrar';
 import { BuscarRecomendacionXCategoria } from './components/recomendacion/buscar-recomendacion-xcategoria/buscar-recomendacion-xcategoria';
 import { guardseguridadGuard } from './guards/guardseguridad-guard';
+import { CuentaRegistrarComponent } from './components/cuenta/cuentaregistrar/cuentaregistrar';
 
 export const routes: Routes = [
   {
@@ -165,7 +165,8 @@ export const routes: Routes = [
     children: [
       { path: 'listar', component: Cuentalistar },
       { path: 'buscar', component: CuentaBuscarComponent },
-      { path: 'registrar', component: Cuentaregistrar },
+      { path: 'registrar', component: CuentaRegistrarComponent },
+      { path: 'edicion/:id', component: CuentaRegistrarComponent}
     ],
   },
 
