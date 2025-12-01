@@ -189,6 +189,7 @@ export const routes: Routes = [
     children: [
       { path: 'listar', component: Ticketreportelistar },
       { path: 'registrar', component: Ticketreporteregistrar },
+      {path: 'edits/:id', component: Ticketreporteregistrar},
     ],
   },
 
@@ -205,6 +206,7 @@ export const routes: Routes = [
     children: [
       { path: 'listar', component: Respuestasoportelistar },
       { path: 'registrar', component: Respuestasoporteregistrar },
+      { path: 'edits/:id', component: Respuestasoporteregistrar }
     ],
   },
 

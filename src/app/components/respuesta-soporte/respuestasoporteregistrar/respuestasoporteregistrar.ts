@@ -13,10 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from "@angular/material/menu";
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Location } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-respuestasoporteregistrar',
-  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatDatepickerModule, MatButtonModule, MatSelectModule, MatDatepickerModule, MatMenuModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatDatepickerModule, MatButtonModule, MatSelectModule, MatDatepickerModule, MatMenuModule,MatIconModule],
   providers:[provideNativeDateAdapter()],
   templateUrl: './respuestasoporteregistrar.html',
   styleUrl: './respuestasoporteregistrar.css',
@@ -33,8 +35,10 @@ export class Respuestasoporteregistrar implements OnInit {
     private router:Router,
     private formBuilder:FormBuilder,
     private route:ActivatedRoute,
-    private tS:TicketSoporteService
+    private tS:TicketSoporteService,
+    private location: Location
   ){}
+  
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -57,7 +61,7 @@ export class Respuestasoporteregistrar implements OnInit {
       this.resp.idRespuestaSoporte = this.form.value.codigo;
       this.resp.mensajeRespuestaSoporte = this.form.value.mensaje;
       this.resp.fechacierreRespuestaSoporte = this.form.value.fecha;
-      this.resp.ticketreporte.idSoporte=this.form.value.fk
+      this.resp.treporte.idSoporte=this.form.value.fk
       if (this.edicion) {
         this.rS.update(this.resp).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -71,7 +75,7 @@ export class Respuestasoporteregistrar implements OnInit {
           });
         });
       }
-      this.router.navigate(['respuestas']);
+      this.router.navigate(['respuestasoporte']);
     }
   }
 
@@ -82,10 +86,14 @@ export class Respuestasoporteregistrar implements OnInit {
           codigo: new FormControl(data.idRespuestaSoporte),
           mensaje: new FormControl(data.mensajeRespuestaSoporte),
           fecha: new FormControl(data.fechacierreRespuestaSoporte),
-          fk:new FormControl(data.ticketreporte.idSoporte)
+          fk:new FormControl(data.treporte.idSoporte)
         });
       });
     }
+  }
+
+  regresar(): void {
+  this.location.back();
   }
 }
 
