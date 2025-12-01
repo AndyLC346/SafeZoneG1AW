@@ -178,6 +178,7 @@ export const routes: Routes = [
       { path: 'listar', component: LogAccesoListar },
       { path: 'registrar', component: LogAccesoRegistrar },
       { path: 'buscar', component: LogAccesoBuscarComponent },
+      { path: 'edicion/:id', component: LogAccesoRegistrar },
     ],
   },
 
