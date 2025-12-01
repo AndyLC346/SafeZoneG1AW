@@ -16,7 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select'; // Importar Select
+import { MatSelectModule } from '@angular/material/select'; 
 import { UsersService } from '../../../services/users-service';
 
 @Component({
@@ -48,32 +48,32 @@ export class AuditoriaRegistrarComponent implements OnInit {
 
   constructor(
     private aS: AuditoriaService,
-    private uS: UsersService, // Inyectamos servicio de usuarios
+    private uS: UsersService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    // 1. Cargar usuarios para el Select
+
     this.uS.list().subscribe(data => {
       this.listaUsuarios = data;
     });
 
-    // 2. Verificar si es edición
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init();
     });
 
-    // 3. Crear formulario
+
     this.form = this.formBuilder.group({
       codigo: [''],
       tipoAuditoria: ['', Validators.required],
       descripcion: ['', Validators.required],
       fechaAuditoria: [new Date(), Validators.required],
-      usuario: ['', Validators.required], // Guardará el ID del usuario
+      usuario: ['', Validators.required],
     });
   }
 
@@ -84,26 +84,26 @@ export class AuditoriaRegistrarComponent implements OnInit {
       this.audit.descripcion = this.form.value.descripcion;
       this.audit.fechaAuditoria = this.form.value.fechaAuditoria;
 
-      // Asignar objeto Usuario
+
       this.audit.usuario = new Users();
       this.audit.usuario.id = this.form.value.usuario;
 
       if (this.edicion) {
-        // ACTUALIZAR
+
         this.aS.update(this.audit).subscribe(() => {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
-          // Redirección corregida a tu ruta
+
           this.router.navigate(['/auditoria/listar']);
         });
       } else {
-        // REGISTRAR
+
         this.aS.insert(this.audit).subscribe(() => {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
-          // Redirección corregida a tu ruta
+
           this.router.navigate(['/auditoria/listar']);
         });
       }
@@ -113,13 +113,13 @@ export class AuditoriaRegistrarComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
-        // Usamos patchValue para llenar los campos al editar
+
         this.form.patchValue({
           codigo: data.idAuditoria,
           tipoAuditoria: data.tipoAuditoria,
           descripcion: data.descripcion,
           fechaAuditoria: new Date(data.fechaAuditoria),
-          usuario: data.usuario.id // Esto selecciona automáticamente al usuario en el Select
+          usuario: data.usuario.id
         });
       });
     }

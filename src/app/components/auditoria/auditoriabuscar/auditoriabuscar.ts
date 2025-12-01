@@ -8,7 +8,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select'; // <--- 1. IMPORTAR ESTO
+import { MatSelectModule } from '@angular/material/select'; 
 import { Auditoria } from '../../../models/Auditoria';
 import { AuditoriaService } from '../../../services/auditoria-service';
 
@@ -24,7 +24,7 @@ import { AuditoriaService } from '../../../services/auditoria-service';
     FormsModule,
     CommonModule,
     MatIconModule,
-    MatSelectModule // <--- 2. AGREGAR AL IMPORTS
+    MatSelectModule
   ],
   templateUrl: './auditoriabuscar.html',
   providers: [provideNativeDateAdapter()],
@@ -41,7 +41,6 @@ export class AuditoriaBuscarComponent {
 
   mensaje: string = "";
 
-  // 3. DEFINIR LA LISTA (Igual que en registrar)
   listaTipos: string[] = ['Interna', 'Externa', 'Seguridad', 'Financiera', 'Sistemas', 'Error', 'Reporte', 'Config'];
 
   constructor(private aS: AuditoriaService) {}
