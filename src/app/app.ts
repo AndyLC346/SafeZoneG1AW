@@ -46,8 +46,16 @@ export class App {
     return this.role === 'ADMIN';
   }
 
-  isTester() {
-    return this.role === 'TESTER';
+  isCliente() {
+    return this.role === 'CLIENTE';
+  }
+
+  isSecretario() {
+    return this.role === 'SECRETARIO';
+  }
+
+  isAgente() {
+    return this.role === 'AGENTE';
   }
 
   toggleMute(audio: HTMLAudioElement) {
