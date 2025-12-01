@@ -15,7 +15,7 @@ import { RespuestaSoporteService } from '../../../services/respuesta-soporte-ser
 })
 export class Respuestasoportelistar implements OnInit {
   dataSource:MatTableDataSource<RespuestaSoporte>=new MatTableDataSource();
-  displayedColumns:string[]=['c1','c2','c3','c4','c5','c6'];
+  displayedColumns:string[]=['c1','c2','c3','c5','c6'];
   constructor(private rS:RespuestaSoporteService){}
 
   ngOnInit(): void {
