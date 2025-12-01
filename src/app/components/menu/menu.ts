@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../services/login-service';
 
 @Component({
@@ -16,14 +16,21 @@ import { LoginService } from '../../services/login-service';
 export class Menu implements OnInit{
   username: string = "";
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     const token = sessionStorage.getItem("token");
 
     if (token) {
       const payload = JSON.parse(atob(token.split(".")[1]));
-      this.username = payload.sub; // si tu token guarda el username en "sub"
+      this.username = payload.sub;
     } else {
       this.username = "Invitado";
     }
+  }
+
+  cerrar() {
+    sessionStorage.clear();
+    this.router.navigate(['/login']); // Redirige al login después de cerrar sesión
   }
 }
