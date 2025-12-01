@@ -8,6 +8,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select'; // <--- 1. IMPORTAR ESTO
 import { Auditoria } from '../../../models/Auditoria';
 import { AuditoriaService } from '../../../services/auditoria-service';
 
@@ -22,7 +23,8 @@ import { AuditoriaService } from '../../../services/auditoria-service';
     MatDatepickerModule,
     FormsModule,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule // <--- 2. AGREGAR AL IMPORTS
   ],
   templateUrl: './auditoriabuscar.html',
   providers: [provideNativeDateAdapter()],
@@ -39,11 +41,14 @@ export class AuditoriaBuscarComponent {
 
   mensaje: string = "";
 
+  // 3. DEFINIR LA LISTA (Igual que en registrar)
+  listaTipos: string[] = ['Interna', 'Externa', 'Seguridad', 'Financiera', 'Sistemas', 'Error', 'Reporte', 'Config'];
+
   constructor(private aS: AuditoriaService) {}
 
   buscar() {
-    if (!this.fechaInicio || !this.fechaFin || !this.filtroTipo.trim()) {
-      this.mensaje = "Debe ingresar ambas fechas y el tipo de auditoría.";
+    if (!this.fechaInicio || !this.fechaFin || !this.filtroTipo) {
+      this.mensaje = "Debe ingresar ambas fechas y seleccionar el tipo.";
       return;
     }
 
@@ -57,7 +62,7 @@ export class AuditoriaBuscarComponent {
       },
       error: (err) => {
         console.error(err);
-        this.dataSource.data = []; //
+        this.dataSource.data = [];
         if (err.status === 404) {
           this.mensaje = "No se encontraron resultados.";
         } else {
