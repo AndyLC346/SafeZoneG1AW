@@ -25,7 +25,11 @@
 
     <mat-form-field appearance="outline" class="filtro-item">
       <mat-label>Tipo</mat-label>
-      <input matInput [(ngModel)]="filtroTipo" placeholder="Ej. Seguridad, Error">
+      <mat-select [(ngModel)]="filtroTipo">
+        <mat-option *ngFor="let tipo of listaTipos" [value]="tipo">
+          {{ tipo }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <button mat-raised-button color="primary" (click)="buscar()" class="btn-buscar">

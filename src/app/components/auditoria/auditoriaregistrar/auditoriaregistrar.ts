@@ -9,12 +9,15 @@ import {
 } from '@angular/forms';
 import { Auditoria } from '../../../models/Auditoria';
 import { AuditoriaService } from '../../../services/auditoria-service';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router'; 
+import { Users } from '../../../models/Users';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select'; 
+import { UsersService } from '../../../services/users-service';
 
 @Component({
   selector: 'app-auditoriaregistrar',
@@ -27,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatDatepickerModule,
     MatButtonModule,
+    MatSelectModule
   ],
   templateUrl: './auditoriaregistrar.html',
   providers: [provideNativeDateAdapter()],
@@ -38,25 +42,37 @@ export class AuditoriaRegistrarComponent implements OnInit {
   edicion: boolean = false;
   id: number = 0;
 
+  // Listas
+  listaUsuarios: Users[] = [];
+  listaTipos: string[] = ['Interna', 'Externa', 'Seguridad', 'Financiera', 'Sistemas', 'Error', 'Reporte', 'Config'];
+
   constructor(
     private aS: AuditoriaService,
+    private uS: UsersService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+
+    this.uS.list().subscribe(data => {
+      this.listaUsuarios = data;
+    });
+
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init();
     });
 
+
     this.form = this.formBuilder.group({
       codigo: [''],
       tipoAuditoria: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fechaAuditoria: ['', Validators.required],
+      fechaAuditoria: [new Date(), Validators.required],
       usuario: ['', Validators.required],
     });
   }
@@ -69,34 +85,41 @@ export class AuditoriaRegistrarComponent implements OnInit {
       this.audit.fechaAuditoria = this.form.value.fechaAuditoria;
 
 
+      this.audit.usuario = new Users();
       this.audit.usuario.id = this.form.value.usuario;
 
       if (this.edicion) {
+
         this.aS.update(this.audit).subscribe(() => {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
+
+          this.router.navigate(['/auditoria/listar']);
         });
       } else {
+
         this.aS.insert(this.audit).subscribe(() => {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
+
+          this.router.navigate(['/auditoria/listar']);
         });
       }
-      this.router.navigate(['auditorias']);
     }
   }
 
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idAuditoria),
-          tipoAuditoria: new FormControl(data.tipoAuditoria),
-          descripcion: new FormControl(data.descripcion),
-          fechaAuditoria: new FormControl(data.fechaAuditoria),
-          usuario: new FormControl(data.usuario.id),
+
+        this.form.patchValue({
+          codigo: data.idAuditoria,
+          tipoAuditoria: data.tipoAuditoria,
+          descripcion: data.descripcion,
+          fechaAuditoria: new Date(data.fechaAuditoria),
+          usuario: data.usuario.id
         });
       });
     }
