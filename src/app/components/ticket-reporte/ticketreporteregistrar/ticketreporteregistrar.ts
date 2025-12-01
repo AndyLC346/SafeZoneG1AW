@@ -77,7 +77,7 @@ export class Ticketreporteregistrar implements OnInit {
           });
         });
       }
-      this.router.navigate(['tickets']);
+      this.router.navigate(['ticketsoporte']);
     }
   }
 

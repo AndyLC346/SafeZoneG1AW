@@ -71,7 +71,7 @@ export class Respuestasoporteregistrar implements OnInit {
           });
         });
       }
-      this.router.navigate(['respuestas']);
+      this.router.navigate(['respuestasoporte']);
     }
   }
 
