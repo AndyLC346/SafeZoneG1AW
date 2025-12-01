@@ -17,7 +17,7 @@ export class Ticketreportelistar implements OnInit{
 
   dataSource:MatTableDataSource<TicketSoporte>=new MatTableDataSource();
 
-  displayedColumns:string[]=['c1','c2','c3','c4','c5','cF','c6','c7']
+  displayedColumns:string[]=['c1','c2','c3','c4','c5','c6','c7']
   
   constructor(private tS:TicketSoporteService){}
 
