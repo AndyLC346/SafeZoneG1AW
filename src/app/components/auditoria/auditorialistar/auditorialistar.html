@@ -2,8 +2,9 @@
   <div style="text-align: center; margin: 5%">
     <h2>Lista de Auditorías</h2>
   </div>
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -11,8 +12,8 @@
       </ng-container>
 
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>fecha</th>
-        <td mat-cell *matCellDef="let element">{{ element.fechaAuditoria| date:'dd/MM/yyyy HH:mm' }}</td>
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaAuditoria| date:'dd/MM/yyyy' }}</td>
       </ng-container>
 
       <ng-container matColumnDef="c3">
@@ -33,7 +34,7 @@
       <ng-container matColumnDef="c6">
         <th mat-header-cell *matHeaderCellDef>Actualizar</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button [routerLink]="['/auditorias/edicion', element.idAuditoria]">
+          <button mat-icon-button color="primary" [routerLink]="['/auditoria/edicion', element.idAuditoria]">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
@@ -42,7 +43,7 @@
       <ng-container matColumnDef="c7">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button (click)="eliminar(element.idAuditoria)">
+          <button mat-icon-button color="warn" (click)="eliminar(element.idAuditoria)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
